@@ -18,6 +18,7 @@
 		A1BE643219ACD6CF0086A868 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE643119ACD6CF0086A868 /* camera.png */; };
 		A1BE643B19AFDBB70086A868 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE643919AFDBB70086A868 /* Default.png */; };
 		A1BE644019AFDD460086A868 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE643F19AFDD460086A868 /* Default@2x.png */; };
+		A1F9CE7A1A570D5600176E38 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9CE791A570D5600176E38 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A1BE643119ACD6CF0086A868 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		A1BE643919AFDBB70086A868 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A1BE643F19AFDD460086A868 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A1F9CE791A570D5600176E38 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				A1BE642C19AB87100086A868 /* SplitPea.entitlements */,
 				A1BE640D19A500AE0086A868 /* AppDelegate.swift */,
 				A1BE640F19A500AE0086A868 /* ViewController.swift */,
+				A1F9CE791A570D5600176E38 /* ItemViewController.swift */,
 				A1BE641119A500AE0086A868 /* Main.storyboard */,
 				A1BE641419A500AE0086A868 /* Images.xcassets */,
 				A1BE640B19A500AE0086A868 /* Supporting Files */,
@@ -251,6 +254,7 @@
 			files = (
 				A1BE641019A500AE0086A868 /* ViewController.swift in Sources */,
 				A1BE640E19A500AE0086A868 /* AppDelegate.swift in Sources */,
+				A1F9CE7A1A570D5600176E38 /* ItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

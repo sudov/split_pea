@@ -13,28 +13,12 @@ import MobileCoreServices
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var cameraUI:UIImagePickerController = UIImagePickerController()
-    var imagePicker:UIImagePickerController?
-    var image_view: UIImageView!
-    var imageView = UIImageView(frame: CGRectMake(100, 150, 150, 150));
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width;
         let screenHeight = screenSize.height;
-        
-        var image0 = UIImage(named: "Blank52.png");
-        imageView.image = image0;
-        self.view.addSubview(imageView);
-        
-        let button = UIButton()
-        let image = UIImage(named: "camera.png") as UIImage!
-        button.frame = CGRectMake(screenWidth/2, screenHeight/2, 60, 60)
-        button.addTarget(self, action: "presentCamera:", forControlEvents: .TouchUpInside)
-//        button.backgroundColor = UIColor.blueColor()
-        button.setImage(image, forState: .Normal)
-        self.view.addSubview(button)
         
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
             println("Yay Camera!")
@@ -43,19 +27,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    func presentCamera(sender: UIButton!) {
+    @IBOutlet weak var SnappedReceipt: UIImageView!
+
+    @IBAction func UploadReceipt(sender: AnyObject) {
+        println("WUT")
         cameraUI = UIImagePickerController()
         cameraUI.delegate = self
         cameraUI.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum  //because mac camera -.-
-//        cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
-//        cameraUI.mediaTypes = [kUTTypeImage]
+        //        cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
+        //        cameraUI.mediaTypes = [kUTTypeImage]
         cameraUI.allowsEditing = false
         self.presentViewController(cameraUI, animated: true, completion: nil)
     }
 
     func imagePickerController(cameraUI: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo:NSDictionary!) {
-        imageView.bounds = UIScreen.mainScreen().bounds
-        imageView.image  = image
+        SnappedReceipt.bounds = UIScreen.mainScreen().bounds
+        SnappedReceipt.image  = image
         sendServerRequest(image)
 
         self.dismissViewControllerAnimated(true, completion: { () -> Void in })
