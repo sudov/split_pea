@@ -24,6 +24,8 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         } else {
             println("No Camera Available")
         }
+        
+        
     }
     
     @IBOutlet weak var SnappedReceipt: UIImageView!
