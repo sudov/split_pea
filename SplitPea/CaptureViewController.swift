@@ -11,7 +11,8 @@ import UIKit
 class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var cameraUI:UIImagePickerController = UIImagePickerController()
-    
+    var jsonResult: NSDictionary!;
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let screenSize: CGRect = UIScreen.mainScreen().bounds
@@ -28,7 +29,6 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var SnappedReceipt: UIImageView!
     
     @IBAction func UploadReceipt(sender: AnyObject) {
-        println("WUT")
         cameraUI = UIImagePickerController()
         cameraUI.delegate = self
         cameraUI.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum  //because mac camera -.-
@@ -65,9 +65,23 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         if ( dataVal == nil ) {
             println("Nothing came back :(")
         } else {
-            var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-            println("Synchronous\(jsonResult)")
+            jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+//            println("Synchronous\(jsonResult)")
         }
+    }
+    
+    @IBAction func captureComplete(sender: AnyObject) {
+        println("fuck 1")
+        var view: ItemViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ItemViewController") as ItemViewController
+        println("fuck 2")
+        view.jsonResult = jsonResult
+        println(view.jsonResult)
+//        self.navigationController?.pushViewController(view, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var itemViewController: ItemViewController = segue.destinationViewController as ItemViewController
+        itemViewController.receive_jsonResult = jsonResult;
     }
     
     override func didReceiveMemoryWarning() {

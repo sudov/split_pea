@@ -8,15 +8,34 @@
 
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+@UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
+        
+        FBLoginView.self
+        FBProfilePictureView.self
+        
+        Venmo.startWithAppId("2234", secret:"pdFZMBrSczX4wHXVBvy49k9twUnSnJ4k", name:"SplitPea")
+        
         return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
+        
+        var wasHandledFB:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        
+        var wasHandledVenmo:Bool = Venmo.sharedInstance().handleOpenURL(url)
+        
+//        if (wasHandledFB == true || wasHandledVenmo == true){
+        if (wasHandledFB == true) {
+            return true
+        } else {
+            return false
+        }
     }
 
     func applicationWillResignActive(application: UIApplication!) {

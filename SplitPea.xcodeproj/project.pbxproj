@@ -7,22 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2228BA5E48418C75FD289954 /* libPods-SplitPeaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A6498F1B0738BB0A401C40 /* libPods-SplitPeaTests.a */; };
+		90F854DB944FE269376D59F5 /* libPods-SplitPea.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A86BB25945254F119A401F /* libPods-SplitPea.a */; };
 		A12659971A58F9A2009532E3 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12659961A58F9A2009532E3 /* CaptureViewController.swift */; };
 		A12659991A5909B3009532E3 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = A12659981A5909B3009532E3 /* login.png */; };
 		A126599B1A590C1B009532E3 /* capture.png in Resources */ = {isa = PBXBuildFile; fileRef = A126599A1A590C1B009532E3 /* capture.png */; };
+		A14211D91A8BD9C200ACA392 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14211D81A8BD9C200ACA392 /* ItemViewCell.swift */; };
+		A14211E01A8C1BD600ACA392 /* venmo.png in Resources */ = {isa = PBXBuildFile; fileRef = A14211DE1A8C1BD600ACA392 /* venmo.png */; };
+		A14211E11A8C1BD600ACA392 /* paypal.png in Resources */ = {isa = PBXBuildFile; fileRef = A14211DF1A8C1BD600ACA392 /* paypal.png */; };
+		A14211E51A8C1CB600ACA392 /* gwallet.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A14211E31A8C1CB600ACA392 /* gwallet.jpeg */; };
+		A14211E71A8C1D5E00ACA392 /* square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A14211E61A8C1D5E00ACA392 /* square.jpg */; };
 		A15DC8E61A5CC4BF0094F03E /* PaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15DC8E51A5CC4BF0094F03E /* PaidViewController.swift */; };
+		A16940F41A61A1F400903CFF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16940F31A61A1F400903CFF /* ProfileViewController.swift */; };
+		A16940F61A6211C000903CFF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16940F51A6211C000903CFF /* FacebookSDK.framework */; };
+		A16940F81A6214F400903CFF /* FacebookConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16940F71A6214F400903CFF /* FacebookConnectViewController.swift */; };
 		A189847B1A5D78C7001262A4 /* emerald.png in Resources */ = {isa = PBXBuildFile; fileRef = A189847A1A5D78C7001262A4 /* emerald.png */; };
+		A18F50351A8E757B009B8956 /* VenmoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */; };
+		A18F50391A8EA473009B8956 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F50381A8EA473009B8956 /* SignUpViewController.swift */; };
+		A18F503D1A8EB285009B8956 /* icon_w.png in Resources */ = {isa = PBXBuildFile; fileRef = A18F503C1A8EB285009B8956 /* icon_w.png */; };
+		A18F503F1A8ED60D009B8956 /* VenmoLoggedOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F503E1A8ED60D009B8956 /* VenmoLoggedOutViewController.m */; };
 		A1BE640E19A500AE0086A868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE640D19A500AE0086A868 /* AppDelegate.swift */; };
 		A1BE641019A500AE0086A868 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE640F19A500AE0086A868 /* ViewController.swift */; };
 		A1BE641519A500AE0086A868 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BE641419A500AE0086A868 /* Images.xcassets */; };
 		A1BE642119A500AE0086A868 /* SplitPeaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE642019A500AE0086A868 /* SplitPeaTests.swift */; };
 		A1BE642B19A5163E0086A868 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE642A19A5163E0086A868 /* Blank52.png */; };
-		A1BE642E19AB871A0086A868 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BE642D19AB871A0086A868 /* CloudKit.framework */; };
-		A1BE643019AB872C0086A868 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BE642F19AB872C0086A868 /* StoreKit.framework */; };
 		A1BE643219ACD6CF0086A868 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE643119ACD6CF0086A868 /* camera.png */; };
 		A1BE643B19AFDBB70086A868 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE643919AFDBB70086A868 /* Default.png */; };
 		A1BE644019AFDD460086A868 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE643F19AFDD460086A868 /* Default@2x.png */; };
 		A1D6A9C51A5DDB87004A1934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D6A9C41A5DDB87004A1934 /* Main.storyboard */; };
+		A1D6A9CF1A5E0A19004A1934 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D6A9CE1A5E0A19004A1934 /* settings.png */; };
+		A1D6A9D51A5EE0D4004A1934 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A9D41A5EE0D4004A1934 /* SettingsTableViewController.swift */; };
+		A1D6A9D91A5EFB33004A1934 /* SettingsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */; };
+		A1D6A9DB1A5F20E4004A1934 /* CurrentChecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A9DA1A5F20E4004A1934 /* CurrentChecksViewController.swift */; };
 		A1F9CE7A1A570D5600176E38 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9CE791A570D5600176E38 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,11 +53,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16542C287A94198FE697D549 /* Pods-SplitPeaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SplitPeaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SplitPeaTests/Pods-SplitPeaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		37A6498F1B0738BB0A401C40 /* libPods-SplitPeaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SplitPeaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61A86BB25945254F119A401F /* libPods-SplitPea.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SplitPea.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F9837BC73CA16338DC1F60 /* Pods-SplitPeaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SplitPeaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SplitPeaTests/Pods-SplitPeaTests.release.xcconfig"; sourceTree = "<group>"; };
 		A12659961A58F9A2009532E3 /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		A12659981A5909B3009532E3 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		A126599A1A590C1B009532E3 /* capture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capture.png; sourceTree = "<group>"; };
+		A14211D81A8BD9C200ACA392 /* ItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
+		A14211DE1A8C1BD600ACA392 /* venmo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venmo.png; sourceTree = "<group>"; };
+		A14211DF1A8C1BD600ACA392 /* paypal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paypal.png; sourceTree = "<group>"; };
+		A14211E31A8C1CB600ACA392 /* gwallet.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gwallet.jpeg; sourceTree = "<group>"; };
+		A14211E61A8C1D5E00ACA392 /* square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = square.jpg; sourceTree = "<group>"; };
+		A14211E81A8C248E00ACA392 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		A15DC8E51A5CC4BF0094F03E /* PaidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaidViewController.swift; sourceTree = "<group>"; };
+		A16940F31A61A1F400903CFF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A16940F51A6211C000903CFF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		A16940F71A6214F400903CFF /* FacebookConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookConnectViewController.swift; sourceTree = "<group>"; };
 		A189847A1A5D78C7001262A4 /* emerald.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emerald.png; sourceTree = "<group>"; };
+		A18F50321A8E6ED1009B8956 /* SplitPea-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplitPea-Bridging-Header.h"; sourceTree = "<group>"; };
+		A18F50331A8E73A5009B8956 /* VenmoLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoLoginViewController.h; sourceTree = "<group>"; };
+		A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoLoginViewController.m; sourceTree = "<group>"; };
+		A18F50381A8EA473009B8956 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A18F503C1A8EB285009B8956 /* icon_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_w.png; sourceTree = "<group>"; };
+		A18F503E1A8ED60D009B8956 /* VenmoLoggedOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoLoggedOutViewController.m; sourceTree = "<group>"; };
+		A18F50401A8ED664009B8956 /* VenmoLoggedOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoLoggedOutViewController.h; sourceTree = "<group>"; };
 		A1BE640819A500AE0086A868 /* SplitPea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitPea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BE640C19A500AE0086A868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1BE640D19A500AE0086A868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,13 +88,17 @@
 		A1BE642019A500AE0086A868 /* SplitPeaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitPeaTests.swift; sourceTree = "<group>"; };
 		A1BE642A19A5163E0086A868 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
 		A1BE642C19AB87100086A868 /* SplitPea.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SplitPea.entitlements; sourceTree = "<group>"; };
-		A1BE642D19AB871A0086A868 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		A1BE642F19AB872C0086A868 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A1BE643119ACD6CF0086A868 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		A1BE643919AFDBB70086A868 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A1BE643F19AFDD460086A868 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A1D6A9C41A5DDB87004A1934 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A1D6A9CE1A5E0A19004A1934 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		A1D6A9D41A5EE0D4004A1934 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBar.swift; sourceTree = "<group>"; };
+		A1D6A9DA1A5F20E4004A1934 /* CurrentChecksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentChecksViewController.swift; sourceTree = "<group>"; };
 		A1F9CE791A570D5600176E38 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		E7F1177FD5C175CC04DF7C79 /* Pods-SplitPea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SplitPea.release.xcconfig"; path = "Pods/Target Support Files/Pods-SplitPea/Pods-SplitPea.release.xcconfig"; sourceTree = "<group>"; };
+		EED3640C787B1439E645EC57 /* Pods-SplitPea.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SplitPea.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SplitPea/Pods-SplitPea.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +106,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1BE642E19AB871A0086A868 /* CloudKit.framework in Frameworks */,
-				A1BE643019AB872C0086A868 /* StoreKit.framework in Frameworks */,
+				A16940F61A6211C000903CFF /* FacebookSDK.framework in Frameworks */,
+				90F854DB944FE269376D59F5 /* libPods-SplitPea.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,27 +115,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2228BA5E48418C75FD289954 /* libPods-SplitPeaTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60FE6BBBEDFF65268BF7D0B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EED3640C787B1439E645EC57 /* Pods-SplitPea.debug.xcconfig */,
+				E7F1177FD5C175CC04DF7C79 /* Pods-SplitPea.release.xcconfig */,
+				16542C287A94198FE697D549 /* Pods-SplitPeaTests.debug.xcconfig */,
+				84F9837BC73CA16338DC1F60 /* Pods-SplitPeaTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A1BE63FF19A500AE0086A868 = {
 			isa = PBXGroup;
 			children = (
+				A18F503C1A8EB285009B8956 /* icon_w.png */,
 				A1BE643F19AFDD460086A868 /* Default@2x.png */,
 				A12659981A5909B3009532E3 /* login.png */,
 				A189847A1A5D78C7001262A4 /* emerald.png */,
+				A14211E31A8C1CB600ACA392 /* gwallet.jpeg */,
+				A14211E61A8C1D5E00ACA392 /* square.jpg */,
+				A14211DE1A8C1BD600ACA392 /* venmo.png */,
+				A14211DF1A8C1BD600ACA392 /* paypal.png */,
+				A1D6A9CE1A5E0A19004A1934 /* settings.png */,
 				A1BE643919AFDBB70086A868 /* Default.png */,
 				A126599A1A590C1B009532E3 /* capture.png */,
 				A1BE643119ACD6CF0086A868 /* camera.png */,
-				A1BE642F19AB872C0086A868 /* StoreKit.framework */,
-				A1BE642D19AB871A0086A868 /* CloudKit.framework */,
+				A16940F51A6211C000903CFF /* FacebookSDK.framework */,
 				A1BE642A19A5163E0086A868 /* Blank52.png */,
 				A1BE640A19A500AE0086A868 /* SplitPea */,
 				A1BE641D19A500AE0086A868 /* SplitPeaTests */,
 				A1BE640919A500AE0086A868 /* Products */,
+				60FE6BBBEDFF65268BF7D0B2 /* Pods */,
+				BBEECD201CE1FF4C22D1F209 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,7 +173,20 @@
 				A1BE642C19AB87100086A868 /* SplitPea.entitlements */,
 				A1BE640D19A500AE0086A868 /* AppDelegate.swift */,
 				A1BE640F19A500AE0086A868 /* ViewController.swift */,
+				A1D6A9D41A5EE0D4004A1934 /* SettingsTableViewController.swift */,
+				A18F50381A8EA473009B8956 /* SignUpViewController.swift */,
+				A1D6A9DA1A5F20E4004A1934 /* CurrentChecksViewController.swift */,
+				A16940F31A61A1F400903CFF /* ProfileViewController.swift */,
+				A16940F71A6214F400903CFF /* FacebookConnectViewController.swift */,
+				A18F50331A8E73A5009B8956 /* VenmoLoginViewController.h */,
+				A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */,
+				A18F503E1A8ED60D009B8956 /* VenmoLoggedOutViewController.m */,
+				A18F50401A8ED664009B8956 /* VenmoLoggedOutViewController.h */,
+				A14211E81A8C248E00ACA392 /* Bridge-Header.h */,
+				A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */,
 				A12659961A58F9A2009532E3 /* CaptureViewController.swift */,
+				A14211D81A8BD9C200ACA392 /* ItemViewCell.swift */,
+				A18F50321A8E6ED1009B8956 /* SplitPea-Bridging-Header.h */,
 				A1F9CE791A570D5600176E38 /* ItemViewController.swift */,
 				A15DC8E51A5CC4BF0094F03E /* PaidViewController.swift */,
 				A1D6A9C41A5DDB87004A1934 /* Main.storyboard */,
@@ -149,6 +221,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BBEECD201CE1FF4C22D1F209 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61A86BB25945254F119A401F /* libPods-SplitPea.a */,
+				37A6498F1B0738BB0A401C40 /* libPods-SplitPeaTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,9 +237,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1BE642419A500AE0086A868 /* Build configuration list for PBXNativeTarget "SplitPea" */;
 			buildPhases = (
+				3F063CF97D4311ECFCAE8E9A /* Check Pods Manifest.lock */,
 				A1BE640419A500AE0086A868 /* Sources */,
 				A1BE640519A500AE0086A868 /* Frameworks */,
 				A1BE640619A500AE0086A868 /* Resources */,
+				2785AFC8146A930549C867DA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,9 +256,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1BE642719A500AE0086A868 /* Build configuration list for PBXNativeTarget "SplitPeaTests" */;
 			buildPhases = (
+				55DB4C6C972E51484C20A498 /* Check Pods Manifest.lock */,
 				A1BE641619A500AE0086A868 /* Sources */,
 				A1BE641719A500AE0086A868 /* Frameworks */,
 				A1BE641819A500AE0086A868 /* Resources */,
+				4CD72F9482D95C4F2C1B4171 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,7 +278,7 @@
 		A1BE640019A500AE0086A868 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = OkraLabs;
 				TargetAttributes = {
 					A1BE640719A500AE0086A868 = {
@@ -201,16 +286,16 @@
 						DevelopmentTeam = V27S27467U;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.DataProtection = {
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -248,11 +333,17 @@
 				A1BE643B19AFDBB70086A868 /* Default.png in Resources */,
 				A126599B1A590C1B009532E3 /* capture.png in Resources */,
 				A189847B1A5D78C7001262A4 /* emerald.png in Resources */,
+				A14211E51A8C1CB600ACA392 /* gwallet.jpeg in Resources */,
 				A1BE642B19A5163E0086A868 /* Blank52.png in Resources */,
+				A14211E11A8C1BD600ACA392 /* paypal.png in Resources */,
+				A14211E01A8C1BD600ACA392 /* venmo.png in Resources */,
 				A1BE643219ACD6CF0086A868 /* camera.png in Resources */,
+				A1D6A9CF1A5E0A19004A1934 /* settings.png in Resources */,
+				A14211E71A8C1D5E00ACA392 /* square.jpg in Resources */,
 				A1D6A9C51A5DDB87004A1934 /* Main.storyboard in Resources */,
 				A1BE641519A500AE0086A868 /* Images.xcassets in Resources */,
 				A12659991A5909B3009532E3 /* login.png in Resources */,
+				A18F503D1A8EB285009B8956 /* icon_w.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,15 +356,87 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2785AFC8146A930549C867DA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SplitPea/Pods-SplitPea-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F063CF97D4311ECFCAE8E9A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD72F9482D95C4F2C1B4171 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SplitPeaTests/Pods-SplitPeaTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55DB4C6C972E51484C20A498 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A1BE640419A500AE0086A868 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A15DC8E61A5CC4BF0094F03E /* PaidViewController.swift in Sources */,
+				A18F503F1A8ED60D009B8956 /* VenmoLoggedOutViewController.m in Sources */,
+				A1D6A9D51A5EE0D4004A1934 /* SettingsTableViewController.swift in Sources */,
 				A1BE641019A500AE0086A868 /* ViewController.swift in Sources */,
 				A12659971A58F9A2009532E3 /* CaptureViewController.swift in Sources */,
 				A1BE640E19A500AE0086A868 /* AppDelegate.swift in Sources */,
+				A14211D91A8BD9C200ACA392 /* ItemViewCell.swift in Sources */,
+				A18F50351A8E757B009B8956 /* VenmoLoginViewController.m in Sources */,
+				A1D6A9DB1A5F20E4004A1934 /* CurrentChecksViewController.swift in Sources */,
+				A16940F41A61A1F400903CFF /* ProfileViewController.swift in Sources */,
+				A16940F81A6214F400903CFF /* FacebookConnectViewController.swift in Sources */,
+				A1D6A9D91A5EFB33004A1934 /* SettingsBar.swift in Sources */,
+				A18F50391A8EA473009B8956 /* SignUpViewController.swift in Sources */,
 				A1F9CE7A1A570D5600176E38 /* ItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +480,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -331,10 +495,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos8.1;
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "SplitPea/Bridge-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -360,6 +526,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -367,47 +534,69 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos8.1;
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "SplitPea/Bridge-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		A1BE642519A500AE0086A868 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EED3640C787B1439E645EC57 /* Pods-SplitPea.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SplitPea/SplitPea.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SplitPea/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SplitPea/Bridge-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		A1BE642619A500AE0086A868 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7F1177FD5C175CC04DF7C79 /* Pods-SplitPea.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SplitPea/SplitPea.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SplitPea/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SplitPea/Bridge-Header.h";
 			};
 			name = Release;
 		};
 		A1BE642819A500AE0086A868 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16542C287A94198FE697D549 /* Pods-SplitPeaTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -427,6 +616,7 @@
 		};
 		A1BE642919A500AE0086A868 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84F9837BC73CA16338DC1F60 /* Pods-SplitPeaTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
