@@ -10,34 +10,82 @@ import UIKit
 
 class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var captureButton: UIButton!
+    var popover:UIPopoverController?=nil
+    
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var jsonResult: NSDictionary!;
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width;
         let screenHeight = screenSize.height;
-        
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            println("Yay Camera!")
-        } else {
-            println("No Camera Available")
-        }
-        
-        
+
     }
     
     @IBOutlet weak var SnappedReceipt: UIImageView!
     
-    @IBAction func UploadReceipt(sender: AnyObject) {
-        cameraUI = UIImagePickerController()
+    func openCamera()
+    {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera))
+        {
+            cameraUI = UIImagePickerController()
+            cameraUI.delegate = self
+            cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
+            cameraUI.allowsEditing = false
+            self.presentViewController(cameraUI, animated: true, completion: nil)
+        }
+    }
+    
+    func openGallary()
+    {
         cameraUI.delegate = self
-        cameraUI.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum  //because mac camera -.-
-        //        cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
-        //        cameraUI.mediaTypes = [kUTTypeImage]
-        cameraUI.allowsEditing = false
-        self.presentViewController(cameraUI, animated: true, completion: nil)
+        cameraUI.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone
+        {
+            self.presentViewController(cameraUI, animated: true, completion: nil)
+        }
+        else
+        {
+            popover=UIPopoverController(contentViewController: cameraUI)
+            popover!.presentPopoverFromRect(captureButton.frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+        }
+    }
+    
+    @IBAction func UploadReceipt(sender: AnyObject) {
+        var alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        var cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default)
+            {
+                UIAlertAction in
+                self.openCamera()
+                
+        }
+        var gallaryAction = UIAlertAction(title: "Gallery", style: UIAlertActionStyle.Default)
+            {
+                UIAlertAction in
+                self.openGallary()
+        }
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel)
+            {
+                UIAlertAction in
+                
+        }
+        // Add the actions
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        // Present the actionsheet
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone
+        {
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            popover=UIPopoverController(contentViewController: alert)
+            popover!.presentPopoverFromRect(captureButton.frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+        }
     }
     
     func imagePickerController(cameraUI: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo:NSDictionary!) {
@@ -70,15 +118,6 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
             jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
 //            println("Synchronous\(jsonResult)")
         }
-    }
-    
-    @IBAction func captureComplete(sender: AnyObject) {
-        println("fuck 1")
-        var view: ItemViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ItemViewController") as ItemViewController
-        println("fuck 2")
-        view.jsonResult = jsonResult
-        println(view.jsonResult)
-//        self.navigationController?.pushViewController(view, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
