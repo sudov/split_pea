@@ -48,11 +48,29 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// Bolts
+#define COCOAPODS_POD_AVAILABLE_Bolts
+#define COCOAPODS_VERSION_MAJOR_Bolts 1
+#define COCOAPODS_VERSION_MINOR_Bolts 1
+#define COCOAPODS_VERSION_PATCH_Bolts 3
+
 // CMDQueryStringSerialization
 #define COCOAPODS_POD_AVAILABLE_CMDQueryStringSerialization
 #define COCOAPODS_VERSION_MAJOR_CMDQueryStringSerialization 0
 #define COCOAPODS_VERSION_MINOR_CMDQueryStringSerialization 2
 #define COCOAPODS_VERSION_PATCH_CMDQueryStringSerialization 0
+
+// Facebook-iOS-SDK
+#define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
+#define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK 3
+#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 23
+#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 0
+
+// Parse
+#define COCOAPODS_POD_AVAILABLE_Parse
+#define COCOAPODS_VERSION_MAJOR_Parse 1
+#define COCOAPODS_VERSION_MINOR_Parse 6
+#define COCOAPODS_VERSION_PATCH_Parse 2
 
 // SSKeychain
 #define COCOAPODS_POD_AVAILABLE_SSKeychain

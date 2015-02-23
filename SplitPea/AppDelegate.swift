@@ -16,6 +16,13 @@ import UIKit
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
+        // [Optional] Power your app with Local Datastore. For more info, go to
+        // https:// parse . com/docs/ios_guide#localdatastore/iOS
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("XcV6BZJTOgbPDXtO2kZlXHiEtHV0uUqA5osXSElo", clientKey: "NhqnyGV52geB2cbNrFSm4c6jJSb04MsSgJz4nnun")
+    
         FBLoginView.self
         FBProfilePictureView.self
         

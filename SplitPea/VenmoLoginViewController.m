@@ -10,6 +10,7 @@
 #import "VenmoLoginViewController.h"
 #import <Venmo-iOS-SDK/Venmo.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import <Parse/Parse.h>
 
 @interface VenmoLoginViewController ()
 
@@ -30,6 +31,20 @@
     self.imageView.layer.masksToBounds = YES;
     [self.imageView setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
     self.infoLabel.text = [NSString stringWithFormat:@"Logged in as %@", user.displayName];
+    
+    
+    
+    PFObject *UserInfo = [PFObject objectWithClassName:@"UserInfo"];
+    UserInfo[@"score"] = @1337;
+    UserInfo[@"playerName"] = @"Sean Plott";
+    UserInfo[@"cheatMode"] = @NO;
+    [UserInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            // The object has been saved.
+        } else {
+            // There was a problem, check error.description
+        }
+    }];
 }
 
 - (IBAction)unwindFromPaymentVC:(UIStoryboardSegue *)segue {

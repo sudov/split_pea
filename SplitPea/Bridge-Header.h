@@ -9,7 +9,8 @@
 #ifndef SplitPea_Bridge_Header_h
 #define SplitPea_Bridge_Header_h
 
-#import <FacebookSDK/FacebookSDK.h>
 #import <Venmo-iOS-SDK/Venmo.h>
+#import <Parse/Parse.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 #endif

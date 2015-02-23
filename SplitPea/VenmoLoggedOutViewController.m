@@ -41,7 +41,6 @@
                                                  VENPermissionAccessProfile]
                          withCompletionHandler:^(BOOL success, NSError *error) {
                              if (success) {
-                                 printf("in2");
                                  [self presentLoggedInVC];
                              }
                              else {
@@ -50,9 +49,6 @@
                                                                                     delegate:self
                                                                            cancelButtonTitle:nil
                                                                            otherButtonTitles:@"OK", nil];
-//                                 alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-//                                     [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
-//                                 };
                              }
                          }];
 }

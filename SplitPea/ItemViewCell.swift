@@ -13,7 +13,6 @@ class ItemViewCell: UITableViewCell {
 
     
     
-    @IBOutlet weak var edit_quantity: UIStepper!
     @IBOutlet weak var quantity: UITextField!
     @IBOutlet weak var item:  UILabel!
     @IBOutlet weak var user_img: UIImageView!
