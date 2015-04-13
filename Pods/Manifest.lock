@@ -22,6 +22,7 @@ PODS:
     - AFNetworking/NSURLSession
   - Bolts (1.1.3)
   - CMDQueryStringSerialization (0.2.0)
+  - DNDDragAndDrop (1.1.2)
   - Facebook-iOS-SDK (3.23.0):
     - Bolts (~> 1.0)
   - Parse (1.6.2):
@@ -38,6 +39,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.3)
+  - DNDDragAndDrop (~> 1.1.0)
   - Facebook-iOS-SDK
   - Parse
   - SVProgressHUD (~> 1.0)
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   CMDQueryStringSerialization: e53570ccbce6004acba30b1c1210e254644cdb92
+  DNDDragAndDrop: b94cfe279624080d12db475f5f2ddcb4c6340384
   Facebook-iOS-SDK: 3d65f685348b789e46a9aacf92bfa85b60b63755
   Parse: 60d65108fe39da77ec16c9e51d74b4d296b21424
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9

@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_CMDQueryStringSerialization 2
 #define COCOAPODS_VERSION_PATCH_CMDQueryStringSerialization 0
 
+// DNDDragAndDrop
+#define COCOAPODS_POD_AVAILABLE_DNDDragAndDrop
+#define COCOAPODS_VERSION_MAJOR_DNDDragAndDrop 1
+#define COCOAPODS_VERSION_MINOR_DNDDragAndDrop 1
+#define COCOAPODS_VERSION_PATCH_DNDDragAndDrop 2
+
 // Facebook-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK 3

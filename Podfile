@@ -8,6 +8,7 @@ target 'SplitPea' do
     pod 'SVProgressHUD', '~> 1.0'
     pod 'UIAlertView+Blocks', '~> 0.8'
     pod 'AFNetworking', '~> 2.3'
+    pod 'DNDDragAndDrop', '~> 1.1.0'
 end
 
 target 'SplitPeaTests' do
@@ -17,4 +18,5 @@ target 'SplitPeaTests' do
     pod 'SVProgressHUD', '~> 1.0'
     pod 'UIAlertView+Blocks', '~> 0.8'
     pod 'AFNetworking', '~> 2.3'
+    pod 'DNDDragAndDrop', '~> 1.1.0'
 end

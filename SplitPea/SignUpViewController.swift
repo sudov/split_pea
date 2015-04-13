@@ -8,11 +8,15 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate{
 
+    @IBOutlet weak var userPhone: UITextField!
+    @IBOutlet weak var userPassword: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.userPassword.delegate = self;
         // Do any additional setup after loading the view.
     }
 
@@ -21,15 +25,34 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(userPassword: UITextField!) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
-    */
+    
+    @IBAction func addUserToDB(sender: AnyObject) {
+        if (userPhone.text != "" && userPassword.text != "") {
+            var user = PFUser()
+            user.username = userPhone.text
+            user.password = userPassword.text
+            user.signUpInBackgroundWithBlock {
+                (succeeded: Bool!, error: NSError!) -> Void in
+                if error == nil {
+                    // Hooray! Let them use the app now.
+                    println("User sent to Parse")
+                    self.performSegueWithIdentifier("signUpWithFB", sender: self)
+                } else {
+                    // Show the errorString somewhere and let the user try again.
+                    println("You're a shitty coder")
+                }
+            }
+            user.pin()
+            
+        } else {
+            var alert = UIAlertController(title: "Oops..", message: "Either your username isn't a valid US number or you haven't entered a password!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        }
+    }
+    
 
 }

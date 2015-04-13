@@ -13,45 +13,37 @@ import MobileCoreServices
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
-//        Store
-//        var gameScore = PFObject(className: "GameScore")
-//        gameScore.setObject(1337, forKey: "score")
-//        gameScore.setObject("Sean Plott", forKey: "playerName")
-//        gameScore.saveInBackgroundWithBlock {
-//            (success: Bool!, error: NSError!) -> Void in
-//            if (success != nil) {
-//                NSLog("Object created with id: \(gameScore.objectId)")
-//            } else {
-//                NSLog("%@", error)
-//            }
-//        }
-        
-//        Then Query
-//        var query = PFQuery(className: "GameScore")
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [AnyObject]!, error: NSError!) -> Void in
-//            
-//            if error == nil {
-//                
-//                // query successful - display number of rows found
-//                println("Successfully retrieved \(objects.count) people")
-//                
-//                // print name & hair color of each person found
-//                for object in objects {
-//                    
-//                    let name = object["playerName"] as NSString
-////                    let objID = object["objectId"] as NSString
-//                    
-//                    println("\(name) has hair")
-//                    
-//                }
-//            } else {
-//                // Log details of the failure
-//                NSLog("Error: %@ %@", error, error.userInfo!)
-//            }
-//        }
-        
 
     }
+    
+    @IBAction func logIn(sender: AnyObject) {
+        if (PFUser.currentUser() != nil) {
+            self.performSegueWithIdentifier("loggedIn", sender: self)
+        } else {
+            var alert = UIAlertController(title: "Oops..", message: "You need to sign up first!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Sign Up", style: .Default, handler: { action in
+                //bleh  loggedIn
+                self.performSegueWithIdentifier("signUp", sender: self)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func signUp(sender: AnyObject) {
+        if (PFUser.currentUser() != nil) {
+            var alert = UIAlertController(title: "Signed In", message: "You're already Signed Up!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Log In", style: .Default, handler: { action in
+                //bleh  loggedIn
+                self.performSegueWithIdentifier("loggedIn", sender: self)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        } else {
+            self.performSegueWithIdentifier("signUp", sender: self)
+        }
+    }
+    
 }
 

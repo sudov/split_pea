@@ -8,31 +8,45 @@
 
 import UIKit
 
+
 class FacebookConnectViewController: UIViewController, FBLoginViewDelegate {
 
     @IBOutlet var fbLoginView : FBLoginView!
     @IBOutlet var profilePictureView : FBProfilePictureView!
     
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
-        println("User Logged In")
-        println("This is where you perform a segue.")
-        storyboard?.instantiateViewControllerWithIdentifier("VenmoLoginViewController") as UIViewController
+        self.performSegueWithIdentifier("signUpWithVenmo", sender: self)
     }
     
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){
-        println("User Name: \(user.name)")
+        // Verify
         profilePictureView.profileID = user.objectID
         
-        var storeFbId = PFObject(className: "UserInfo")
-        storeFbId.setObject("\(user.name)", forKey: "FbName")
-        storeFbId.saveInBackgroundWithBlock {
-            (success: Bool!, error: NSError!) -> Void in
-            if (success != nil) {
-                NSLog("Object created with id: \(storeFbId.objectId)")
-            } else {
-                NSLog("%@", error)
+        // Update Parse with FB info
+        PFUser.currentUser().setObject(user.name, forKey: "displayName")
+        PFUser.currentUser().setObject(user.objectID, forKey: "picture")
+
+        var email = user.objectForKey("email") as String
+        PFUser.currentUser().setObject(email, forKey: "email")
+        PFUser.currentUser().save()
+        
+        // Get List Of Friends
+        var friendsRequest : FBRequest = FBRequest.requestForMyFriends()
+        friendsRequest.startWithCompletionHandler{(connection:FBRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
+            var resultdict = result as NSDictionary
+            println("Result Dict: \(resultdict)")
+            var data : NSArray = resultdict.objectForKey("data") as NSArray
+            
+            for i in 0...data.count {
+                let valueDict : NSDictionary = data[i] as NSDictionary
+                let id = valueDict.objectForKey("id") as String
+                println("the id value is \(id)")
             }
+            
+            var friends = resultdict.objectForKey("data") as NSArray
+            println("Found \(friends.count) friends")
         }
+        
         
         var url: NSURL = NSURL(string:"https://graph.facebook.com/(user.objectID)/picture?type=normal")!
         var request = NSURLRequest(URL:url)

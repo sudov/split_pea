@@ -32,19 +32,14 @@
     [self.imageView setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
     self.infoLabel.text = [NSString stringWithFormat:@"Logged in as %@", user.displayName];
     
-    
-    
-    PFObject *UserInfo = [PFObject objectWithClassName:@"UserInfo"];
-    UserInfo[@"score"] = @1337;
-    UserInfo[@"playerName"] = @"Sean Plott";
-    UserInfo[@"cheatMode"] = @NO;
-    [UserInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    PFUser *current_user = [PFUser currentUser];
+    current_user[@"venmoDisplayName"]  = user.username;
+    [current_user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            // The object has been saved.
-        } else {
-            // There was a problem, check error.description
+            //
         }
     }];
+
 }
 
 - (IBAction)unwindFromPaymentVC:(UIStoryboardSegue *)segue {

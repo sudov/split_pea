@@ -15,13 +15,16 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var jsonResult: NSDictionary!;
+    var user: PFUser = PFUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("asfdfas")
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width;
         let screenHeight = screenSize.height;
-
+        user = PFUser.currentUser()
+        println("CaptureViewController: " + user.username)
     }
     
     @IBOutlet weak var SnappedReceipt: UIImageView!
@@ -100,7 +103,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
         var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
         
-        var url = NSURL(string: "http://getsplitpea.com:5000/") // can do php too but its annoying
+        var url = NSURL(string: "http://getsplitpea.com:5000/") 
         var data = NSData(data:UIImageJPEGRepresentation(image, 1.0))
         var request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
@@ -116,13 +119,24 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
             println("Nothing came back :(")
         } else {
             jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-//            println("Synchronous\(jsonResult)")
+            var userObjID = PFUser.currentUser().objectId
+
+//            Creating entry in Parse's receipt class
+            var newReceipt = PFObject(className: "receiptData")
+            newReceipt.setObject(user.objectId, forKey: "user_obj_id")
+            newReceipt.setObject(jsonResult, forKey: "data")
+            newReceipt.setObject([FBProfilePictureView](), forKey: "friendsOnReceipt")
+            newReceipt.saveInBackgroundWithBlock {
+                (success: Bool!, error: NSError!) -> Void in
+                if (success != nil) {
+                    NSLog("Object created with id: \(newReceipt.objectId)")
+                    PFUser.currentUser().setObject("\(newReceipt.objectId)", forKey: "recentReceiptId")
+                    PFUser.currentUser().save()
+                } else {
+                    NSLog("%@", error)
+                }
+            }
         }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var itemViewController: ItemViewController = segue.destinationViewController as ItemViewController
-        itemViewController.receive_jsonResult = jsonResult;
     }
     
     override func didReceiveMemoryWarning() {

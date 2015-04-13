@@ -7,6 +7,8 @@
 //
 #import "VenmoLoggedOutViewController.h"
 #import <Venmo-iOS-SDK/Venmo.h>
+#import <Parse/Parse.h>
+#import <Parse/PFObject.h>
 
 @interface VenmoLoggedOutViewController ()
 
@@ -32,6 +34,7 @@
 }
 
 - (void)presentLoggedInVC {
+    NSLog(@"%d",1);
     [self performSegueWithIdentifier:@"presentLoggedInVC" sender:self];
 }
 
@@ -57,5 +60,6 @@
 - (IBAction)unwindFromLoggedInVC:(UIStoryboardSegue *)segue {
     [[Venmo sharedInstance] logout];
 }
+
 
 @end

@@ -17,10 +17,12 @@
 		A14211E11A8C1BD600ACA392 /* paypal.png in Resources */ = {isa = PBXBuildFile; fileRef = A14211DF1A8C1BD600ACA392 /* paypal.png */; };
 		A14211E51A8C1CB600ACA392 /* gwallet.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A14211E31A8C1CB600ACA392 /* gwallet.jpeg */; };
 		A14211E71A8C1D5E00ACA392 /* square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A14211E61A8C1D5E00ACA392 /* square.jpg */; };
+		A15399EA1AD6ED6300987518 /* AddFriendToItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15399E91AD6ED6300987518 /* AddFriendToItemViewCell.swift */; };
+		A158C88B1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A158C88A1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift */; };
+		A158C88D1ACDCA3700FD3C36 /* AddFriendsToItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A158C88C1ACDCA3700FD3C36 /* AddFriendsToItemViewController.swift */; };
 		A15DC8E61A5CC4BF0094F03E /* PaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15DC8E51A5CC4BF0094F03E /* PaidViewController.swift */; };
 		A167FC361A92A3260025B5CF /* pic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A167FC341A92A3260025B5CF /* pic1.jpg */; };
 		A167FC371A92A3260025B5CF /* pic2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A167FC351A92A3260025B5CF /* pic2.jpg */; };
-		A167FC3B1A92A58B0025B5CF /* FriendsCellCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167FC3A1A92A58B0025B5CF /* FriendsCellCollectionViewController.swift */; };
 		A167FC411A93AEE40025B5CF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A167FC401A93AEE40025B5CF /* AudioToolbox.framework */; };
 		A167FC431A93AEEA0025B5CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A167FC421A93AEEA0025B5CF /* CFNetwork.framework */; };
 		A167FC451A93AEF20025B5CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A167FC441A93AEF20025B5CF /* CoreGraphics.framework */; };
@@ -34,6 +36,9 @@
 		A167FC7A1A93B80F0025B5CF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A167FC741A93B67E0025B5CF /* Social.framework */; };
 		A16940F41A61A1F400903CFF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16940F31A61A1F400903CFF /* ProfileViewController.swift */; };
 		A16940F81A6214F400903CFF /* FacebookConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16940F71A6214F400903CFF /* FacebookConnectViewController.swift */; };
+		A16FBB961A9D18F900EE97E8 /* icon_c.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBB951A9D18F900EE97E8 /* icon_c.png */; };
+		A16FBB981A9D1D1900EE97E8 /* CurrentChecksViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16FBB971A9D1D1900EE97E8 /* CurrentChecksViewCell.swift */; };
+		A16FBB9C1A9D21A400EE97E8 /* front.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBB9B1A9D21A400EE97E8 /* front.png */; };
 		A189847B1A5D78C7001262A4 /* emerald.png in Resources */ = {isa = PBXBuildFile; fileRef = A189847A1A5D78C7001262A4 /* emerald.png */; };
 		A18F50351A8E757B009B8956 /* VenmoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */; };
 		A18F50391A8EA473009B8956 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F50381A8EA473009B8956 /* SignUpViewController.swift */; };
@@ -56,6 +61,9 @@
 		A1D6A9D51A5EE0D4004A1934 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A9D41A5EE0D4004A1934 /* SettingsTableViewController.swift */; };
 		A1D6A9D91A5EFB33004A1934 /* SettingsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */; };
 		A1D6A9DB1A5F20E4004A1934 /* CurrentChecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A9DA1A5F20E4004A1934 /* CurrentChecksViewController.swift */; };
+		A1DEAEBC1ACDD73F0032ED01 /* AddFriendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DEAEBB1ACDD73F0032ED01 /* AddFriendViewCell.swift */; };
+		A1EC55C71AAE65B200D61845 /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EC55C61AAE65B200D61845 /* AddFriendsViewController.swift */; };
+		A1F914BB1AB61BE60036039A /* FriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F914BA1AB61BE60036039A /* FriendsCollectionViewCell.swift */; };
 		A1F9CE7A1A570D5600176E38 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9CE791A570D5600176E38 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,10 +91,12 @@
 		A14211E31A8C1CB600ACA392 /* gwallet.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gwallet.jpeg; sourceTree = "<group>"; };
 		A14211E61A8C1D5E00ACA392 /* square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = square.jpg; sourceTree = "<group>"; };
 		A14211E81A8C248E00ACA392 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
+		A15399E91AD6ED6300987518 /* AddFriendToItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendToItemViewCell.swift; sourceTree = "<group>"; };
+		A158C88A1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsToTabViewController.swift; sourceTree = "<group>"; };
+		A158C88C1ACDCA3700FD3C36 /* AddFriendsToItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsToItemViewController.swift; sourceTree = "<group>"; };
 		A15DC8E51A5CC4BF0094F03E /* PaidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaidViewController.swift; sourceTree = "<group>"; };
 		A167FC341A92A3260025B5CF /* pic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic1.jpg; sourceTree = "<group>"; };
 		A167FC351A92A3260025B5CF /* pic2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic2.jpg; sourceTree = "<group>"; };
-		A167FC3A1A92A58B0025B5CF /* FriendsCellCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCellCollectionViewController.swift; sourceTree = "<group>"; };
 		A167FC401A93AEE40025B5CF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A167FC421A93AEEA0025B5CF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A167FC441A93AEF20025B5CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,6 +117,9 @@
 		A167FC761A93B6A60025B5CF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		A16940F31A61A1F400903CFF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A16940F71A6214F400903CFF /* FacebookConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookConnectViewController.swift; sourceTree = "<group>"; };
+		A16FBB951A9D18F900EE97E8 /* icon_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_c.png; sourceTree = "<group>"; };
+		A16FBB971A9D1D1900EE97E8 /* CurrentChecksViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentChecksViewCell.swift; sourceTree = "<group>"; };
+		A16FBB9B1A9D21A400EE97E8 /* front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = front.png; sourceTree = "<group>"; };
 		A189847A1A5D78C7001262A4 /* emerald.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emerald.png; sourceTree = "<group>"; };
 		A18F50321A8E6ED1009B8956 /* SplitPea-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplitPea-Bridging-Header.h"; sourceTree = "<group>"; };
 		A18F50331A8E73A5009B8956 /* VenmoLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoLoginViewController.h; sourceTree = "<group>"; };
@@ -135,6 +148,9 @@
 		A1D6A9D41A5EE0D4004A1934 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBar.swift; sourceTree = "<group>"; };
 		A1D6A9DA1A5F20E4004A1934 /* CurrentChecksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentChecksViewController.swift; sourceTree = "<group>"; };
+		A1DEAEBB1ACDD73F0032ED01 /* AddFriendViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFriendViewCell.swift; path = Images.xcassets/AddFriendViewCell.swift; sourceTree = "<group>"; };
+		A1EC55C61AAE65B200D61845 /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
+		A1F914BA1AB61BE60036039A /* FriendsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1F9CE791A570D5600176E38 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		E7F1177FD5C175CC04DF7C79 /* Pods-SplitPea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SplitPea.release.xcconfig"; path = "Pods/Target Support Files/Pods-SplitPea/Pods-SplitPea.release.xcconfig"; sourceTree = "<group>"; };
 		EED3640C787B1439E645EC57 /* Pods-SplitPea.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SplitPea.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SplitPea/Pods-SplitPea.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,7 +205,9 @@
 		A1BE63FF19A500AE0086A868 = {
 			isa = PBXGroup;
 			children = (
+				A16FBB9B1A9D21A400EE97E8 /* front.png */,
 				A18F503C1A8EB285009B8956 /* icon_w.png */,
+				A16FBB951A9D18F900EE97E8 /* icon_c.png */,
 				A1BE643F19AFDD460086A868 /* Default@2x.png */,
 				A12659981A5909B3009532E3 /* login.png */,
 				A189847A1A5D78C7001262A4 /* emerald.png */,
@@ -229,14 +247,20 @@
 				A1BE640D19A500AE0086A868 /* AppDelegate.swift */,
 				A1BE640F19A500AE0086A868 /* ViewController.swift */,
 				A1D6A9D41A5EE0D4004A1934 /* SettingsTableViewController.swift */,
-				A18F50381A8EA473009B8956 /* SignUpViewController.swift */,
 				A1D6A9DA1A5F20E4004A1934 /* CurrentChecksViewController.swift */,
+				A16FBB971A9D1D1900EE97E8 /* CurrentChecksViewCell.swift */,
 				A16940F31A61A1F400903CFF /* ProfileViewController.swift */,
+				A1EC55C61AAE65B200D61845 /* AddFriendsViewController.swift */,
 				A16940F71A6214F400903CFF /* FacebookConnectViewController.swift */,
+				A18F50381A8EA473009B8956 /* SignUpViewController.swift */,
 				A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */,
 				A12659961A58F9A2009532E3 /* CaptureViewController.swift */,
-				A167FC3A1A92A58B0025B5CF /* FriendsCellCollectionViewController.swift */,
+				A1F914BA1AB61BE60036039A /* FriendsCollectionViewCell.swift */,
 				A14211D81A8BD9C200ACA392 /* ItemViewCell.swift */,
+				A1DEAEBB1ACDD73F0032ED01 /* AddFriendViewCell.swift */,
+				A158C88A1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift */,
+				A15399E91AD6ED6300987518 /* AddFriendToItemViewCell.swift */,
+				A158C88C1ACDCA3700FD3C36 /* AddFriendsToItemViewController.swift */,
 				A1F9CE791A570D5600176E38 /* ItemViewController.swift */,
 				A15DC8E51A5CC4BF0094F03E /* PaidViewController.swift */,
 				A1D6A9C41A5DDB87004A1934 /* Main.storyboard */,
@@ -415,6 +439,8 @@
 			files = (
 				A1BE644019AFDD460086A868 /* Default@2x.png in Resources */,
 				A1BE643B19AFDBB70086A868 /* Default.png in Resources */,
+				A16FBB961A9D18F900EE97E8 /* icon_c.png in Resources */,
+				A16FBB9C1A9D21A400EE97E8 /* front.png in Resources */,
 				A126599B1A590C1B009532E3 /* capture.png in Resources */,
 				A189847B1A5D78C7001262A4 /* emerald.png in Resources */,
 				A167FC361A92A3260025B5CF /* pic1.jpg in Resources */,
@@ -512,18 +538,24 @@
 			files = (
 				A15DC8E61A5CC4BF0094F03E /* PaidViewController.swift in Sources */,
 				A18F503F1A8ED60D009B8956 /* VenmoLoggedOutViewController.m in Sources */,
+				A1DEAEBC1ACDD73F0032ED01 /* AddFriendViewCell.swift in Sources */,
+				A1F914BB1AB61BE60036039A /* FriendsCollectionViewCell.swift in Sources */,
 				A1D6A9D51A5EE0D4004A1934 /* SettingsTableViewController.swift in Sources */,
 				A1BE641019A500AE0086A868 /* ViewController.swift in Sources */,
 				A12659971A58F9A2009532E3 /* CaptureViewController.swift in Sources */,
+				A16FBB981A9D1D1900EE97E8 /* CurrentChecksViewCell.swift in Sources */,
 				A1BE640E19A500AE0086A868 /* AppDelegate.swift in Sources */,
 				A14211D91A8BD9C200ACA392 /* ItemViewCell.swift in Sources */,
 				A18F50351A8E757B009B8956 /* VenmoLoginViewController.m in Sources */,
 				A1D6A9DB1A5F20E4004A1934 /* CurrentChecksViewController.swift in Sources */,
+				A158C88B1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift in Sources */,
+				A1EC55C71AAE65B200D61845 /* AddFriendsViewController.swift in Sources */,
 				A16940F41A61A1F400903CFF /* ProfileViewController.swift in Sources */,
-				A167FC3B1A92A58B0025B5CF /* FriendsCellCollectionViewController.swift in Sources */,
 				A16940F81A6214F400903CFF /* FacebookConnectViewController.swift in Sources */,
 				A1D6A9D91A5EFB33004A1934 /* SettingsBar.swift in Sources */,
+				A158C88D1ACDCA3700FD3C36 /* AddFriendsToItemViewController.swift in Sources */,
 				A18F50391A8EA473009B8956 /* SignUpViewController.swift in Sources */,
+				A15399EA1AD6ED6300987518 /* AddFriendToItemViewCell.swift in Sources */,
 				A1F9CE7A1A570D5600176E38 /* ItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
