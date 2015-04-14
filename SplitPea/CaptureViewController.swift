@@ -19,12 +19,10 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("asfdfas")
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width;
         let screenHeight = screenSize.height;
         user = PFUser.currentUser()
-        println("CaptureViewController: " + user.username)
     }
     
     @IBOutlet weak var SnappedReceipt: UIImageView!
@@ -111,7 +109,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         request.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
         request.setValue("form-data; name=userfile; filename=receipt.jpg", forHTTPHeaderField: "Content-Disposition")
         request.timeoutInterval = 4.0
-        println(request.allHTTPHeaderFields)
+//        println(request.allHTTPHeaderFields)
         
         var dataVal =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)
         
@@ -129,7 +127,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
             newReceipt.saveInBackgroundWithBlock {
                 (success: Bool!, error: NSError!) -> Void in
                 if (success != nil) {
-                    NSLog("Object created with id: \(newReceipt.objectId)")
+//                    NSLog("Object created with id: \(newReceipt.objectId)")
                     PFUser.currentUser().setObject("\(newReceipt.objectId)", forKey: "recentReceiptId")
                     PFUser.currentUser().save()
                 } else {

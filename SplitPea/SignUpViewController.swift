@@ -39,11 +39,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                 (succeeded: Bool!, error: NSError!) -> Void in
                 if error == nil {
                     // Hooray! Let them use the app now.
-                    println("User sent to Parse")
+//                    println("User sent to Parse")
                     self.performSegueWithIdentifier("signUpWithFB", sender: self)
                 } else {
                     // Show the errorString somewhere and let the user try again.
-                    println("You're a shitty coder")
+//                    println("You're a shitty coder")
                 }
             }
             user.pin()

@@ -692,32 +692,30 @@
                                 <color key="textColor" red="0.01176470588" green="0.6588235294" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JsI-JZ-2Nf">
-                                <rect key="frame" x="0.0" y="130" width="375" height="537"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5rN-ii-0KP">
+                                <rect key="frame" x="0.0" y="130" width="382" height="537"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="BMs-y3-YZd" customClass="AddFriendToItemViewCell" customModule="SplitPea" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addFriendToItemCell" id="IeY-39-itM" customClass="AddFriendToItemViewCell" customModule="SplitPea" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BMs-y3-YZd" id="tio-mZ-5VF">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IeY-39-itM" id="vws-On-8CB">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2r-UX-23P" customClass="FBProfilePictureView">
-                                                    <rect key="frame" x="29" y="4" width="48" height="42"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qf0-5U-Vwc" customClass="FBProfilePictureView">
+                                                    <rect key="frame" x="23" y="4" width="35" height="35"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPD-3y-xHQ">
-                                                    <rect key="frame" x="93" y="3" width="236" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDw-tK-49T">
+                                                    <rect key="frame" x="101" y="0.0" width="207" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.01176470588" green="0.6588235294" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="itemFriendName" destination="cPD-3y-xHQ" id="Tgb-O9-YDy"/>
-                                            <outlet property="itemFriendPic" destination="s2r-UX-23P" id="8dG-jC-Er4"/>
-                                            <outlet property="itemFriendPicc" destination="s2r-UX-23P" id="0oh-jn-k19"/>
+                                            <outlet property="itemFriendName" destination="EDw-tK-49T" id="Fgo-eh-AXw"/>
+                                            <outlet property="itemFriendPic" destination="qf0-5U-Vwc" id="krH-vU-YBy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -728,13 +726,13 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="friendsForItem" destination="JsI-JZ-2Nf" id="DS1-pq-Yj3"/>
+                        <outlet property="friendsForItem" destination="5rN-ii-0KP" id="60g-F6-Kf3"/>
                         <segue destination="sU6-gk-XFO" kind="show" identifier="returnToItemVCont" id="mjP-kb-ss0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGx-gb-ZXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4506.5" y="-1101.5"/>
+            <point key="canvasLocation" x="4506.5" y="-1111.5"/>
         </scene>
         <!--SplitPea-->
         <scene sceneID="19O-5A-lwm">
@@ -1043,7 +1041,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="mqt-nz-5zv"/>
         <segue reference="IrC-Gx-eQZ"/>
-        <segue reference="whx-vC-kBU"/>
+        <segue reference="xcg-EX-5aY"/>
         <segue reference="t1Z-Ax-Kvg"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,9 +17,9 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     var itemsAndFriends     = Array(count: 50, repeatedValue: [String]())
     
     // Receipt Content Data Structures
-    var itemArray: NSArray!
-    var costArray: NSArray!
-    var numItems: NSArray!
+    var itemArray: NSMutableArray!
+    var costArray: NSMutableArray!
+    var numItems: NSMutableArray!
     var subTotalCoreData: NSString!
     var taxCoreData: NSString!
     var finalTotalCoreData: NSString!
@@ -39,7 +39,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         var picArray: NSArray = query.getObjectWithId(id).valueForKey("friendsOnReceipt") as NSArray
         
         if picArray.count == 0 {
-            println("WAI YU DO DISS?")
+//            println("WAI YU DO DISS?")
         } else {
             for pic in picArray {
                 println(pic as String)
@@ -60,9 +60,9 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        Grab receipt JSON from Parse
         query = PFQuery(className:"receiptData")
         jsonResult = query.getObjectWithId(id)["data"]
-        itemArray       =   jsonResult.valueForKey("item") as NSArray
-        costArray       =   jsonResult.valueForKey("cost") as NSArray
-        numItems        =   jsonResult.valueForKey("num_item_array") as NSArray
+        itemArray       =   jsonResult.valueForKey("item") as NSMutableArray
+        costArray       =   jsonResult.valueForKey("cost") as NSMutableArray
+        numItems        =   jsonResult.valueForKey("num_item_array") as NSMutableArray
         subTotalCoreData    =   jsonResult["sub-total"] as NSString
         taxCoreData     =   jsonResult["tax"] as NSString
         finalTotalCoreData  = jsonResult["final_total"] as NSString
@@ -71,18 +71,6 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         tax.text        =   taxCoreData
         finalTotal.text =   finalTotalCoreData
         
-//        Update Item-Friend index
-        query = PFQuery(className:"receiptData")
-        var currentReceipt: PFObject = query.getObjectWithId(id) as PFObject
-        var index = 0
-        if currentReceipt.valueForKey("currentRow") != nil {
-            index = currentReceipt.valueForKey("currentRow") as Int
-        }
-        if currentReceipt.valueForKey("friendsPerItem") != nil {
-            itemsAndFriends = currentReceipt.valueForKey("friendsPerItem") as [[String]]
-            itemsAndFriends[index] = currentReceipt.valueForKey("currentRowFriends") as [String]
-            currentReceipt.setObject(itemsAndFriends, forKey: "friendsPerItem")
-        }
     }
     
     //    TableView to show Itemized Receipt
@@ -116,13 +104,10 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("on 1")
         var id = PFUser.currentUser().valueForKey("recentReceiptId") as NSString
         var query = PFQuery(className:"receiptData")
         var currentReceipt: PFObject = query.getObjectWithId(id) as PFObject
         currentReceipt.setObject(indexPath.row, forKey: "currentRow")
-        println("on 2")
-        
         currentReceipt.saveInBackgroundWithBlock {
             (success: Bool!, error: NSError!) -> Void in
             if (success != nil) {
@@ -132,13 +117,22 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            
+            itemArray.removeObjectAtIndex(indexPath.row)
+            costArray.removeObjectAtIndex(indexPath.row)
+            numItems.removeObjectAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
     //    Collection View To show Friends in Tab
     func numberOfSectionsInCollectionView(listOfFriendsInTab: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(listOfFriendsInTab: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //        return 1
         return friendProfilePics.count
     }
     
@@ -170,7 +164,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func collectionView(listOfFriendsInTab: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
-        println("Hmm, what.")
+//        println("Drag and Drop coming soon.")
     }
     
     @IBAction func Charged(sender: AnyObject) {
@@ -190,6 +184,4 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
-    
-    
 }

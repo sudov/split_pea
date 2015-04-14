@@ -44,35 +44,4 @@ class CurrentChecksViewController: UIViewController, SettingsBarDelegate {
         SettingBar.openCloseSettingsBar()
     }
     
-//    func numberOfSectionsInTableView(tableView: UITableView) ->Int
-//    {
-//        return 1
-//    }
-//    
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return checksPreviewArray.count
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        var cell : CurrentChecksViewCell! = tableView.dequeueReusableCellWithIdentifier("Cell") as CurrentChecksViewCell
-//        if(cell == nil)
-//        {
-//            cell = NSBundle.mainBundle().loadNibNamed("Cell", owner: self, options: nil)[0] as CurrentChecksViewCell;
-//        }
-//        
-//        cell.tabPreview.image   =   checksPreviewArray[indexPath.row] as? UIImage
-//        cell.tabTitle.text      =   checksTitleArray[indexPath.row] as NSString
-//        cell.isOwnerLabel.text  =   ownershipArray[indexPath.row] as NSString
-//        
-//        return cell
-//    }
-//    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 50
-//    }
-//    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        println("You selected cell #\(indexPath.row)!")
-//    }
-    
 }

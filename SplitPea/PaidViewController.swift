@@ -16,7 +16,7 @@ class PaidViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("In Final View!")
+//        println("In Final View!")
         circle.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(circle)
         label.center = CGPointMake(160, 284)

@@ -15,7 +15,6 @@ class ItemViewCell: UITableViewCell {
     
     @IBOutlet weak var quantity: UITextField!
     @IBOutlet weak var item:  UILabel!
-    @IBOutlet weak var user_img: UIImageView!
     @IBOutlet weak var item_amount: UITextField!
     
     func numberOfComponentsInPickerView(picker: UIPickerView!)-> Int {

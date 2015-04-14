@@ -45,8 +45,8 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                     self.pictures.append(friendObject["id"] as NSString)
                 }
             } else {
-                println("Error requesting friends list form facebook")
-//                println("\(error)")
+//                println("Error requesting friends list form facebook")
+                println("\(error)")
             }
         })
         
@@ -183,7 +183,7 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                 self.performSegueWithIdentifier("goBackToItemView", sender: self)
 //                NSLog("Object created with id: \(tabParticipants.objectId)")
             } else {
-//                NSLog("%@", error)
+                NSLog("%@", error)
             }
         }
     }
