@@ -15,12 +15,6 @@ class CurrentChecksViewCell: UITableViewCell {
     
     @IBOutlet weak var tabTitle: UILabel!
 
-    @IBOutlet weak var isOwnerLabel: UILabel!
-    
-    @IBAction func visitSelectedTab(sender: AnyObject) {
-    }
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

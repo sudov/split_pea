@@ -28,9 +28,9 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var profPic = (PFUser.currentUser().valueForKey("picture") as NSString) as String
+        var profPic = (PFUser.currentUser().valueForKey("picture") as! NSString) as String
         pictures.append(profPic)
-        var userName: String = PFUser.currentUser().valueForKey("displayName") as String
+        var userName: String = PFUser.currentUser().valueForKey("displayName") as! String
         names.append("\(userName)")
         
         if (FBSession.activeSession().self.isOpen == false){
@@ -39,10 +39,10 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
         
         FBRequestConnection.startForMyFriendsWithCompletionHandler({ (connection:FBRequestConnection!, result, error: NSError!) -> Void in
             if error == nil {
-                var friendObjects = result["data"] as [NSDictionary]
+                var friendObjects = result["data"] as! [NSDictionary]
                 for friendObject in friendObjects {
-                    self.names.append(friendObject["name"] as String)
-                    self.pictures.append(friendObject["id"] as NSString)
+                    self.names.append(friendObject["name"] as! String)
+                    self.pictures.append(friendObject["id"] as! String)
                 }
             } else {
 //                println("Error requesting friends list form facebook")
@@ -108,7 +108,7 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell : AddFriendViewCell! = tableView.dequeueReusableCellWithIdentifier("findFriendCell") as AddFriendViewCell
+        var cell : AddFriendViewCell! = tableView.dequeueReusableCellWithIdentifier("findFriendCell") as! AddFriendViewCell
         if(searchActive){
             cell.friendName?.text = filtered[indexPath.row]
             cell.friendPic?.profileID = filteredImages[indexPath.row]
@@ -127,7 +127,7 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (searchActive) {
-            let cell: AddFriendViewCell! = tableView.cellForRowAtIndexPath(indexPath) as AddFriendViewCell
+            let cell: AddFriendViewCell! = tableView.cellForRowAtIndexPath(indexPath) as! AddFriendViewCell
             if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark) {
                 cell?.accessoryType = .None
                 for index in 0...friendsAdded.count {
@@ -144,7 +144,7 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                 }
             }
         } else {
-            let cell: AddFriendViewCell! = tableView.cellForRowAtIndexPath(indexPath) as AddFriendViewCell
+            let cell: AddFriendViewCell! = tableView.cellForRowAtIndexPath(indexPath) as! AddFriendViewCell
             if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark) {
                 cell?.accessoryType = .None
                 for index in 0...friendsAdded.count {
@@ -173,19 +173,19 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
     
     @IBAction func doneAddingFriends(sender: AnyObject) {
         //        Grab receipt JSON from Parse
-        var id = PFUser.currentUser().valueForKey("recentReceiptId") as NSString
+        var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
-        var tabParticipants: PFObject! = query.getObjectWithId(id) as PFObject
+        var tabParticipants: PFObject! = query.getObjectWithId(id as String) as PFObject
         tabParticipants.setObject(friendsAdded, forKey: "friendsOnReceipt")
-        tabParticipants.saveInBackgroundWithBlock {
-            (success: Bool!, error: NSError!) -> Void in
-            if (success != nil) {
+        tabParticipants.saveInBackgroundWithBlock ({
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
                 self.performSegueWithIdentifier("goBackToItemView", sender: self)
 //                NSLog("Object created with id: \(tabParticipants.objectId)")
             } else {
-                NSLog("%@", error)
+                NSLog("%@", error!)
             }
-        }
+        })
     }
     
     

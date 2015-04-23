@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(userPassword: UITextField!) -> Bool {
+    func textFieldShouldReturn(userPassword: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
@@ -35,17 +35,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             var user = PFUser()
             user.username = userPhone.text
             user.password = userPassword.text
-            user.signUpInBackgroundWithBlock {
-                (succeeded: Bool!, error: NSError!) -> Void in
+            user.signUpInBackgroundWithBlock ({
+                (succeeded: Bool, error: NSError?) -> Void in
                 if error == nil {
-                    // Hooray! Let them use the app now.
 //                    println("User sent to Parse")
                     self.performSegueWithIdentifier("signUpWithFB", sender: self)
                 } else {
-                    // Show the errorString somewhere and let the user try again.
 //                    println("You're a shitty coder")
                 }
-            }
+            })
             user.pin()
             
         } else {

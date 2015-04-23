@@ -13,7 +13,7 @@ import UIKit
     var window: UIWindow?
 
 
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         // [Optional] Power your app with Local Datastore. For more info, go to
@@ -31,7 +31,7 @@ import UIKit
         return true
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         
         var wasHandledFB:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
         

@@ -16,17 +16,17 @@ class AddFriendsViewController: UIViewController {
         // Update List Of Friends
         var friendsRequest : FBRequest = FBRequest.requestForMyFriends()
         friendsRequest.startWithCompletionHandler{(connection:FBRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
-            var resultdict = result as NSDictionary
+            var resultdict = result as! NSDictionary
             println("Result Dict: \(resultdict)")
-            var data : NSArray = resultdict.objectForKey("data") as NSArray
+            var data : NSArray = resultdict.objectForKey("data") as! NSArray
             
             for i in 0...data.count {
-                let valueDict : NSDictionary = data[i] as NSDictionary
-                let id = valueDict.objectForKey("id") as String
+                let valueDict : NSDictionary = data[i]as! NSDictionary
+                let id = valueDict.objectForKey("id") as! String
                 println("the id value is \(id)")
             }
             
-            var friends = resultdict.objectForKey("data") as NSArray
+            var friends = resultdict.objectForKey("data") as! NSArray
             println("Found \(friends.count) friends")
         }
     }

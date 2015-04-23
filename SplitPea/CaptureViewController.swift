@@ -89,7 +89,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    func imagePickerController(cameraUI: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo:NSDictionary!) {
+    func imagePickerController(cameraUI: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         SnappedReceipt.bounds = UIScreen.mainScreen().bounds
         SnappedReceipt.image  = image
         sendServerRequest(image)
@@ -97,11 +97,20 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.dismissViewControllerAnimated(true, completion: { () -> Void in })
     }
     
+//    func imagePickerController(cameraUI: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo:NSDictionary!) {
+//        SnappedReceipt.bounds = UIScreen.mainScreen().bounds
+//        SnappedReceipt.image  = image
+//        sendServerRequest(image)
+//        
+//        self.dismissViewControllerAnimated(true, completion: { () -> Void in })
+//    }
+    
     func sendServerRequest(image: UIImage){
         var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
         var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
         
-        var url = NSURL(string: "http://getsplitpea.com:5000/") 
+        var url = NSURL(string: "http://getsplitpea.com:5000/")
+//        var url = NSURL(string: "http://45.55.248.107:5000/")
         var data = NSData(data:UIImageJPEGRepresentation(image, 1.0))
         var request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
@@ -116,7 +125,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         if ( dataVal == nil ) {
             println("Nothing came back :(")
         } else {
-            jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+            jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
             var userObjID = PFUser.currentUser().objectId
 
 //            Creating entry in Parse's receipt class
@@ -124,16 +133,16 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
             newReceipt.setObject(user.objectId, forKey: "user_obj_id")
             newReceipt.setObject(jsonResult, forKey: "data")
             newReceipt.setObject([FBProfilePictureView](), forKey: "friendsOnReceipt")
-            newReceipt.saveInBackgroundWithBlock {
-                (success: Bool!, error: NSError!) -> Void in
-                if (success != nil) {
+            newReceipt.saveInBackgroundWithBlock ({
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
 //                    NSLog("Object created with id: \(newReceipt.objectId)")
                     PFUser.currentUser().setObject("\(newReceipt.objectId)", forKey: "recentReceiptId")
                     PFUser.currentUser().save()
                 } else {
-                    NSLog("%@", error)
+                    NSLog("%@", error!)
                 }
-            }
+            })
         }
     }
     

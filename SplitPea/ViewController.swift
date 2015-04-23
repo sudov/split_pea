@@ -20,13 +20,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if (PFUser.currentUser() != nil) {
             self.performSegueWithIdentifier("loggedIn", sender: self)
         } else {
-            var alert = UIAlertController(title: "Oops..", message: "You need to sign up first!", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            alert.addAction(UIAlertAction(title: "Sign Up", style: .Default, handler: { action in
-                //bleh  loggedIn
-                self.performSegueWithIdentifier("signUp", sender: self)
-            }))
-            self.presentViewController(alert, animated: true, completion: nil)
+            println("RWARRRR")
+            self.performSegueWithIdentifier("oldUserLogIn", sender: self)
+//            var alert = UIAlertController(title: "Oops..", message: "You need to sign up first!", preferredStyle: UIAlertControllerStyle.Alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+//            alert.addAction(UIAlertAction(title: "Sign Up", style: .Default, handler: { action in
+//                //bleh  loggedIn
+//                self.performSegueWithIdentifier("signUp", sender: self)
+//            }))
+//            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
@@ -39,7 +41,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.performSegueWithIdentifier("loggedIn", sender: self)
             }))
             self.presentViewController(alert, animated: true, completion: nil)
-            
         } else {
             self.performSegueWithIdentifier("signUp", sender: self)
         }

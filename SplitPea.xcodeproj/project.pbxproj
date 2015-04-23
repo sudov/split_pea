@@ -17,6 +17,10 @@
 		A14211E11A8C1BD600ACA392 /* paypal.png in Resources */ = {isa = PBXBuildFile; fileRef = A14211DF1A8C1BD600ACA392 /* paypal.png */; };
 		A14211E51A8C1CB600ACA392 /* gwallet.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A14211E31A8C1CB600ACA392 /* gwallet.jpeg */; };
 		A14211E71A8C1D5E00ACA392 /* square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A14211E61A8C1D5E00ACA392 /* square.jpg */; };
+		A14DC87B1AE566B0003E9262 /* ExistingUserLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DC87A1AE566B0003E9262 /* ExistingUserLogInViewController.swift */; };
+		A14DC87D1AE5A763003E9262 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DC87C1AE5A763003E9262 /* Main.storyboard */; };
+		A15007DF1AE16A77001E8230 /* landing.png in Resources */ = {isa = PBXBuildFile; fileRef = A15007DE1AE16A77001E8230 /* landing.png */; };
+		A15007E11AE4403F001E8230 /* landing_blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A15007E01AE4403F001E8230 /* landing_blur.jpg */; };
 		A15399EA1AD6ED6300987518 /* AddFriendToItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15399E91AD6ED6300987518 /* AddFriendToItemViewCell.swift */; };
 		A158C88B1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A158C88A1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift */; };
 		A158C88D1ACDCA3700FD3C36 /* AddFriendsToItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A158C88C1ACDCA3700FD3C36 /* AddFriendsToItemViewController.swift */; };
@@ -56,7 +60,6 @@
 		A1C5C9291A93BB9C00274CBC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A167FC541A93AF340025B5CF /* libsqlite3.dylib */; };
 		A1C5C92A1A93BBA900274CBC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A167FC521A93AF2D0025B5CF /* libz.dylib */; };
 		A1C5C9311A93C36A00274CBC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C5C9301A93C36A00274CBC /* Parse.framework */; };
-		A1D6A9C51A5DDB87004A1934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D6A9C41A5DDB87004A1934 /* Main.storyboard */; };
 		A1D6A9CF1A5E0A19004A1934 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D6A9CE1A5E0A19004A1934 /* settings.png */; };
 		A1D6A9D51A5EE0D4004A1934 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A9D41A5EE0D4004A1934 /* SettingsTableViewController.swift */; };
 		A1D6A9D91A5EFB33004A1934 /* SettingsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */; };
@@ -91,6 +94,10 @@
 		A14211E31A8C1CB600ACA392 /* gwallet.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gwallet.jpeg; sourceTree = "<group>"; };
 		A14211E61A8C1D5E00ACA392 /* square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = square.jpg; sourceTree = "<group>"; };
 		A14211E81A8C248E00ACA392 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
+		A14DC87A1AE566B0003E9262 /* ExistingUserLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingUserLogInViewController.swift; sourceTree = "<group>"; };
+		A14DC87C1AE5A763003E9262 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A15007DE1AE16A77001E8230 /* landing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landing.png; sourceTree = "<group>"; };
+		A15007E01AE4403F001E8230 /* landing_blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = landing_blur.jpg; sourceTree = "<group>"; };
 		A15399E91AD6ED6300987518 /* AddFriendToItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendToItemViewCell.swift; sourceTree = "<group>"; };
 		A158C88A1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsToTabViewController.swift; sourceTree = "<group>"; };
 		A158C88C1ACDCA3700FD3C36 /* AddFriendsToItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsToItemViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +150,6 @@
 		A1BE643F19AFDD460086A868 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A1C5C92D1A93BF7300274CBC /* libPods-SplitPea-Parse.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SplitPea-Parse.a"; path = "Pods/build/Debug-iphoneos/libPods-SplitPea-Parse.a"; sourceTree = "<group>"; };
 		A1C5C9301A93C36A00274CBC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		A1D6A9C41A5DDB87004A1934 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A1D6A9CE1A5E0A19004A1934 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		A1D6A9D41A5EE0D4004A1934 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBar.swift; sourceTree = "<group>"; };
@@ -210,6 +216,8 @@
 				A16FBB951A9D18F900EE97E8 /* icon_c.png */,
 				A1BE643F19AFDD460086A868 /* Default@2x.png */,
 				A12659981A5909B3009532E3 /* login.png */,
+				A15007DE1AE16A77001E8230 /* landing.png */,
+				A15007E01AE4403F001E8230 /* landing_blur.jpg */,
 				A189847A1A5D78C7001262A4 /* emerald.png */,
 				A14211E31A8C1CB600ACA392 /* gwallet.jpeg */,
 				A14211E61A8C1D5E00ACA392 /* square.jpg */,
@@ -246,24 +254,25 @@
 				A1BE642C19AB87100086A868 /* SplitPea.entitlements */,
 				A1BE640D19A500AE0086A868 /* AppDelegate.swift */,
 				A1BE640F19A500AE0086A868 /* ViewController.swift */,
-				A1D6A9D41A5EE0D4004A1934 /* SettingsTableViewController.swift */,
-				A1D6A9DA1A5F20E4004A1934 /* CurrentChecksViewController.swift */,
-				A16FBB971A9D1D1900EE97E8 /* CurrentChecksViewCell.swift */,
-				A16940F31A61A1F400903CFF /* ProfileViewController.swift */,
-				A1EC55C61AAE65B200D61845 /* AddFriendsViewController.swift */,
-				A16940F71A6214F400903CFF /* FacebookConnectViewController.swift */,
+				A14DC87A1AE566B0003E9262 /* ExistingUserLogInViewController.swift */,
 				A18F50381A8EA473009B8956 /* SignUpViewController.swift */,
+				A16940F71A6214F400903CFF /* FacebookConnectViewController.swift */,
+				A16FBB971A9D1D1900EE97E8 /* CurrentChecksViewCell.swift */,
+				A1D6A9DA1A5F20E4004A1934 /* CurrentChecksViewController.swift */,
+				A1D6A9D41A5EE0D4004A1934 /* SettingsTableViewController.swift */,
 				A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */,
+				A16940F31A61A1F400903CFF /* ProfileViewController.swift */,
 				A12659961A58F9A2009532E3 /* CaptureViewController.swift */,
 				A1F914BA1AB61BE60036039A /* FriendsCollectionViewCell.swift */,
-				A14211D81A8BD9C200ACA392 /* ItemViewCell.swift */,
 				A1DEAEBB1ACDD73F0032ED01 /* AddFriendViewCell.swift */,
 				A158C88A1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift */,
 				A15399E91AD6ED6300987518 /* AddFriendToItemViewCell.swift */,
 				A158C88C1ACDCA3700FD3C36 /* AddFriendsToItemViewController.swift */,
+				A14211D81A8BD9C200ACA392 /* ItemViewCell.swift */,
 				A1F9CE791A570D5600176E38 /* ItemViewController.swift */,
 				A15DC8E51A5CC4BF0094F03E /* PaidViewController.swift */,
-				A1D6A9C41A5DDB87004A1934 /* Main.storyboard */,
+				A1EC55C61AAE65B200D61845 /* AddFriendsViewController.swift */,
+				A14DC87C1AE5A763003E9262 /* Main.storyboard */,
 				A14211E81A8C248E00ACA392 /* Bridge-Header.h */,
 				A18F50331A8E73A5009B8956 /* VenmoLoginViewController.h */,
 				A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */,
@@ -437,6 +446,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14DC87D1AE5A763003E9262 /* Main.storyboard in Resources */,
 				A1BE644019AFDD460086A868 /* Default@2x.png in Resources */,
 				A1BE643B19AFDBB70086A868 /* Default.png in Resources */,
 				A16FBB961A9D18F900EE97E8 /* icon_c.png in Resources */,
@@ -445,6 +455,7 @@
 				A189847B1A5D78C7001262A4 /* emerald.png in Resources */,
 				A167FC361A92A3260025B5CF /* pic1.jpg in Resources */,
 				A167FC371A92A3260025B5CF /* pic2.jpg in Resources */,
+				A15007E11AE4403F001E8230 /* landing_blur.jpg in Resources */,
 				A14211E51A8C1CB600ACA392 /* gwallet.jpeg in Resources */,
 				A1BE642B19A5163E0086A868 /* Blank52.png in Resources */,
 				A14211E11A8C1BD600ACA392 /* paypal.png in Resources */,
@@ -452,10 +463,10 @@
 				A1BE643219ACD6CF0086A868 /* camera.png in Resources */,
 				A1D6A9CF1A5E0A19004A1934 /* settings.png in Resources */,
 				A14211E71A8C1D5E00ACA392 /* square.jpg in Resources */,
-				A1D6A9C51A5DDB87004A1934 /* Main.storyboard in Resources */,
 				A1BE641519A500AE0086A868 /* Images.xcassets in Resources */,
 				A12659991A5909B3009532E3 /* login.png in Resources */,
 				A18F503D1A8EB285009B8956 /* icon_w.png in Resources */,
+				A15007DF1AE16A77001E8230 /* landing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +557,7 @@
 				A16FBB981A9D1D1900EE97E8 /* CurrentChecksViewCell.swift in Sources */,
 				A1BE640E19A500AE0086A868 /* AppDelegate.swift in Sources */,
 				A14211D91A8BD9C200ACA392 /* ItemViewCell.swift in Sources */,
+				A14DC87B1AE566B0003E9262 /* ExistingUserLogInViewController.swift in Sources */,
 				A18F50351A8E757B009B8956 /* VenmoLoginViewController.m in Sources */,
 				A1D6A9DB1A5F20E4004A1934 /* CurrentChecksViewController.swift in Sources */,
 				A158C88B1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift in Sources */,

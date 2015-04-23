@@ -34,16 +34,16 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 //        Update friends pics
-        var id = PFUser.currentUser().valueForKey("recentReceiptId") as NSString
+        var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
-        var picArray: NSArray = query.getObjectWithId(id).valueForKey("friendsOnReceipt") as NSArray
+        var picArray: NSArray = query.getObjectWithId(id as String).valueForKey("friendsOnReceipt") as! NSArray
         
         if picArray.count == 0 {
 //            println("WAI YU DO DISS?")
         } else {
             for pic in picArray {
-                println(pic as String)
-                friendProfilePics.append(pic as String)
+                println(pic as! String)
+                friendProfilePics.append(pic as! String)
             }
         }
         
@@ -59,18 +59,28 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         
 //        Grab receipt JSON from Parse
         query = PFQuery(className:"receiptData")
-        jsonResult = query.getObjectWithId(id)["data"]
-        itemArray       =   jsonResult.valueForKey("item") as NSMutableArray
-        costArray       =   jsonResult.valueForKey("cost") as NSMutableArray
-        numItems        =   jsonResult.valueForKey("num_item_array") as NSMutableArray
-        subTotalCoreData    =   jsonResult["sub-total"] as NSString
-        taxCoreData     =   jsonResult["tax"] as NSString
-        finalTotalCoreData  = jsonResult["final_total"] as NSString
+        jsonResult = query.getObjectWithId(id as String)["data"]
+        itemArray       =   jsonResult.valueForKey("item") as! NSMutableArray
+        costArray       =   jsonResult.valueForKey("cost") as! NSMutableArray
+        numItems        =   jsonResult.valueForKey("num_item_array") as! NSMutableArray
+        subTotalCoreData    =   jsonResult["sub-total"] as! String
+        taxCoreData     =   jsonResult["tax"] as! String
+        finalTotalCoreData  = jsonResult["final_total"] as! String
         
-        subTotal.text   =   subTotalCoreData
-        tax.text        =   taxCoreData
-        finalTotal.text =   finalTotalCoreData
+        subTotal.text   =   subTotalCoreData as String
+        tax.text        =   taxCoreData as String
+        finalTotal.text =   finalTotalCoreData as String
         
+        var uplCostArray: PFObject = query.getObjectWithId(id as String) as PFObject
+        uplCostArray.setObject(costArray, forKey: "costArray")
+        uplCostArray.saveInBackgroundWithBlock ({
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                println("Cost Array Uploaded")
+            } else {
+                println("FAILURE!!: Cost Array Not Uploaded")
+            }
+        })
     }
     
     //    TableView to show Itemized Receipt
@@ -84,15 +94,15 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell : ItemViewCell! = tableView.dequeueReusableCellWithIdentifier("Cell") as ItemViewCell
+        var cell : ItemViewCell! = tableView.dequeueReusableCellWithIdentifier("Cell") as! ItemViewCell
         if(cell == nil)
         {
-            cell = NSBundle.mainBundle().loadNibNamed("Cell", owner: self, options: nil)[0] as ItemViewCell;
+            cell = NSBundle.mainBundle().loadNibNamed("Cell", owner: self, options: nil)[0] as! ItemViewCell;
         }
         
-        cell.item.text          =   itemArray?[indexPath.row] as NSString
-        cell.item_amount.text   =   costArray?[indexPath.row] as NSString
-        cell.quantity.text      =   numItems?[indexPath.row] as NSString
+        cell.item.text          =   itemArray?[indexPath.row]  as? String
+        cell.item_amount.text   =   costArray?[indexPath.row] as! String
+        cell.quantity.text      =   numItems?[indexPath.row] as! String
 //        cell.accessoryType      =   UITableViewCellAccessoryType.DetailButton
         cell.accessoryType      =   UITableViewCellAccessoryType.DisclosureIndicator
         
@@ -104,17 +114,17 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var id = PFUser.currentUser().valueForKey("recentReceiptId") as NSString
+        var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
-        var currentReceipt: PFObject = query.getObjectWithId(id) as PFObject
+        var currentReceipt: PFObject = query.getObjectWithId(id as String) as PFObject
         currentReceipt.setObject(indexPath.row, forKey: "currentRow")
-        currentReceipt.saveInBackgroundWithBlock {
-            (success: Bool!, error: NSError!) -> Void in
-            if (success != nil) {
+        currentReceipt.saveInBackgroundWithBlock ({
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
                 self.performSegueWithIdentifier("testSegue", sender: self)
             } else {
             }
-        }
+        })
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -137,7 +147,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func collectionView(listOfFriendsInTab: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = listOfFriendsInTab.dequeueReusableCellWithReuseIdentifier("FriendsCollectionViewCell", forIndexPath: indexPath) as FriendsCollectionViewCell
+        let cell = listOfFriendsInTab.dequeueReusableCellWithReuseIdentifier("FriendsCollectionViewCell", forIndexPath: indexPath) as! FriendsCollectionViewCell
         
         if friendProfilePics.count > 0 {
             var itemViewFriendPic:UIImageView = UIImageView()
@@ -163,25 +173,86 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func collectionView(listOfFriendsInTab: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+    func collectionView(listOfFriendsInTab: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 //        println("Drag and Drop coming soon.")
     }
     
     @IBAction func Charged(sender: AnyObject) {
-        var id = PFUser.currentUser().valueForKey("recentReceiptId") as NSString
+        var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
-        var currentReceipt: PFObject = query.getObjectWithId(id) as PFObject
-        currentReceipt.setObject(tableView.indexPathForSelectedRow()?.length, forKey: "itemCount")
-        var boolArrLen = 0
-        if tableView.indexPathForSelectedRow()?.length > 0 {
-            boolArrLen = tableView.indexPathForSelectedRow()?.length as Int!
+        var currentReceipt: PFObject = query.getObjectWithId(id as String) as PFObject
+        
+        var itemCount = 0
+        var friendsPerItem: [[String]] = currentReceipt.valueForKey("friendsPerItem") as! [[String]]
+        for item in friendsPerItem {
+            if item.isEmpty {
+                break
+            }
+            itemCount = itemCount + 1
         }
-        var statusArray = [Bool](count: boolArrLen, repeatedValue: false)
-        currentReceipt.setObject(statusArray, forKey: "statusArray")
+        currentReceipt.setObject(itemCount, forKey: "itemCount")
+        
+        println("outside-start")
+//        Charge AAAALLL THE FRIENDSSS
+        chargeFriends()
+        println("outside-end")
         
 //        Notify User Charging is Complete
         let alert = UIAlertController(title: "", message: "You're friends have been charged!", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func chargeFriends() {
+        println("inside-1")
+        var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
+        var query = PFQuery(className:"receiptData")
+        var currentReceipt: PFObject = query.getObjectWithId(id as String) as PFObject
+        currentReceipt.setObject(costArray.count, forKey: "itemCount")
+        println("inside-2")
+        Venmo.sharedInstance().refreshTokenWithCompletionHandler {
+            (token: String!, success: Bool, error: NSError!) -> Void in
+            println("inside-3")
+//            if (success != nil) {
+                println("inside-4")
+//                var phone    = "4088915260"
+                var amount   = "-0.01"
+                var message  = "SplitPEAAAAASbitchhh"
+                var audience = "private"
+                var atoken    = Venmo.sharedInstance().session.accessToken
+                Venmo.sharedInstance().defaultTransactionMethod = VENTransactionMethod.API
+                
+                var index = 0
+                var person_list: [[String]] = currentReceipt.valueForKey("friendsPerItem") as! [[String]]
+                println("wtf is this shit")
+                println(person_list)
+                for item in person_list {
+                    if index > self.costArray.count {
+                        break
+                    }
+                    for phone_number in item {
+                        var phone: String = phone_number as String
+                        
+                        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+                        var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
+                        var url_str = "https://api.venmo.com/v1/payments?access_token=\(atoken)&phone=\(phone)&amount=\(amount)&note=\(message)&audience=\(audience)"
+                        println(url_str)
+                        var url = NSURL(string: url_str)
+                        var request = NSMutableURLRequest(URL: url!)
+                        request.HTTPMethod = "POST"
+                        request.timeoutInterval = 4.0
+                
+                        println(request.allHTTPHeaderFields)
+                
+                        var msg =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)
+                
+                        if (msg != nil) {
+                            println(NSJSONSerialization.JSONObjectWithData(msg!, options: .MutableContainers, error: nil))
+                        }
+                    }
+                    index = index + 1
+                }
+//            }
+        }
     }
 }

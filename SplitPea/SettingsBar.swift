@@ -27,12 +27,13 @@ class SettingsBar: NSObject, SettingsTableViewControllerDelegate {
     var isSettingsBarOpen:Bool = false
     
     override init() {
+        originView = UIView()
         super.init()
     }
     
     init(sourceView:UIView, menuItems: Array<String>) {
-        super.init()
         originView = sourceView
+        super.init()
         SettingsBarTableViewController.tableViewData = menuItems
         animator = UIDynamicAnimator(referenceView: originView)
         setupSettingsBar()
