@@ -13,22 +13,14 @@ import MobileCoreServices
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
-
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
     
     @IBAction func logIn(sender: AnyObject) {
         if (PFUser.currentUser() != nil) {
             self.performSegueWithIdentifier("loggedIn", sender: self)
         } else {
-            println("RWARRRR")
             self.performSegueWithIdentifier("oldUserLogIn", sender: self)
-//            var alert = UIAlertController(title: "Oops..", message: "You need to sign up first!", preferredStyle: UIAlertControllerStyle.Alert)
-//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-//            alert.addAction(UIAlertAction(title: "Sign Up", style: .Default, handler: { action in
-//                //bleh  loggedIn
-//                self.performSegueWithIdentifier("signUp", sender: self)
-//            }))
-//            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
@@ -46,5 +38,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 }
 

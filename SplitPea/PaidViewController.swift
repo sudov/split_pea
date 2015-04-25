@@ -16,7 +16,8 @@ class PaidViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        println("In Final View!")
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
         circle.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(circle)
         label.center = CGPointMake(160, 284)
@@ -32,6 +33,9 @@ class PaidViewController: UIViewController {
         circle.setNeedsDisplay()
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 }
 
 class ProgressCircle: UIView {

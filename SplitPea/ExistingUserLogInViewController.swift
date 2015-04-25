@@ -16,8 +16,7 @@ class ExistingUserLogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
 
     
@@ -50,6 +49,10 @@ class ExistingUserLogInViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     override func didReceiveMemoryWarning() {

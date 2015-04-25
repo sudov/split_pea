@@ -19,7 +19,6 @@
 		A14211E71A8C1D5E00ACA392 /* square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A14211E61A8C1D5E00ACA392 /* square.jpg */; };
 		A14DC87B1AE566B0003E9262 /* ExistingUserLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DC87A1AE566B0003E9262 /* ExistingUserLogInViewController.swift */; };
 		A14DC87D1AE5A763003E9262 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DC87C1AE5A763003E9262 /* Main.storyboard */; };
-		A15007DF1AE16A77001E8230 /* landing.png in Resources */ = {isa = PBXBuildFile; fileRef = A15007DE1AE16A77001E8230 /* landing.png */; };
 		A15007E11AE4403F001E8230 /* landing_blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A15007E01AE4403F001E8230 /* landing_blur.jpg */; };
 		A15399EA1AD6ED6300987518 /* AddFriendToItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15399E91AD6ED6300987518 /* AddFriendToItemViewCell.swift */; };
 		A158C88B1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A158C88A1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift */; };
@@ -43,7 +42,8 @@
 		A16FBB961A9D18F900EE97E8 /* icon_c.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBB951A9D18F900EE97E8 /* icon_c.png */; };
 		A16FBB981A9D1D1900EE97E8 /* CurrentChecksViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16FBB971A9D1D1900EE97E8 /* CurrentChecksViewCell.swift */; };
 		A16FBB9C1A9D21A400EE97E8 /* front.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBB9B1A9D21A400EE97E8 /* front.png */; };
-		A189847B1A5D78C7001262A4 /* emerald.png in Resources */ = {isa = PBXBuildFile; fileRef = A189847A1A5D78C7001262A4 /* emerald.png */; };
+		A187ACCC1AEBF3AD00E56222 /* emerald.png in Resources */ = {isa = PBXBuildFile; fileRef = A187ACCB1AEBF3AD00E56222 /* emerald.png */; };
+		A187ACCE1AEBF3B200E56222 /* landing.png in Resources */ = {isa = PBXBuildFile; fileRef = A187ACCD1AEBF3B200E56222 /* landing.png */; };
 		A18F50351A8E757B009B8956 /* VenmoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */; };
 		A18F50391A8EA473009B8956 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F50381A8EA473009B8956 /* SignUpViewController.swift */; };
 		A18F503D1A8EB285009B8956 /* icon_w.png in Resources */ = {isa = PBXBuildFile; fileRef = A18F503C1A8EB285009B8956 /* icon_w.png */; };
@@ -96,7 +96,6 @@
 		A14211E81A8C248E00ACA392 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		A14DC87A1AE566B0003E9262 /* ExistingUserLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingUserLogInViewController.swift; sourceTree = "<group>"; };
 		A14DC87C1AE5A763003E9262 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		A15007DE1AE16A77001E8230 /* landing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landing.png; sourceTree = "<group>"; };
 		A15007E01AE4403F001E8230 /* landing_blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = landing_blur.jpg; sourceTree = "<group>"; };
 		A15399E91AD6ED6300987518 /* AddFriendToItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendToItemViewCell.swift; sourceTree = "<group>"; };
 		A158C88A1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsToTabViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +126,8 @@
 		A16FBB951A9D18F900EE97E8 /* icon_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_c.png; sourceTree = "<group>"; };
 		A16FBB971A9D1D1900EE97E8 /* CurrentChecksViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentChecksViewCell.swift; sourceTree = "<group>"; };
 		A16FBB9B1A9D21A400EE97E8 /* front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = front.png; sourceTree = "<group>"; };
-		A189847A1A5D78C7001262A4 /* emerald.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emerald.png; sourceTree = "<group>"; };
+		A187ACCB1AEBF3AD00E56222 /* emerald.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = emerald.png; path = ../../../../Desktop/emerald.png; sourceTree = "<group>"; };
+		A187ACCD1AEBF3B200E56222 /* landing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = landing.png; path = ../../../../Desktop/landing.png; sourceTree = "<group>"; };
 		A18F50321A8E6ED1009B8956 /* SplitPea-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplitPea-Bridging-Header.h"; sourceTree = "<group>"; };
 		A18F50331A8E73A5009B8956 /* VenmoLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoLoginViewController.h; sourceTree = "<group>"; };
 		A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoLoginViewController.m; sourceTree = "<group>"; };
@@ -211,14 +211,14 @@
 		A1BE63FF19A500AE0086A868 = {
 			isa = PBXGroup;
 			children = (
+				A187ACCB1AEBF3AD00E56222 /* emerald.png */,
 				A16FBB9B1A9D21A400EE97E8 /* front.png */,
 				A18F503C1A8EB285009B8956 /* icon_w.png */,
 				A16FBB951A9D18F900EE97E8 /* icon_c.png */,
 				A1BE643F19AFDD460086A868 /* Default@2x.png */,
 				A12659981A5909B3009532E3 /* login.png */,
-				A15007DE1AE16A77001E8230 /* landing.png */,
 				A15007E01AE4403F001E8230 /* landing_blur.jpg */,
-				A189847A1A5D78C7001262A4 /* emerald.png */,
+				A187ACCD1AEBF3B200E56222 /* landing.png */,
 				A14211E31A8C1CB600ACA392 /* gwallet.jpeg */,
 				A14211E61A8C1D5E00ACA392 /* square.jpg */,
 				A14211DE1A8C1BD600ACA392 /* venmo.png */,
@@ -452,13 +452,14 @@
 				A16FBB961A9D18F900EE97E8 /* icon_c.png in Resources */,
 				A16FBB9C1A9D21A400EE97E8 /* front.png in Resources */,
 				A126599B1A590C1B009532E3 /* capture.png in Resources */,
-				A189847B1A5D78C7001262A4 /* emerald.png in Resources */,
 				A167FC361A92A3260025B5CF /* pic1.jpg in Resources */,
 				A167FC371A92A3260025B5CF /* pic2.jpg in Resources */,
 				A15007E11AE4403F001E8230 /* landing_blur.jpg in Resources */,
 				A14211E51A8C1CB600ACA392 /* gwallet.jpeg in Resources */,
 				A1BE642B19A5163E0086A868 /* Blank52.png in Resources */,
 				A14211E11A8C1BD600ACA392 /* paypal.png in Resources */,
+				A187ACCE1AEBF3B200E56222 /* landing.png in Resources */,
+				A187ACCC1AEBF3AD00E56222 /* emerald.png in Resources */,
 				A14211E01A8C1BD600ACA392 /* venmo.png in Resources */,
 				A1BE643219ACD6CF0086A868 /* camera.png in Resources */,
 				A1D6A9CF1A5E0A19004A1934 /* settings.png in Resources */,
@@ -466,7 +467,6 @@
 				A1BE641519A500AE0086A868 /* Images.xcassets in Resources */,
 				A12659991A5909B3009532E3 /* login.png in Resources */,
 				A18F503D1A8EB285009B8956 /* icon_w.png in Resources */,
-				A15007DF1AE16A77001E8230 /* landing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

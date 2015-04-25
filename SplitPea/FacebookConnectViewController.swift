@@ -65,8 +65,13 @@ class FacebookConnectViewController: UIViewController, FBLoginViewDelegate {
         super.viewDidLoad()
         self.fbLoginView.delegate = self
         self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

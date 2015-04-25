@@ -21,6 +21,8 @@ class AddFriendsToItemViewController: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
         var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
         var tabParticipants: PFObject! = query.getObjectWithId(id as String) as PFObject
@@ -120,9 +122,12 @@ class AddFriendsToItemViewController: UIViewController, UITableViewDataSource, U
         })
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }

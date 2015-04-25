@@ -17,7 +17,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userPassword.delegate = self;
-        // Do any additional setup after loading the view.
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,5 +52,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         }
     }
     
-
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 }

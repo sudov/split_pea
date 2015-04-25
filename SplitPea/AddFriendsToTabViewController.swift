@@ -28,6 +28,8 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
         var profPic = (PFUser.currentUser().valueForKey("picture") as! NSString) as String
         pictures.append(profPic)
         var userName: String = PFUser.currentUser().valueForKey("displayName") as! String
@@ -188,6 +190,9 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
         })
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

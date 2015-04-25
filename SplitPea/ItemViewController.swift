@@ -33,6 +33,8 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
 //        Update friends pics
         var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
@@ -254,5 +256,9 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
 //            }
         }
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
 }

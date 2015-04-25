@@ -17,6 +17,8 @@ class CurrentChecksViewController: UIViewController, SettingsBarDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
         SettingBar = SettingsBar(sourceView: self.view, menuItems: ["Profile", "Log Out"])
         SettingBar.delegate = self
         let tel: NSNumber = (PFUser.currentUser().valueForKey("username") as! String).toInt()!
@@ -98,6 +100,10 @@ class CurrentChecksViewController: UIViewController, SettingsBarDelegate, UITabl
     
     @IBAction func openCloseSettingsBar() {
         SettingBar.openCloseSettingsBar()
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     override func didReceiveMemoryWarning() {
