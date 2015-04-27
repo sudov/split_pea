@@ -20,14 +20,12 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let screenWidth = screenSize.width;
-        let screenHeight = screenSize.height;
+        
         user = PFUser.currentUser()
     }
     
     @IBOutlet weak var SnappedReceipt: UIImageView!
+    var load_img: UIImage? = UIImage()
     
     func openCamera()
     {
@@ -57,7 +55,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func UploadReceipt(sender: AnyObject) {
-        var alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        var alert:UIAlertController=UIAlertController(title: "Choose Image Source", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
         var cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default)
             {
@@ -92,20 +90,53 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func imagePickerController(cameraUI: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        println("in picker controller")
         SnappedReceipt.bounds = UIScreen.mainScreen().bounds
         SnappedReceipt.image  = image
-        sendServerRequest(image)
-        
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in })
+//        sendServerRequest(image)
+        loading()
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.sendServerRequest(image)
+        })
     }
     
-//    func imagePickerController(cameraUI: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo:NSDictionary!) {
-//        SnappedReceipt.bounds = UIScreen.mainScreen().bounds
-//        SnappedReceipt.image  = image
-//        sendServerRequest(image)
-//        
-//        self.dismissViewControllerAnimated(true, completion: { () -> Void in })
-//    }
+    
+
+    func loading() {
+        // angles in iOS are measured as radians PI is 180 degrees so PI × 2 is 360 degrees
+        let fullRotation = CGFloat(M_PI * 2)
+        let duration = 10.0
+        let delay = 1.0
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenWidth = screenSize.width;
+        let screenHeight = screenSize.height;
+        let options = UIViewKeyframeAnimationOptions.CalculationModePaced
+        
+        let fish = UIImageView()
+        fish.image = UIImage(named: "loading.gif")
+        fish.frame = CGRect(x: (screenWidth/2), y: (screenHeight/2), width: 70, height: 70)
+        self.view.bringSubviewToFront(fish)
+        self.view.addSubview(fish)
+        
+        UIView.animateKeyframesWithDuration(duration, delay: delay, options: options, animations: {
+            
+            // note that we've set relativeStartTime and relativeDuration to zero.
+            // Because we're using `CalculationModePaced` these values are ignored
+            // and iOS figures out values that are needed to create a smooth constant transition
+            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0, animations: {
+                fish.transform = CGAffineTransformMakeRotation(1/3 * fullRotation)
+            })
+            
+            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0, animations: {
+                fish.transform = CGAffineTransformMakeRotation(2/3 * fullRotation)
+            })
+            
+            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0, animations: {
+                fish.transform = CGAffineTransformMakeRotation(3/3 * fullRotation)
+            })
+            
+            }, completion: nil)
+    }
     
     func sendServerRequest(image: UIImage){
         var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
@@ -120,12 +151,17 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         request.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
         request.setValue("form-data; name=userfile; filename=receipt.jpg", forHTTPHeaderField: "Content-Disposition")
         request.timeoutInterval = 4.0
-//        println(request.allHTTPHeaderFields)
         
         var dataVal =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)
         
-        if ( dataVal == nil ) {
+        var alert = UIAlertView()
+        
+        if (dataVal == nil) {
             println("Nothing came back :(")
+            alert.title = "Ooops!"
+            alert.message = "Something went wrong. Re-upload?"
+            alert.addButtonWithTitle("Ok")
+            alert.show()
         } else {
             jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
             var userObjID = PFUser.currentUser().objectId
@@ -138,9 +174,12 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
             newReceipt.saveInBackgroundWithBlock ({
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
-//                    NSLog("Object created with id: \(newReceipt.objectId)")
                     PFUser.currentUser().setObject("\(newReceipt.objectId)", forKey: "recentReceiptId")
                     PFUser.currentUser().save()
+                    alert.title = "Woot!"
+                    alert.message = "Hit Done!"
+                    alert.addButtonWithTitle("Ok")
+                    alert.show()
                 } else {
                     NSLog("%@", error!)
                 }

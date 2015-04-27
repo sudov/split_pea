@@ -25,6 +25,7 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
     var filteredImages = [String]()
     
     var friendsAdded = [String]()
+    var friendsAddedNames = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,14 +136,17 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                 for index in 0...friendsAdded.count {
                     if friendsAdded[index] == cell?.friendPic.profileID {
                         friendsAdded.removeAtIndex(index)
+                        friendsAddedNames.removeAtIndex(index)
                         break
                     }
                 }
             } else {
                 cell?.accessoryType = .Checkmark
                 if contains(friendsAdded, "\(cell?.friendPic)") == false {
-                    var str = cell.friendPic.profileID
-                    friendsAdded.append(str)
+                    var str_pic = cell.friendPic.profileID
+                    friendsAdded.append(str_pic)
+                    var str_name = cell.friendName.text
+                    friendsAddedNames.append(str_name!)
                 }
             }
         } else {
@@ -152,14 +156,17 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                 for index in 0...friendsAdded.count {
                     if friendsAdded[index] == cell?.friendPic.profileID {
                         friendsAdded.removeAtIndex(index)
+                        friendsAddedNames.removeAtIndex(index)
                         break
                     }
                 }
             } else {
                 cell?.accessoryType = .Checkmark
                 if contains(friendsAdded, "\(cell?.friendPic)") == false {
-                    var str = cell.friendPic.profileID
-                    friendsAdded.append(str)
+                    var str_pic = cell.friendPic.profileID
+                    friendsAdded.append(str_pic)
+                    var str_name = cell.friendName.text
+                    friendsAddedNames.append(str_name!)
                 }
             }
         }
@@ -179,6 +186,7 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
         var query = PFQuery(className:"receiptData")
         var tabParticipants: PFObject! = query.getObjectWithId(id as String) as PFObject
         tabParticipants.setObject(friendsAdded, forKey: "friendsOnReceipt")
+        tabParticipants.setObject(friendsAddedNames, forKey: "friendsOnReceiptNames")
         tabParticipants.saveInBackgroundWithBlock ({
             (success: Bool, error: NSError?) -> Void in
             if (success) {

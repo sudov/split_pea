@@ -23,6 +23,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     var subTotalCoreData: NSString!
     var taxCoreData: NSString!
     var finalTotalCoreData: NSString!
+    var tip_values = ["15%","18%","21%","25%"]
     
     @IBOutlet weak var subTotal: UILabel!
     @IBOutlet weak var tax: UILabel!
@@ -30,6 +31,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var listOfFriendsInTab: UICollectionView!
+    @IBOutlet weak var tipList: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +42,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         var query = PFQuery(className:"receiptData")
         var picArray: NSArray = query.getObjectWithId(id as String).valueForKey("friendsOnReceipt") as! NSArray
         
-        if picArray.count == 0 {
-//            println("WAI YU DO DISS?")
-        } else {
+        if picArray.count > 0 {
             for pic in picArray {
                 println(pic as! String)
                 friendProfilePics.append(pic as! String)
@@ -85,6 +85,18 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return tip_values.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return tip_values[row]
+    }
+        
     //    TableView to show Itemized Receipt
     func numberOfSectionsInTableView(tableView: UITableView) ->Int
     {
@@ -193,11 +205,11 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             itemCount = itemCount + 1
         }
         currentReceipt.setObject(itemCount, forKey: "itemCount")
-        
-        println("outside-start")
-//        Charge AAAALLL THE FRIENDSSS
+        var statusArr = [Bool](count: itemCount, repeatedValue: false)
+        currentReceipt.setObject(statusArr, forKey: "statusArray")
+        currentReceipt.save()
+//        Charge Friends
         chargeFriends()
-        println("outside-end")
         
 //        Notify User Charging is Complete
         let alert = UIAlertController(title: "", message: "You're friends have been charged!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -206,19 +218,14 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func chargeFriends() {
-        println("inside-1")
         var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
         var currentReceipt: PFObject = query.getObjectWithId(id as String) as PFObject
         currentReceipt.setObject(costArray.count, forKey: "itemCount")
-        println("inside-2")
+        
         Venmo.sharedInstance().refreshTokenWithCompletionHandler {
             (token: String!, success: Bool, error: NSError!) -> Void in
-            println("inside-3")
-//            if (success != nil) {
-                println("inside-4")
-//                var phone    = "4088915260"
-                var amount   = "-0.01"
+                var amount   = "0.01"
                 var message  = "SplitPEAAAAASbitchhh"
                 var audience = "private"
                 var atoken    = Venmo.sharedInstance().session.accessToken
@@ -226,12 +233,16 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 var index = 0
                 var person_list: [[String]] = currentReceipt.valueForKey("friendsPerItem") as! [[String]]
-                println("wtf is this shit")
                 println(person_list)
                 for item in person_list {
-                    if index > self.costArray.count {
+                    if index >= self.costArray.count {
                         break
                     }
+                    
+                    var item_cost = ((self.costArray[index] as! NSString).floatValue/Float(item.count))
+                    item_cost = item_cost + self.taxCoreData.floatValue/Float(item.count)
+                    amount = "-\(item_cost)"
+                    
                     for phone_number in item {
                         var phone: String = phone_number as String
                         
@@ -254,7 +265,6 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                     index = index + 1
                 }
-//            }
         }
     }
     
