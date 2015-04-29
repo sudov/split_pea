@@ -11,9 +11,10 @@ import UIKit
 class CurrentChecksViewController: UIViewController, SettingsBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     var SettingBar: SettingsBar = SettingsBar()
-    var checksPreviewArray: NSMutableArray!
     var checksArray: NSMutableArray!
-    var checksTitleArray: NSMutableArray!
+    var checksTitleArray   = [String]()
+    var checksPreviewArray = [UIImage]()
+    @IBOutlet weak var currentChecksTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +28,27 @@ class CurrentChecksViewController: UIViewController, SettingsBarDelegate, UITabl
         var id = PFUser.currentUser().objectId
         var query = PFQuery(className: "receiptData")
         query.whereKey("user_obj_id", containsString: id)
-        var allReceipts = query.findObjects()
-        if let allReceipts: NSArray = query.findObjects() {
-            checksArray = allReceipts.mutableCopy() as! NSMutableArray
+        
+        var allReceipts = [PFObject]()
+        allReceipts = query.findObjects() as! [PFObject]
+        if allReceipts.count > 0 {
+            println(allReceipts.count)
+            for check in allReceipts {
+                var img = ((check as PFObject).valueForKey("receiptImg") as! PFFile).getData()
+//                println("This is the image: \(img)")
+                var title: AnyObject? = (check as PFObject).valueForKey("objectId")
+                if let image = UIImage(data: img){
+                    checksPreviewArray.append(image)
+                }
+                if let objID = (title as? String) {
+                    checksTitleArray.append(objID)
+                }
+            }
         }
-        for check in checksArray {
-//            checksTitleArray.addObject(check.objectId as String)
-//            checksPreviewArray.addObject(check.valueForKey("receiptImg") as! UIImage)
-        }
+        
+        currentChecksTable.delegate = self
+        currentChecksTable.dataSource = self
+        currentChecksTable.reloadData()
     }
     
 //    TableView to show Scanned Receipts
@@ -48,14 +62,14 @@ class CurrentChecksViewController: UIViewController, SettingsBarDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell : CurrentChecksViewCell! = tableView.dequeueReusableCellWithIdentifier("currentCheckCell") as! CurrentChecksViewCell
+        var cell : CurrentChecksViewCell! = tableView.dequeueReusableCellWithIdentifier("currentChecksViewCell") as! CurrentChecksViewCell
         if(cell == nil)
         {
             cell = NSBundle.mainBundle().loadNibNamed("currentCheckCell", owner: self, options: nil)[0] as!CurrentChecksViewCell;
         }
         
-        cell.tabTitle.text  =   checksTitleArray[indexPath.row] as? String
-//        cell.tabPreview.image   =   checksPreviewArray[indexPath.row] as UIImage
+        cell.tabTitle.text  =   "\(NSDate())"
+        cell.tabPreview.image   =   checksPreviewArray[indexPath.row] as UIImage
         cell.accessoryType  =   UITableViewCellAccessoryType.DisclosureIndicator
         
         return cell
@@ -66,23 +80,24 @@ class CurrentChecksViewController: UIViewController, SettingsBarDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        var id = PFUser.currentUser().valueForKey("recentReceiptId") as NSString
-//        var query = PFQuery(className:"receiptData")
-//        var currentReceipt: PFObject = query.getObjectWithId(id) as PFObject
-//        currentReceipt.setObject(indexPath.row, forKey: "currentRow")
-//        currentReceipt.saveInBackgroundWithBlock {
-//            (success: Bool!, error: NSError!) -> Void in
-//            if (success != nil) {
-//                self.performSegueWithIdentifier("testSegue", sender: self)
-//            } else {
-//            }
-//        }
+        var id = checksTitleArray[indexPath.row] as String
+        var query = PFQuery(className:"receiptData")
+        var currentReceipt: PFObject = query.getObjectWithId(id) as PFObject
+        currentReceipt.setObject(indexPath.row, forKey: "currentRow")
+        currentReceipt.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError!) -> Void in
+            if (success) {
+//                self.performSegueWithIdentifier("showWhoPaid", sender: self)
+            } else {
+                NSLog("Cannot check this receipt out!", error!)
+            }
+        }
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            checksTitleArray.removeObjectAtIndex(indexPath.row)
-            checksPreviewArray.removeObjectAtIndex(indexPath.row)
+            checksTitleArray.removeAtIndex(indexPath.row)
+            checksPreviewArray.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }

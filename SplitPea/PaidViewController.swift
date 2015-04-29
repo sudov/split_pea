@@ -96,6 +96,12 @@ class PaidViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        circle.setNeedsDisplay()
     }
     
+    @IBAction func BackToCheckList(sender: AnyObject) {
+        
+    }
+    
+    
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }

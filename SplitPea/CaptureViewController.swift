@@ -105,8 +105,8 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     func loading() {
         // angles in iOS are measured as radians PI is 180 degrees so PI × 2 is 360 degrees
         let fullRotation = CGFloat(M_PI * 2)
-        let duration = 10.0
-        let delay = 1.0
+        let duration = 7.0
+        let delay = 0.0
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width;
         let screenHeight = screenSize.height;
@@ -160,28 +160,65 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
             println("Nothing came back :(")
             alert.title = "Ooops!"
             alert.message = "Something went wrong. Re-upload?"
-            alert.addButtonWithTitle("Ok")
+            alert.addButtonWithTitle("OK")
             alert.show()
         } else {
             jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
             var userObjID = PFUser.currentUser().objectId
-
+            
 //            Creating entry in Parse's receipt class
             var newReceipt = PFObject(className: "receiptData")
             newReceipt.setObject(user.objectId, forKey: "user_obj_id")
             newReceipt.setObject(jsonResult, forKey: "data")
             newReceipt.setObject([FBProfilePictureView](), forKey: "friendsOnReceipt")
-            newReceipt.saveInBackgroundWithBlock ({
-                (success: Bool, error: NSError?) -> Void in
-                if (success) {
+//            newReceipt.setObject(imageFile, forKey: "receiptImg")
+            newReceipt.saveInBackgroundWithBlock({
+                (success: Bool, error: NSError!) -> Void in
+                if (success){
+                    NSLog("Object created with id: \(newReceipt.objectId)")
                     PFUser.currentUser().setObject("\(newReceipt.objectId)", forKey: "recentReceiptId")
-                    PFUser.currentUser().save()
-                    alert.title = "Woot!"
-                    alert.message = "Hit Done!"
-                    alert.addButtonWithTitle("Ok")
-                    alert.show()
+                    PFUser.currentUser().saveInBackgroundWithBlock({
+                        (success: Bool, error: NSError!) -> Void in
+                        if (success) {
+                            println("Parse user updated")
+                            alert.title = "Woot!"
+                            alert.message = "Sweet, just click DONE and start splitting!"
+                            alert.addButtonWithTitle("OK")
+                            alert.show()
+                        } else {
+                            NSLog("Error Updating User", error!)
+                            NSLog("%@", error!)
+                            alert.title = "Oops!"
+                            alert.message = "Your session just expired. Could you log in again?"
+                            alert.addButtonWithTitle("OK")
+                            alert.show()
+                        }
+                    })
+                    
+                    //            Saving receipt image to Parse
+                    var file: PFFile = PFFile(data: UIImageJPEGRepresentation(image, 0.7))
+                    file.saveInBackgroundWithBlock({ (success, fileError) -> Void in
+                        if success {
+                            newReceipt["receiptImg"] = file
+                            newReceipt.saveInBackgroundWithBlock({ (success, objError) -> Void in
+                                if success {
+                                    println("Photo object saved")
+                                } else {
+                                    println("Unable to create a photo object: \(objError)")
+                                }
+                            })
+                        } else {
+                            println("Unable to save file: \(fileError)")
+                        }
+                    })
+                    
                 } else {
+                    NSLog("Error in saving new receipt!", error!)
                     NSLog("%@", error!)
+                    alert.title = "Oops!"
+                    alert.message = "Our server has a snag. Return to the previous screen and retry!"
+                    alert.addButtonWithTitle("OK")
+                    alert.show()
                 }
             })
         }

@@ -80,7 +80,8 @@ class AddFriendsToItemViewController: UIViewController, UITableViewDataSource, U
         if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark) {
             cell?.accessoryType = .None
             for index in 0...friendsOnItem.count {
-                if friendsOnItem[index] == "\(cell.itemFriendName?.text)" {
+                var name_at_index = cell.itemFriendName.text! as String
+                if friendsOnItem[index] == "\(name_at_index)" {
                     friendsOnItem.removeAtIndex(index)
                     friendIDsOnItem.removeAtIndex(index)
                     break
@@ -88,9 +89,8 @@ class AddFriendsToItemViewController: UIViewController, UITableViewDataSource, U
             }
         } else {
             cell?.accessoryType = .Checkmark
-            var nameToBeAdded: String!
-            nameToBeAdded = cell.itemFriendName?.text
-            println(nameToBeAdded as String)
+            var nameToBeAdded = cell.itemFriendName.text! as String
+            friendsOnItem.append("\(nameToBeAdded)")
             friendIDsOnItem.append(friendDict[nameToBeAdded as String]!)
         }
     }

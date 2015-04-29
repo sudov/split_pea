@@ -28,6 +28,15 @@ import UIKit
         
         Venmo.startWithAppId("2234", secret:"pdFZMBrSczX4wHXVBvy49k9twUnSnJ4k", name:"SplitPea")
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var has_launched: Bool? = defaults.valueForKey("hasLaunchedOnce") as? Bool
+        if (has_launched == true) {
+            // Don't do the wizard
+        } else {
+            // Run the Wizard
+            defaults.setObject(true, forKey: "hasLaunchedOnce")
+        }
+        
         return true
     }
     

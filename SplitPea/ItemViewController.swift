@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPickerViewDelegate {
     
     var jsonResult: AnyObject = [:];
     var currentPics: AnyObject = [:];
@@ -23,7 +23,8 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     var subTotalCoreData: NSString!
     var taxCoreData: NSString!
     var finalTotalCoreData: NSString!
-    var tip_values = ["15%","18%","21%","25%"]
+    var tip_values = ["15%","18%","21%  ","25%  "]
+    var finalTip: Float!
     
     @IBOutlet weak var subTotal: UILabel!
     @IBOutlet weak var tax: UILabel!
@@ -31,7 +32,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var listOfFriendsInTab: UICollectionView!
-    @IBOutlet weak var tipList: UIPickerView!
+    @IBOutlet weak var tipList: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,11 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.listOfFriendsInTab.dataSource = self
         self.listOfFriendsInTab.delegate   = self
         
+        self.tipList!.registerClass(TipViewCell.self, forCellWithReuseIdentifier: "tip_cell")
+        self.tipList.dataSource = self
+        self.tipList.delegate = self
+        
+        
 //        Grab receipt JSON from Parse
         query = PFQuery(className:"receiptData")
         jsonResult = query.getObjectWithId(id as String)["data"]
@@ -83,20 +89,11 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 println("FAILURE!!: Cost Array Not Uploaded")
             }
         })
-    }
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return tip_values.count
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return tip_values[row]
-    }
         
+        tipList.delaysContentTouches = true
+        finalTip = 0
+    }
+    
     //    TableView to show Itemized Receipt
     func numberOfSectionsInTableView(tableView: UITableView) ->Int
     {
@@ -117,7 +114,6 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.item.text          =   itemArray?[indexPath.row]  as? String
         cell.item_amount.text   =   costArray?[indexPath.row] as! String
         cell.quantity.text      =   numItems?[indexPath.row] as! String
-//        cell.accessoryType      =   UITableViewCellAccessoryType.DetailButton
         cell.accessoryType      =   UITableViewCellAccessoryType.DisclosureIndicator
         
         return cell
@@ -156,41 +152,75 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 1
     }
     
-    func collectionView(listOfFriendsInTab: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return friendProfilePics.count
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (collectionView == listOfFriendsInTab) {
+            return friendProfilePics.count
+        } else {
+            return tip_values.count
+        }
     }
     
-    func collectionView(listOfFriendsInTab: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = listOfFriendsInTab.dequeueReusableCellWithReuseIdentifier("FriendsCollectionViewCell", forIndexPath: indexPath) as! FriendsCollectionViewCell
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        if (collectionView == listOfFriendsInTab) {
+            let cell = listOfFriendsInTab.dequeueReusableCellWithReuseIdentifier("FriendsCollectionViewCell", forIndexPath: indexPath) as! FriendsCollectionViewCell
         
-        if friendProfilePics.count > 0 {
-            var itemViewFriendPic:UIImageView = UIImageView()
-            itemViewFriendPic.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            itemViewFriendPic.center = cell.center
+            if friendProfilePics.count > 0 {
+                var itemViewFriendPic:UIImageView = UIImageView()
+                itemViewFriendPic.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+                itemViewFriendPic.center = cell.center
             
-            var accessToken = FBSession.activeSession().accessTokenData.accessToken as String
-            var str = "https://graph.facebook.com/\(friendProfilePics[indexPath.row] as String)/picture?type=large&return_ssl_resources=1&access_token=\(accessToken)"
-            let url = NSURL(string: str)
-            let urlRequest = NSURLRequest(URL: url!)
-            NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
+                var accessToken = FBSession.activeSession().accessTokenData.accessToken as String
+                var str = "https://graph.facebook.com/\(friendProfilePics[indexPath.row] as String)/picture?type=large&return_ssl_resources=1&access_token=\(accessToken)"
+                let url = NSURL(string: str)
+                let urlRequest = NSURLRequest(URL: url!)
+                NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
                     // Display the image
                     let image = UIImage(data: data)
                     itemViewFriendPic.image = image
                 }
-            var width: CGFloat! = itemViewFriendPic.frame.size.width
-            itemViewFriendPic.layer.cornerRadius = (width / 2)
-            itemViewFriendPic.clipsToBounds = true
+                var width: CGFloat! = itemViewFriendPic.frame.size.width
+                itemViewFriendPic.layer.cornerRadius = (width / 2)
+                itemViewFriendPic.clipsToBounds = true
             
-            cell.addSubview(itemViewFriendPic)
-        }
+                cell.addSubview(itemViewFriendPic)
+            }
         
-        return cell
+            return cell
+        } else {
+            let cell = tipList.dequeueReusableCellWithReuseIdentifier("tip_cell", forIndexPath: indexPath) as! TipViewCell
+            if (cell.selected) {
+                cell.backgroundColor = UIColor.whiteColor()
+            } else {
+                cell.backgroundColor = UIColor(red: (67.0/255.0), green: (180.0/255.0), blue: (112.0/255.0), alpha: 1.0)
+            }
+            
+            var newLabel = UILabel(frame: CGRectMake(0, 0, 85.0, 45.0))
+            newLabel.text = tip_values[indexPath.row]
+            newLabel.textAlignment = NSTextAlignment.Center
+//            UIColor(red: 67.0, green: 180.0, blue: 112.0, alpha: 1.0)
+            cell.addSubview(newLabel)
+            return cell
+        }
     }
     
-    func collectionView(listOfFriendsInTab: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        println("Drag and Drop coming soon.")
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if (collectionView == tipList) {
+            println("selected \(indexPath.row)")
+            let cell = self.tipList.cellForItemAtIndexPath(indexPath)
+            cell?.backgroundColor = UIColor.whiteColor()
+            finalTip = (tip_values[indexPath.row] as NSString).floatValue
+        }
     }
     
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = self.tipList.cellForItemAtIndexPath(indexPath)
+        cell?.backgroundColor = UIColor(red: (67.0/255.0), green: (180.0/255.0), blue: (112.0/255.0), alpha: 1.0)
+    }
+    
+    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
+//        let cell = self.tipList.cellForItemAtIndexPath(indexPath)
+//        cell?.backgroundColor = UIColor.greenColor()
+    }
     @IBAction func Charged(sender: AnyObject) {
         var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
@@ -208,6 +238,8 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         var statusArr = [Bool](count: itemCount, repeatedValue: false)
         currentReceipt.setObject(statusArr, forKey: "statusArray")
         currentReceipt.save()
+        finalTip = finalTip/Float(itemCount)
+        
 //        Charge Friends
         chargeFriends()
         
@@ -241,6 +273,9 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     var item_cost = ((self.costArray[index] as! NSString).floatValue/Float(item.count))
                     item_cost = item_cost + self.taxCoreData.floatValue/Float(item.count)
+                    println(item_cost)
+                    item_cost = item_cost + self.finalTip
+                    println(item_cost)
                     amount = "-\(item_cost)"
                     
                     for phone_number in item {

@@ -16,13 +16,14 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
     
     @IBOutlet weak var addFriendsTableView: UITableView!
     
-    var searchActive : Bool = false
+    var searchActive : Bool = true
     
 //    var ownerProfPic: String!
     var names    = [String]()
     var pictures = [String]()
     var filtered = [String]()
     var filteredImages = [String]()
+    var picture_correlation = [String:String]()
     
     var friendsAdded = [String]()
     var friendsAddedNames = [String]()
@@ -35,6 +36,7 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
         pictures.append(profPic)
         var userName: String = PFUser.currentUser().valueForKey("displayName") as! String
         names.append("\(userName)")
+        picture_correlation[userName as String] = profPic as String
         
         if (FBSession.activeSession().self.isOpen == false){
             FBSession.openActiveSessionWithAllowLoginUI(true)
@@ -46,13 +48,19 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                 for friendObject in friendObjects {
                     self.names.append(friendObject["name"] as! String)
                     self.pictures.append(friendObject["id"] as! String)
+                    var temp_name = friendObject["name"] as! String
+                    var temp_pic  = friendObject["id"] as! String
+                    println(temp_name)
+                    println(temp_pic)
+                    self.picture_correlation[temp_name] = temp_pic
                 }
             } else {
 //                println("Error requesting friends list form facebook")
                 println("\(error)")
             }
         })
-        
+        println("This is the correlation")
+        println(picture_correlation)
         addFriendsTableView.delegate = self
         addFriendsTableView.dataSource = self
         searchBar.delegate = self
@@ -83,11 +91,15 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
             return range.location != NSNotFound
         })
         
-        filteredImages = names.filter({ (text) -> Bool in
+        var filteredCorr = names.filter({ (text) -> Bool in
             let tmp: NSString = text
             let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             return range.location != NSNotFound
         })
+        
+        for photo in filteredCorr {
+            filteredImages.append(picture_correlation["\(photo)"]!)
+        }
 
         if(filtered.count == 0){
             searchActive = false;
@@ -142,8 +154,9 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                 }
             } else {
                 cell?.accessoryType = .Checkmark
-                if contains(friendsAdded, "\(cell?.friendPic)") == false {
+                if contains(friendsAdded, "\(cell?.friendPic.profileID)") == false {
                     var str_pic = cell.friendPic.profileID
+                    println("Current str_pic val with search:\(str_pic)")
                     friendsAdded.append(str_pic)
                     var str_name = cell.friendName.text
                     friendsAddedNames.append(str_name!)
@@ -162,8 +175,9 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                 }
             } else {
                 cell?.accessoryType = .Checkmark
-                if contains(friendsAdded, "\(cell?.friendPic)") == false {
+                if contains(friendsAdded, "\(cell?.friendPic.profileID)") == false {
                     var str_pic = cell.friendPic.profileID
+                    println("Current str_pic val WITHOUT search:\(str_pic)")
                     friendsAdded.append(str_pic)
                     var str_name = cell.friendName.text
                     friendsAddedNames.append(str_name!)
@@ -185,6 +199,7 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
         var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
         var tabParticipants: PFObject! = query.getObjectWithId(id as String) as PFObject
+        println(friendsAdded)
         tabParticipants.setObject(friendsAdded, forKey: "friendsOnReceipt")
         tabParticipants.setObject(friendsAddedNames, forKey: "friendsOnReceiptNames")
         tabParticipants.saveInBackgroundWithBlock ({

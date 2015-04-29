@@ -1,0 +1,1 @@
+PODS_SPLITPEA_DNDDRAGANDDROP_OTHER_LDFLAGS = -framework "Foundation" -framework "UIKit"
