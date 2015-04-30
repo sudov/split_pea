@@ -33,8 +33,8 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         {
             cameraUI = UIImagePickerController()
             cameraUI.delegate = self
+            cameraUI.allowsEditing = true
             cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
-            cameraUI.allowsEditing = false
             self.presentViewController(cameraUI, animated: true, completion: nil)
         }
     }
@@ -42,6 +42,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     func openGallary()
     {
         cameraUI.delegate = self
+        cameraUI.allowsEditing = true
         cameraUI.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone
         {
@@ -142,8 +143,8 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
         var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
         
-        var url = NSURL(string: "http://getsplitpea.com:5000/")
-//        var url = NSURL(string: "http://45.55.248.107:5000/")
+//        var url = NSURL(string: "http://getsplitpea.com:5000/")
+        var url = NSURL(string: "http://45.55.248.107:5000/")
         var data = NSData(data:UIImageJPEGRepresentation(image, 1.0))
         var request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
@@ -171,7 +172,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
             newReceipt.setObject(user.objectId, forKey: "user_obj_id")
             newReceipt.setObject(jsonResult, forKey: "data")
             newReceipt.setObject([FBProfilePictureView](), forKey: "friendsOnReceipt")
-//            newReceipt.setObject(imageFile, forKey: "receiptImg")
+            newReceipt.setObject(true, forKey: "first")
             newReceipt.saveInBackgroundWithBlock({
                 (success: Bool, error: NSError!) -> Void in
                 if (success){

@@ -37,11 +37,12 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-
-//        Update friends pics
         var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
-        var picArray: NSArray = query.getObjectWithId(id as String).valueForKey("friendsOnReceipt") as! NSArray
+        var data_object: PFObject = query.getObjectWithId(id as String) as PFObject
+
+//        Update friends pics
+        var picArray: NSArray = data_object.valueForKey("friendsOnReceipt") as! NSArray
         
         if picArray.count > 0 {
             for pic in picArray {
@@ -64,31 +65,48 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tipList.dataSource = self
         self.tipList.delegate = self
         
-        
-//        Grab receipt JSON from Parse
-        query = PFQuery(className:"receiptData")
-        jsonResult = query.getObjectWithId(id as String)["data"]
-        itemArray       =   jsonResult.valueForKey("item") as! NSMutableArray
-        costArray       =   jsonResult.valueForKey("cost") as! NSMutableArray
-        numItems        =   jsonResult.valueForKey("num_item_array") as! NSMutableArray
-        subTotalCoreData    =   jsonResult["sub-total"] as! String
-        taxCoreData     =   jsonResult["tax"] as! String
-        finalTotalCoreData  = jsonResult["final_total"] as! String
+        var shouldUpload: Bool = data_object.valueForKey("first") as! Bool
+        if (shouldUpload) {
+            println("In should Upload")
+            //        Grab receipt JSON from Parse
+            query = PFQuery(className:"receiptData")
+            jsonResult = query.getObjectWithId(id as String)["data"]
+            itemArray       =   jsonResult.valueForKey("item") as! NSMutableArray
+            costArray       =   jsonResult.valueForKey("cost") as! NSMutableArray
+            numItems        =   jsonResult.valueForKey("num_item_array") as! NSMutableArray
+            subTotalCoreData    =   jsonResult["sub-total"] as! String
+            taxCoreData     =   jsonResult["tax"] as! String
+            finalTotalCoreData  = jsonResult["final_total"] as! String
+            
+            println(itemArray)
+            data_object.setObject(costArray, forKey: "costArray")
+            data_object.setObject(itemArray, forKey: "itemArray")
+            data_object.setObject(numItems, forKey: "numItemsArray")
+            data_object.setObject(taxCoreData as String, forKey: "tax")
+            data_object.setObject(subTotalCoreData as String, forKey: "subTotal")
+            data_object.setObject(finalTotalCoreData as String, forKey: "finalTotal")
+            data_object.setObject(false, forKey: "first")
+            data_object.saveInBackgroundWithBlock ({
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    println("Cost, Item and Number Arrays Uploaded!")
+                } else {
+                    println("FAILURE!!: Cost, Item and Number Arrays Not Uploaded!")
+                }
+            })
+        } else {
+            itemArray = data_object.valueForKey("itemArray") as! NSMutableArray
+            costArray = data_object.valueForKey("costArray") as! NSMutableArray
+            numItems  = data_object.valueForKey("numItemsArray") as! NSMutableArray
+            taxCoreData         = data_object.valueForKey("tax") as! String
+            subTotalCoreData    = data_object.valueForKey("subTotal") as! String
+            finalTotalCoreData  = data_object.valueForKey("finalTotal") as! String
+            
+        }
         
         subTotal.text   =   subTotalCoreData as String
         tax.text        =   taxCoreData as String
         finalTotal.text =   finalTotalCoreData as String
-        
-        var uplCostArray: PFObject = query.getObjectWithId(id as String) as PFObject
-        uplCostArray.setObject(costArray, forKey: "costArray")
-        uplCostArray.saveInBackgroundWithBlock ({
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                println("Cost Array Uploaded")
-            } else {
-                println("FAILURE!!: Cost Array Not Uploaded")
-            }
-        })
         
         tipList.delaysContentTouches = true
         finalTip = 0
@@ -139,10 +157,25 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            
             itemArray.removeObjectAtIndex(indexPath.row)
             costArray.removeObjectAtIndex(indexPath.row)
             numItems.removeObjectAtIndex(indexPath.row)
+            
+            var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
+            var query = PFQuery(className:"receiptData")
+            var uplCostArray: PFObject = query.getObjectWithId(id as String) as PFObject
+            uplCostArray.setObject(costArray, forKey: "costArray")
+            uplCostArray.setObject(itemArray, forKey: "itemArray")
+            uplCostArray.setObject(numItems, forKey: "numItemsArray")
+            uplCostArray.saveInBackgroundWithBlock ({
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    println("Cost, Item and Number Arrays Updated!")
+                } else {
+                    println("FAILURE!!: Cost, Item and Number Arrays Not Updated!")
+                }
+            })
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
@@ -188,16 +221,19 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
         } else {
             let cell = tipList.dequeueReusableCellWithReuseIdentifier("tip_cell", forIndexPath: indexPath) as! TipViewCell
-            if (cell.selected) {
-                cell.backgroundColor = UIColor.whiteColor()
-            } else {
-                cell.backgroundColor = UIColor(red: (67.0/255.0), green: (180.0/255.0), blue: (112.0/255.0), alpha: 1.0)
-            }
-            
             var newLabel = UILabel(frame: CGRectMake(0, 0, 85.0, 45.0))
             newLabel.text = tip_values[indexPath.row]
             newLabel.textAlignment = NSTextAlignment.Center
-//            UIColor(red: 67.0, green: 180.0, blue: 112.0, alpha: 1.0)
+            
+            if (cell.selected) {
+                cell.backgroundColor = UIColor.whiteColor()
+                newLabel.textColor   = UIColor(red: (67.0/255.0), green: (180.0/255.0), blue: (112.0/255.0), alpha: 1.0)
+
+            } else {
+                cell.backgroundColor = UIColor(red: (67.0/255.0), green: (180.0/255.0), blue: (112.0/255.0), alpha: 1.0)
+                newLabel.textColor   = UIColor.whiteColor()
+            }
+            
             cell.addSubview(newLabel)
             return cell
         }
@@ -209,6 +245,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = self.tipList.cellForItemAtIndexPath(indexPath)
             cell?.backgroundColor = UIColor.whiteColor()
             finalTip = (tip_values[indexPath.row] as NSString).floatValue
+            println("After Tip change, tip is : \(finalTip)")
         }
     }
     
@@ -218,8 +255,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-//        let cell = self.tipList.cellForItemAtIndexPath(indexPath)
-//        cell?.backgroundColor = UIColor.greenColor()
+
     }
     @IBAction func Charged(sender: AnyObject) {
         var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
@@ -228,8 +264,8 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         var itemCount = 0
         var friendsPerItem: [[String]] = currentReceipt.valueForKey("friendsPerItem") as! [[String]]
-        for item in friendsPerItem {
-            if item.isEmpty {
+        for index in 0...friendsPerItem.count {
+            if friendsPerItem[index].isEmpty && index > costArray.count {
                 break
             }
             itemCount = itemCount + 1
@@ -238,8 +274,10 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         var statusArr = [Bool](count: itemCount, repeatedValue: false)
         currentReceipt.setObject(statusArr, forKey: "statusArray")
         currentReceipt.save()
+        println("Tip before equal divide: \(finalTip)")
         finalTip = finalTip/Float(itemCount)
-        
+        println("Tip after equal divide: \(finalTip)")
+
 //        Charge Friends
         chargeFriends()
         
@@ -253,7 +291,6 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
         var currentReceipt: PFObject = query.getObjectWithId(id as String) as PFObject
-        currentReceipt.setObject(costArray.count, forKey: "itemCount")
         
         Venmo.sharedInstance().refreshTokenWithCompletionHandler {
             (token: String!, success: Bool, error: NSError!) -> Void in
@@ -271,13 +308,16 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                         break
                     }
                     
+                    println("Item Cost at each step:")
                     var item_cost = ((self.costArray[index] as! NSString).floatValue/Float(item.count))
+                    println("Step 1: \(item_cost)")
                     item_cost = item_cost + self.taxCoreData.floatValue/Float(item.count)
-                    println(item_cost)
+                    println("Step 2: \(item_cost)")
                     item_cost = item_cost + self.finalTip
-                    println(item_cost)
+                    println("Step 3: \(item_cost)")
                     amount = "-\(item_cost)"
-                    
+                    println("Step 4: \(item_cost)")
+
                     for phone_number in item {
                         var phone: String = phone_number as String
                         
