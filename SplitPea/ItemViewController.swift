@@ -244,14 +244,23 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             println("selected \(indexPath.row)")
             let cell = self.tipList.cellForItemAtIndexPath(indexPath)
             cell?.backgroundColor = UIColor.whiteColor()
+            var newLabel = UILabel(frame: CGRectMake(0, 0, 85.0, 45.0))
+            newLabel.text = tip_values[indexPath.row]
+            newLabel.textColor   = UIColor(red: (67.0/255.0), green: (180.0/255.0), blue: (112.0/255.0), alpha: 1.0)
+            newLabel.textAlignment = NSTextAlignment.Center
+            cell?.addSubview(newLabel)
             finalTip = (tip_values[indexPath.row] as NSString).floatValue
-            println("After Tip change, tip is : \(finalTip)")
         }
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = self.tipList.cellForItemAtIndexPath(indexPath)
         cell?.backgroundColor = UIColor(red: (67.0/255.0), green: (180.0/255.0), blue: (112.0/255.0), alpha: 1.0)
+        var newLabel = UILabel(frame: CGRectMake(0, 0, 85.0, 45.0))
+        newLabel.text = tip_values[indexPath.row]
+        newLabel.textColor   = UIColor.whiteColor()
+        newLabel.textAlignment = NSTextAlignment.Center
+        cell?.addSubview(newLabel)
     }
     
     func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
@@ -295,7 +304,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         Venmo.sharedInstance().refreshTokenWithCompletionHandler {
             (token: String!, success: Bool, error: NSError!) -> Void in
                 var amount   = "0.01"
-                var message  = "SplitPEAAAAASbitchhh"
+                var message  = "Split All the Peas, Receipt #: "
                 var audience = "private"
                 var atoken    = Venmo.sharedInstance().session.accessToken
                 Venmo.sharedInstance().defaultTransactionMethod = VENTransactionMethod.API

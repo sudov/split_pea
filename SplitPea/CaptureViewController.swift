@@ -12,15 +12,14 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var captureButton: UIButton!
     var popover:UIPopoverController?=nil
-    
     var cameraUI:UIImagePickerController = UIImagePickerController()
+    
     var jsonResult: NSDictionary!;
     var user: PFUser = PFUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        
         user = PFUser.currentUser()
     }
     
@@ -183,9 +182,10 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
                         if (success) {
                             println("Parse user updated")
                             alert.title = "Woot!"
-                            alert.message = "Sweet, just click DONE and start splitting!"
+                            alert.message = "Lets get you to the list!"
                             alert.addButtonWithTitle("OK")
                             alert.show()
+                            self.performSegueWithIdentifier("goToItemsAuto", sender: self)
                         } else {
                             NSLog("Error Updating User", error!)
                             NSLog("%@", error!)
@@ -231,6 +231,5 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
