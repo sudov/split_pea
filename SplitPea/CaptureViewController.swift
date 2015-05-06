@@ -93,6 +93,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         println("in picker controller")
         SnappedReceipt.bounds = UIScreen.mainScreen().bounds
         SnappedReceipt.image  = image
+        SnappedReceipt.clipsToBounds = true
 //        sendServerRequest(image)
         loading()
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
@@ -107,15 +108,16 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         let fullRotation = CGFloat(M_PI * 2)
         let duration = 7.0
         let delay = 0.0
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenSize: CGRect = SnappedReceipt.bounds
         let screenWidth = screenSize.width;
         let screenHeight = screenSize.height;
         let options = UIViewKeyframeAnimationOptions.CalculationModePaced
         
         let fish = UIImageView()
-        fish.image = UIImage(named: "loading.gif")
-        fish.frame = CGRect(x: (screenWidth/2), y: (screenHeight/2), width: 70, height: 70)
-        self.view.bringSubviewToFront(fish)
+        fish.image = UIImage(named: "peas.png")
+        fish.frame = CGRect(x: 0, y: screenHeight/2, width: 70, height: 70)
+        fish.clipsToBounds = true
+        self.view.clipsToBounds = true
         self.view.addSubview(fish)
         
         UIView.animateKeyframesWithDuration(duration, delay: delay, options: options, animations: {

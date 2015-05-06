@@ -36,12 +36,12 @@
 		A17089171AEEDDA400EF5844 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A17089161AEEDDA400EF5844 /* Main.storyboard */; };
 		A170891B1AEEEEA400EF5844 /* TipViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A170891A1AEEEEA400EF5844 /* TipViewCell.swift */; };
 		A1719D801AEC172900820BD1 /* PaidViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1719D7F1AEC172900820BD1 /* PaidViewCell.swift */; };
-		A1719D821AEEA69500820BD1 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = A1719D811AEEA69500820BD1 /* loading.gif */; };
 		A18F50351A8E757B009B8956 /* VenmoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */; };
 		A18F50391A8EA473009B8956 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F50381A8EA473009B8956 /* SignUpViewController.swift */; };
 		A18F503D1A8EB285009B8956 /* icon_w.png in Resources */ = {isa = PBXBuildFile; fileRef = A18F503C1A8EB285009B8956 /* icon_w.png */; };
 		A18F503F1A8ED60D009B8956 /* VenmoLoggedOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F503E1A8ED60D009B8956 /* VenmoLoggedOutViewController.m */; };
 		A19BE01B1AFAA5FC0057E0DE /* landing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A19BE01A1AFAA5FC0057E0DE /* landing.jpg */; };
+		A19BE01F1AFAB2DC0057E0DE /* peas.png in Resources */ = {isa = PBXBuildFile; fileRef = A19BE01E1AFAB2DC0057E0DE /* peas.png */; };
 		A1BE640E19A500AE0086A868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE640D19A500AE0086A868 /* AppDelegate.swift */; };
 		A1BE641019A500AE0086A868 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE640F19A500AE0086A868 /* ViewController.swift */; };
 		A1BE641519A500AE0086A868 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BE641419A500AE0086A868 /* Images.xcassets */; };
@@ -112,7 +112,6 @@
 		A17089161AEEDDA400EF5844 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A170891A1AEEEEA400EF5844 /* TipViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipViewCell.swift; sourceTree = "<group>"; };
 		A1719D7F1AEC172900820BD1 /* PaidViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaidViewCell.swift; sourceTree = "<group>"; };
-		A1719D811AEEA69500820BD1 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		A18F50321A8E6ED1009B8956 /* SplitPea-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplitPea-Bridging-Header.h"; sourceTree = "<group>"; };
 		A18F50331A8E73A5009B8956 /* VenmoLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoLoginViewController.h; sourceTree = "<group>"; };
 		A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoLoginViewController.m; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		A18F503E1A8ED60D009B8956 /* VenmoLoggedOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoLoggedOutViewController.m; sourceTree = "<group>"; };
 		A18F50401A8ED664009B8956 /* VenmoLoggedOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoLoggedOutViewController.h; sourceTree = "<group>"; };
 		A19BE01A1AFAA5FC0057E0DE /* landing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = landing.jpg; sourceTree = "<group>"; };
+		A19BE01E1AFAB2DC0057E0DE /* peas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = peas.png; sourceTree = "<group>"; };
 		A1BE640819A500AE0086A868 /* SplitPea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitPea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BE640C19A500AE0086A868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1BE640D19A500AE0086A868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -195,13 +195,13 @@
 		A1BE63FF19A500AE0086A868 = {
 			isa = PBXGroup;
 			children = (
+				A19BE01E1AFAB2DC0057E0DE /* peas.png */,
 				A18F503C1A8EB285009B8956 /* icon_w.png */,
 				A16FBB951A9D18F900EE97E8 /* icon_c.png */,
 				A1BE643919AFDBB70086A868 /* Default.png */,
 				A1BE643F19AFDD460086A868 /* Default@2x.png */,
 				A19BE01A1AFAA5FC0057E0DE /* landing.jpg */,
 				A14211DE1A8C1BD600ACA392 /* venmo.png */,
-				A1719D811AEEA69500820BD1 /* loading.gif */,
 				A1D6A9CE1A5E0A19004A1934 /* settings.png */,
 				A126599A1A590C1B009532E3 /* capture.png */,
 				A1C5C9301A93C36A00274CBC /* Parse.framework */,
@@ -428,9 +428,9 @@
 				A126599B1A590C1B009532E3 /* capture.png in Resources */,
 				A17089171AEEDDA400EF5844 /* Main.storyboard in Resources */,
 				A14211E01A8C1BD600ACA392 /* venmo.png in Resources */,
+				A19BE01F1AFAB2DC0057E0DE /* peas.png in Resources */,
 				A1D6A9CF1A5E0A19004A1934 /* settings.png in Resources */,
 				A1BE641519A500AE0086A868 /* Images.xcassets in Resources */,
-				A1719D821AEEA69500820BD1 /* loading.gif in Resources */,
 				A19BE01B1AFAA5FC0057E0DE /* landing.jpg in Resources */,
 				A18F503D1A8EB285009B8956 /* icon_w.png in Resources */,
 			);
