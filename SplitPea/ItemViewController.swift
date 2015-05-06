@@ -304,7 +304,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         Venmo.sharedInstance().refreshTokenWithCompletionHandler {
             (token: String!, success: Bool, error: NSError!) -> Void in
                 var amount   = "0.01"
-                var message  = "Split All the Peas, Receipt #: "
+                var message  = "split_all_the_peas"
                 var audience = "private"
                 var atoken    = Venmo.sharedInstance().session.accessToken
                 Venmo.sharedInstance().defaultTransactionMethod = VENTransactionMethod.API

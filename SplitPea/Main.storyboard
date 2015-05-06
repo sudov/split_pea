@@ -17,65 +17,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.74999999999999978" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.png" translatesAutoresizingMaskIntoConstraints="NO" id="jye-nX-cWz">
+                            <imageView userInteractionEnabled="NO" alpha="0.74999999999999978" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jye-nX-cWz">
                                 <rect key="frame" x="-82" y="0.0" width="518" height="753"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="signUp" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNw-F8-lOX">
-                                <rect key="frame" x="61" y="560" width="264" height="56"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="189" y="611" width="186" height="58"/>
+                                <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="New User? Sign Up!">
-                                    <color key="titleColor" red="0.01176470588" green="0.6588235294" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.01176470588" green="0.6588235294" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Sign Up!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signUp:" destination="AT3-nH-tSO" eventType="touchUpInside" id="Y97-y5-cvu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnP-Or-faz">
-                                <rect key="frame" x="0.0" y="113" width="375" height="22"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="65"/>
-                                <color key="textColor" red="0.23137254900000001" green="0.61960784310000006" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.23137254900000001" green="0.61960784310000006" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svM-p4-gPl">
-                                <rect key="frame" x="61" y="480" width="264" height="55"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="611" width="189" height="57"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.70588235290000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Log In">
-                                    <color key="titleColor" red="0.01176470588" green="0.6588235294" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.01176470588" green="0.6588235294" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logIn:" destination="AT3-nH-tSO" eventType="touchUpInside" id="pC3-U1-3FS"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SPLITPEA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Th-Sz-Jtn">
-                                <rect key="frame" x="0.0" y="135" width="375" height="132"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="43" y="135" width="289" height="132"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.70588235290000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="52"/>
-                                <color key="textColor" red="0.23137254900000001" green="0.61960784310000006" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                <color key="shadowColor" red="0.23137254900000001" green="0.61960784310000006" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take a picture. We Split the check." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rd-GJ-ykt">
-                                <rect key="frame" x="0.0" y="267" width="375" height="99"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take a picture," textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rd-GJ-ykt">
+                                <rect key="frame" x="43" y="267" width="289" height="64"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.70588235290000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.26274509800000001" green="0.70588235290000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We Split the check." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjq-ky-1xu">
+                                <rect key="frame" x="43" y="331" width="289" height="64"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.70588235290000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="22"/>
-                                <color key="textColor" red="0.23137254900000001" green="0.61960784310000006" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcV-A9-uSC">
-                                <rect key="frame" x="0.0" y="366" width="375" height="13"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="43" y="395" width="289" height="13"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.70588235290000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.26274509800000001" green="0.70588235290000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="22"/>
                                 <color key="textColor" red="0.23137254900000001" green="0.61960784310000006" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnP-Or-faz">
+                                <rect key="frame" x="43" y="123" width="289" height="12"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.70588235290000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="65"/>
+                                <color key="textColor" red="0.23137254900000001" green="0.61960784310000006" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.23137254900000001" green="0.61960784310000006" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                         </subviews>
                     </view>
@@ -104,7 +112,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.png" translatesAutoresizingMaskIntoConstraints="NO" id="1pw-Hf-2Fw">
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1pw-Hf-2Fw">
                                 <rect key="frame" x="-8" y="0.0" width="518" height="753"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkD-43-moE">
@@ -193,7 +201,7 @@
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dAV-yx-K6c">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing_blur.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hBi-Q5-FFy">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hBi-Q5-FFy">
                                         <rect key="frame" x="0.0" y="0.0" width="724" height="668"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
@@ -275,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2z-EG-H4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2938.5" y="-282.5"/>
+            <point key="canvasLocation" x="2938.5" y="-281.5"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="9v0-h7-kL2">
@@ -507,10 +515,10 @@
             </objects>
             <point key="canvasLocation" x="3456.5" y="654.5"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--ProfileViewController-->
         <scene sceneID="bVA-yz-5Rz">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="68Y-ke-5Jt" customClass="ProfileViewController" customModule="SplitPea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" title="ProfileViewController" id="68Y-ke-5Jt" customClass="ProfileViewController" customModule="SplitPea" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6nl-Jh-cLE"/>
                         <viewControllerLayoutGuide type="bottom" id="YHW-t6-KWO"/>
@@ -519,7 +527,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.png" translatesAutoresizingMaskIntoConstraints="NO" id="eHq-Dh-mRI">
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="eHq-Dh-mRI">
                                 <rect key="frame" x="-8" y="0.0" width="518" height="753"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jq-8X-s8s">
@@ -667,8 +675,6 @@
                     <connections>
                         <outlet property="confirm_new_email" destination="dDZ-0G-BOk" id="cSl-TP-9Xg"/>
                         <outlet property="confirm_new_password" destination="qnj-IN-CtO" id="4CU-7v-PEv"/>
-                        <outlet property="doneUpdatingEmail" destination="vHe-gi-W7j" id="syO-lQ-EI7"/>
-                        <outlet property="doneUpdatingPassword" destination="y6d-wC-pty" id="E5U-bD-BHB"/>
                         <outlet property="new_email" destination="i01-WB-d8i" id="rVF-Fq-YIY"/>
                         <outlet property="new_password" destination="uhZ-31-uf5" id="kDf-PR-FAS"/>
                         <outlet property="old_email" destination="IfD-wE-pOq" id="85x-qj-IwG"/>
@@ -691,7 +697,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing_blur.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9un-cW-dQm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9un-cW-dQm">
                                 <rect key="frame" x="-12" y="-6" width="724" height="668"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -762,7 +768,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.png" translatesAutoresizingMaskIntoConstraints="NO" id="F8h-SG-IvB">
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="F8h-SG-IvB">
                                 <rect key="frame" x="-8" y="0.0" width="518" height="753"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1T5-2f-mBi">
@@ -843,7 +849,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.png" translatesAutoresizingMaskIntoConstraints="NO" id="7yP-1U-Uef">
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7yP-1U-Uef">
                                 <rect key="frame" x="-8" y="0.0" width="518" height="753"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fq8-h7-8UT">
@@ -929,7 +935,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.png" translatesAutoresizingMaskIntoConstraints="NO" id="qhO-7j-tjj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qhO-7j-tjj">
                                 <rect key="frame" x="-8" y="0.0" width="518" height="753"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             </imageView>
@@ -1334,7 +1340,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.png" translatesAutoresizingMaskIntoConstraints="NO" id="hdL-qs-TKo">
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hdL-qs-TKo">
                                 <rect key="frame" x="-8" y="0.0" width="518" height="753"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D39-Iz-zmu">
@@ -1435,15 +1441,15 @@
     </scenes>
     <resources>
         <image name="capture.png" width="512" height="512"/>
+        <image name="landing.jpg" width="2513" height="3652"/>
         <image name="landing.png" width="2500" height="1667"/>
-        <image name="landing_blur.jpg" width="2500" height="1667"/>
         <image name="settings.png" width="25" height="25"/>
         <image name="venmo.png" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="t1Z-Ax-Kvg"/>
-        <segue reference="9HC-PA-bS0"/>
-        <segue reference="Qql-o2-Q3k"/>
-        <segue reference="tyk-VK-UFj"/>
+        <segue reference="w7y-y5-Q9Q"/>
+        <segue reference="fWx-gE-8di"/>
+        <segue reference="OGq-ia-sdr"/>
+        <segue reference="whx-vC-kBU"/>
     </inferredMetricsTieBreakers>
 </document>
