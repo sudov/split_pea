@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--vc-->
         <scene sceneID="F6J-9s-EJ2">
             <objects>
-                <viewController storyboardIdentifier="vc" id="AT3-nH-tSO" customClass="ViewController" customModule="SplitPea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vc" title="vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AT3-nH-tSO" customClass="ViewController" customModule="SplitPea" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DRt-E7-3Vz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,8 +95,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="Slp-i9-nBL" kind="push" identifier="signUp" id="tyk-VK-UFj"/>
-                        <segue destination="xeh-aB-4fm" kind="push" identifier="loggedIn" id="fWx-gE-8di"/>
                         <segue destination="68j-Nj-DxS" kind="push" identifier="oldUserLogIn" id="yhY-jI-1O7"/>
+                        <segue destination="zmh-Do-hrV" kind="push" identifier="loggedIn" id="KF2-d3-gkV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6DY-cf-Gyi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -187,7 +187,7 @@
                     <connections>
                         <outlet property="passWord" destination="aHe-Yn-FXR" id="G4l-vm-3Xq"/>
                         <outlet property="userName" destination="3Gu-1I-7Fa" id="YZb-v5-Th0"/>
-                        <segue destination="xeh-aB-4fm" kind="push" identifier="existingUserLoggedIn" id="7BO-uu-qgQ"/>
+                        <segue destination="zmh-Do-hrV" kind="push" identifier="existingUserLoggedIn" id="6z4-IT-OIQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9i-nb-pn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,6 +292,8 @@
                     <connections>
                         <outlet property="currentChecksTable" destination="gw9-bo-kWe" id="KCf-2l-eT2"/>
                         <segue destination="K85-HZ-hSb" kind="modal" identifier="showWhoPaid" id="XnK-My-guJ"/>
+                        <segue destination="68Y-ke-5Jt" kind="modal" identifier="goToProfile" id="CEr-P1-LMM"/>
+                        <segue destination="AT3-nH-tSO" kind="modal" identifier="goToLanding" id="hP1-Tu-8R8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2z-EG-H4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -549,7 +551,7 @@
         <!--ProfileViewController-->
         <scene sceneID="bVA-yz-5Rz">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" title="ProfileViewController" id="68Y-ke-5Jt" customClass="ProfileViewController" customModule="SplitPea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" title="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="68Y-ke-5Jt" customClass="ProfileViewController" customModule="SplitPea" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WzT-Uz-HF2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -717,6 +719,7 @@
                             </button>
                         </subviews>
                     </view>
+                    <navigationItem key="navigationItem" id="Y81-54-Qkb"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -745,6 +748,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1Ng-13-EIy">
+                                <rect key="frame" x="-1" y="64" width="377" height="515"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" id="QXI-9d-iqm">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -759,11 +767,6 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="ISJ-r8-itc">
                                             <connections>
                                                 <segue destination="xeh-aB-4fm" kind="modal" id="iCa-PP-2fb"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="TJ6-Ki-RH2">
-                                            <connections>
-                                                <segue destination="sU6-gk-XFO" kind="modal" id="Tv4-BB-z28"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -784,11 +787,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1Ng-13-EIy">
-                                <rect key="frame" x="-1" y="64" width="382" height="515"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                            </imageView>
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="sR5-q2-UCA"/>
@@ -1353,9 +1351,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="w7y-y5-Q9Q"/>
-        <segue reference="WHK-Xq-qec"/>
-        <segue reference="xcg-EX-5aY"/>
-        <segue reference="tFq-Bt-kUI"/>
+        <segue reference="tyk-VK-UFj"/>
+        <segue reference="hP1-Tu-8R8"/>
+        <segue reference="Qql-o2-Q3k"/>
+        <segue reference="9HC-PA-bS0"/>
+        <segue reference="t1Z-Ax-Kvg"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -21,6 +21,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         user = PFUser.currentUser()
+        SnappedReceipt.clipsToBounds = true
     }
     
     @IBOutlet weak var SnappedReceipt: UIImageView!
@@ -91,10 +92,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func imagePickerController(cameraUI: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         println("in picker controller")
-        SnappedReceipt.bounds = UIScreen.mainScreen().bounds
         SnappedReceipt.image  = image
-        SnappedReceipt.clipsToBounds = true
-//        sendServerRequest(image)
         loading()
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
             self.sendServerRequest(image)
@@ -108,16 +106,17 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         let fullRotation = CGFloat(M_PI * 2)
         let duration = 7.0
         let delay = 0.0
-        let screenSize: CGRect = SnappedReceipt.bounds
+        
+        self.parentViewController?.view.bounds
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width;
         let screenHeight = screenSize.height;
         let options = UIViewKeyframeAnimationOptions.CalculationModePaced
         
         let fish = UIImageView()
         fish.image = UIImage(named: "peas.png")
-        fish.frame = CGRect(x: 0, y: screenHeight/2, width: 70, height: 70)
+        fish.frame = CGRect(x: screenWidth*0.42, y: screenHeight*0.42, width: 40, height: 80)
         fish.clipsToBounds = true
-        self.view.clipsToBounds = true
         self.view.addSubview(fish)
         
         UIView.animateKeyframesWithDuration(duration, delay: delay, options: options, animations: {
@@ -144,7 +143,6 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
         var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
         
-//        var url = NSURL(string: "http://getsplitpea.com:5000/")
         var url = NSURL(string: "http://45.55.248.107:5000/")
         var data = NSData(data:UIImageJPEGRepresentation(image, 1.0))
         var request = NSMutableURLRequest(URL: url!)
@@ -161,7 +159,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         if (dataVal == nil) {
             println("Nothing came back :(")
             alert.title = "Ooops!"
-            alert.message = "Something went wrong. Re-upload?"
+            alert.message = "Our server currently has a lot of traffic. Re-upload?"
             alert.addButtonWithTitle("OK")
             alert.show()
         } else {
@@ -183,10 +181,6 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
                         (success: Bool, error: NSError!) -> Void in
                         if (success) {
                             println("Parse user updated")
-                            alert.title = "Woot!"
-                            alert.message = "Lets get you to the list!"
-                            alert.addButtonWithTitle("OK")
-                            alert.show()
                             self.performSegueWithIdentifier("goToItemsAuto", sender: self)
                         } else {
                             NSLog("Error Updating User", error!)
@@ -197,7 +191,6 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
                             alert.show()
                         }
                     })
-                    
                     //            Saving receipt image to Parse
                     var file: PFFile = PFFile(data: UIImageJPEGRepresentation(image, 0.7))
                     file.saveInBackgroundWithBlock({ (success, fileError) -> Void in

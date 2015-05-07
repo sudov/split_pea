@@ -41,7 +41,10 @@
 - (IBAction)logInButtonAction:(id)sender {
     printf("in1");
     [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
-                                                 VENPermissionAccessProfile]
+                                                 VENPermissionAccessProfile,
+                                                 VENPermissionAccessFriends,
+                                                 VENPermissionAccessPhone,
+                                                 VENPermissionAccessEmail]
                          withCompletionHandler:^(BOOL success, NSError *error) {
                              if (success) {
                                  [self presentLoggedInVC];

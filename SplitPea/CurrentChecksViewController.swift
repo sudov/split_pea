@@ -104,11 +104,12 @@ class CurrentChecksViewController: UIViewController, SettingsBarDelegate, UITabl
     
     func SettingsBarDidSelectButton(index: Int) {
         if index == 0 {
-            let secondViewCotroller = storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
-            navigationController?.pushViewController(secondViewCotroller, animated: true)
+            println("first row")
+//            let secondViewCotroller = storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+//            navigationController?.pushViewController(secondViewCotroller, animated: true)
+            self.performSegueWithIdentifier("goToProfile", sender: self)
         } else if index == 1 {
-            let logOutViewCotroller = storyboard?.instantiateViewControllerWithIdentifier("vc") as! ViewController
-            navigationController?.pushViewController(logOutViewCotroller, animated: true)
+            self.performSegueWithIdentifier("goToLanding", sender: self)
             PFUser.logOut()
         }
     }

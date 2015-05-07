@@ -134,6 +134,19 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.quantity.text      =   numItems?[indexPath.row] as! String
         cell.accessoryType      =   UITableViewCellAccessoryType.DisclosureIndicator
         
+        var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
+        var query = PFQuery(className:"receiptData")
+        var currentReceipt: PFObject = query.getObjectWithId(id as String) as PFObject
+        
+        let friendsPerItem: AnyObject? = currentReceipt.valueForKey("friendsPerItem") as AnyObject?
+        if let latest = friendsPerItem as? [[String]]  {
+            if (latest[indexPath.row].count > 0) {
+                cell.backgroundColor = UIColor(red: (67.0/255.0), green: (180.0/255.0), blue: (112.0/255.0), alpha: 0.75)
+            } else {
+                cell.backgroundColor = UIColor.whiteColor()
+            }
+        }
+        
         return cell
     }
     
