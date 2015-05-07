@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExistingUserLogInViewController: UIViewController {
+class ExistingUserLogInViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var userName: UITextField!
     
@@ -16,10 +16,14 @@ class ExistingUserLogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.passWord.delegate = self;
         UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
 
-    
+    func textFieldShouldReturn(passWord: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 
     @IBAction func logIn(sender: AnyObject) {
         var username = self.userName.text as String

@@ -42,9 +42,7 @@
     printf("in1");
     [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
                                                  VENPermissionAccessProfile,
-                                                 VENPermissionAccessFriends,
-                                                 VENPermissionAccessPhone,
-                                                 VENPermissionAccessEmail]
+                                                 VENPermissionAccessFriends]
                          withCompletionHandler:^(BOOL success, NSError *error) {
                              if (success) {
                                  [self presentLoggedInVC];

@@ -14,38 +14,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-//        Venmo.sharedInstance().requestPermissions([VENPermissionAccessFriends]) {
-//            (success: Bool, error: NSError!) -> Void in
-//            if (success) {
-//                var user = Venmo.sharedInstance().session.user
-//                
-//                println(Venmo.sharedInstance())
-//            }
-//        }
         
-        
-        
-        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
-        var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
-        var user_id = Venmo.sharedInstance().session.user.username
-        var access_token = Venmo.sharedInstance().session.accessToken
-        
-        var url = NSURL(string: "https://api.venmo.com/v1/users/:\(user_id)/friends?access_token=\(access_token)")
-        println(url)
-        var request = NSMutableURLRequest(URL: url!)
-        request.HTTPMethod = "GET"
-        request.timeoutInterval = 6.0
-        
-        var dataVal =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)
-        var jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
-        println("Venmo friends!!")
-        println(jsonResult)
-        
-        
-        
-        
-        
-        
+        if (Venmo.sharedInstance().isSessionValid()) {
+            var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+            var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
+            var user_id = Venmo.sharedInstance().session.user.externalId
+            var access_token = Venmo.sharedInstance().session.accessToken
+            
+            var url = NSURL(string: "https://api.venmo.com/v1/users/\(user_id)/friends?access_token=\(access_token)&limit=5000")
+            var request = NSMutableURLRequest(URL: url!)
+            request.HTTPMethod = "GET"
+            request.timeoutInterval = 6.0
+            
+            var dataVal =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)
+            var jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
+            println("Venmo friends!!")
+            
+            if let reposArray = jsonResult["data"] as? [NSDictionary] {
+                for item in reposArray {
+                    println(item)
+                }
+            }
+            
+        }
     }
     
     @IBAction func logIn(sender: AnyObject) {
