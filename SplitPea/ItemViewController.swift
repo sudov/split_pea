@@ -105,37 +105,38 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
         
-        subTotal.text   =   subTotalCoreData as String
+        //subTotal.text   =   subTotalCoreData as String
+        //self.subTotal.delegate = self
         tax.text        =   taxCoreData as String
-        finalTotal.text =   finalTotalCoreData as String
+        tax.textAlignment = NSTextAlignment.Center
+        tax.textColor   =   UIColor.whiteColor()
+        self.tax.delegate = self
+        //finalTotal.text =   finalTotalCoreData as String
         
         tipList.delaysContentTouches = true
         finalTip = 0
-        
-        
-        
-        self.subTotal.delegate = self
-        self.tax.delegate = self
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if (textField == subTotal) {
-            self.subTotal.endEditing(true)
-            return false
-        } else  {
-            self.tax.endEditing(true)
-            return false
-        }
+        self.tax.endEditing(true)
+        return false
+//        if (textField == subTotal) {
+//            self.subTotal.endEditing(true)
+//            return false
+//        } else  {
+//            self.tax.endEditing(true)
+//            return false
+//        }
     }
     
-    @IBAction func subTotalChanged(sender: AnyObject) {
-        subTotalCoreData = subTotal.text as String
-        var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
-        var query = PFQuery(className:"receiptData")
-        var data_object: PFObject = query.getObjectWithId(id as String) as PFObject
-        data_object.setObject(subTotalCoreData, forKey: "subTotal")
-        data_object.save()
-    }
+//    @IBAction func subTotalChanged(sender: AnyObject) {
+//        subTotalCoreData = subTotal.text as String
+//        var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
+//        var query = PFQuery(className:"receiptData")
+//        var data_object: PFObject = query.getObjectWithId(id as String) as PFObject
+//        data_object.setObject(subTotalCoreData, forKey: "subTotal")
+//        data_object.save()
+//    }
     
     @IBAction func taxChanged(sender: AnyObject) {
         taxCoreData = tax.text as String
