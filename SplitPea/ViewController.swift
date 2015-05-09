@@ -14,7 +14,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        
+        if (PFUser.currentUser() != nil) {
+            self.performSegueWithIdentifier("loggedIn", sender: self)
+        }
         if (Venmo.sharedInstance().isSessionValid()) {
             var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
             var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
@@ -28,11 +30,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             var dataVal =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)
             var jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
-            println("Venmo friends!!")
             
             if let reposArray = jsonResult["data"] as? [NSDictionary] {
                 for item in reposArray {
-                    println(item)
+//                    println(item)
                 }
             }
             

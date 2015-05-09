@@ -22,6 +22,18 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         user = PFUser.currentUser()
         SnappedReceipt.clipsToBounds = true
+        
+        var alertview = JSSAlertView().show(
+            self, // the parent view controller of the alert
+            title: "Heads up!", // the alert's title
+            text: "Avoid shadows while snapping your picture.",
+            color: UIColor(red: (67.0/255.0), green: (180.0/255.0), blue: (112.0/255.0), alpha: 0.5),
+            iconImage: UIImage(named: "lightbulb.png")
+        )
+        alertview.setTitleFont("ClearSans-Bold")
+        alertview.setTextFont("ClearSans")
+        alertview.setButtonFont("ClearSans-Light")
+        alertview.setTextTheme(.Light)
     }
     
     @IBOutlet weak var SnappedReceipt: UIImageView!
@@ -118,7 +130,8 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         fish.frame = CGRect(x: screenWidth*0.42, y: screenHeight*0.42, width: 40, height: 80)
         fish.clipsToBounds = true
         self.view.addSubview(fish)
-        
+        self.view.bringSubviewToFront(fish)
+
         UIView.animateKeyframesWithDuration(duration, delay: delay, options: options, animations: {
             
             // note that we've set relativeStartTime and relativeDuration to zero.
@@ -154,14 +167,25 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         var dataVal =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)
         
-        var alert = UIAlertView()
+//        var alert = UIAlertView()
         
         if (dataVal == nil) {
-            println("Nothing came back :(")
-            alert.title = "Ooops!"
-            alert.message = "Our server currently has a lot of traffic. Re-upload?"
-            alert.addButtonWithTitle("OK")
-            alert.show()
+            var alertview = JSSAlertView().show(
+                self, // the parent view controller of the alert
+                title: "Oops!", // the alert's title
+                text: "Our server currently has a lot of traffic. Re-upload?",
+                color: UIColor(red: (244.0/255.0), green: (63.0/255.0), blue: (79.0/255.0), alpha: 0.5),
+                iconImage: UIImage(named: "error.png")
+            )
+            alertview.setTitleFont("ClearSans-Bold")
+            alertview.setTextFont("ClearSans")
+            alertview.setButtonFont("ClearSans-Light")
+            alertview.setTextTheme(.Light)
+
+//            alert.title = "Ooops!"
+//            alert.message = "Our server currently has a lot of traffic. Re-upload?"
+//            alert.addButtonWithTitle("OK")
+//            alert.show()
         } else {
             jsonResult = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
             var userObjID = PFUser.currentUser().objectId
@@ -180,15 +204,25 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
                     PFUser.currentUser().saveInBackgroundWithBlock({
                         (success: Bool, error: NSError!) -> Void in
                         if (success) {
-                            println("Parse user updated")
                             self.performSegueWithIdentifier("goToItemsAuto", sender: self)
                         } else {
                             NSLog("Error Updating User", error!)
-                            NSLog("%@", error!)
-                            alert.title = "Oops!"
-                            alert.message = "Your session just expired. Could you log in again?"
-                            alert.addButtonWithTitle("OK")
-                            alert.show()
+                            var alertview = JSSAlertView().show(
+                                self, // the parent view controller of the alert
+                                title: "Oops!", // the alert's title
+                                text: "Your session just expired. Could you log in again?",
+                                color: UIColor(red: (244.0/255.0), green: (63.0/255.0), blue: (79.0/255.0), alpha: 0.5),
+                                iconImage: UIImage(named: "error.png")
+                            )
+                            alertview.setTitleFont("ClearSans-Bold")
+                            alertview.setTextFont("ClearSans")
+                            alertview.setButtonFont("ClearSans-Light")
+                            alertview.setTextTheme(.Light)
+                            
+//                            alert.title = "Oops!"
+//                            alert.message = "Your session just expired. Could you log in again?"
+//                            alert.addButtonWithTitle("OK")
+//                            alert.show()
                         }
                     })
                     //            Saving receipt image to Parse
@@ -198,23 +232,34 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
                             newReceipt["receiptImg"] = file
                             newReceipt.saveInBackgroundWithBlock({ (success, objError) -> Void in
                                 if success {
-                                    println("Photo object saved")
+                                    NSLog("Photo object saved")
                                 } else {
-                                    println("Unable to create a photo object: \(objError)")
+                                    NSLog("Unable to create a photo object: \(objError)", error!)
                                 }
                             })
                         } else {
-                            println("Unable to save file: \(fileError)")
+                            NSLog("Unable to save file: \(fileError)", error!)
                         }
                     })
                     
                 } else {
                     NSLog("Error in saving new receipt!", error!)
-                    NSLog("%@", error!)
-                    alert.title = "Oops!"
-                    alert.message = "Our server has a snag. Return to the previous screen and retry!"
-                    alert.addButtonWithTitle("OK")
-                    alert.show()
+                    var alertview = JSSAlertView().show(
+                        self, // the parent view controller of the alert
+                        title: "Oops!", // the alert's title
+                        text: "Our server has a snag. Return to the previous screen and retry!",
+                        color: UIColor(red: (244.0/255.0), green: (63.0/255.0), blue: (79.0/255.0), alpha: 0.5),
+                        iconImage: UIImage(named: "error.png")
+                    )
+                    alertview.setTitleFont("ClearSans-Bold")
+                    alertview.setTextFont("ClearSans")
+                    alertview.setButtonFont("ClearSans-Light")
+                    alertview.setTextTheme(.Light)
+                    
+//                    alert.title = "Oops!"
+//                    alert.message = "Our server has a snag. Return to the previous screen and retry!"
+//                    alert.addButtonWithTitle("OK")
+//                    alert.show()
                 }
             })
         }

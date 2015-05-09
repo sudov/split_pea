@@ -11,7 +11,6 @@
 		90F854DB944FE269376D59F5 /* libPods-SplitPea.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A86BB25945254F119A401F /* libPods-SplitPea.a */; };
 		A12659971A58F9A2009532E3 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12659961A58F9A2009532E3 /* CaptureViewController.swift */; };
 		A126599B1A590C1B009532E3 /* capture.png in Resources */ = {isa = PBXBuildFile; fileRef = A126599A1A590C1B009532E3 /* capture.png */; };
-		A14211D91A8BD9C200ACA392 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14211D81A8BD9C200ACA392 /* ItemViewCell.swift */; };
 		A14211E01A8C1BD600ACA392 /* venmo.png in Resources */ = {isa = PBXBuildFile; fileRef = A14211DE1A8C1BD600ACA392 /* venmo.png */; };
 		A14DC87B1AE566B0003E9262 /* ExistingUserLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DC87A1AE566B0003E9262 /* ExistingUserLogInViewController.swift */; };
 		A15399EA1AD6ED6300987518 /* AddFriendToItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15399E91AD6ED6300987518 /* AddFriendToItemViewCell.swift */; };
@@ -36,12 +35,22 @@
 		A17089171AEEDDA400EF5844 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A17089161AEEDDA400EF5844 /* Main.storyboard */; };
 		A170891B1AEEEEA400EF5844 /* TipViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A170891A1AEEEEA400EF5844 /* TipViewCell.swift */; };
 		A1719D801AEC172900820BD1 /* PaidViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1719D7F1AEC172900820BD1 /* PaidViewCell.swift */; };
+		A189FBBF1AFE4F0B00520ECC /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A189FBBE1AFE4F0B00520ECC /* Launch Screen.xib */; };
+		A189FBC11AFE4F8500520ECC /* SplitPea Launch 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = A189FBC01AFE4F8500520ECC /* SplitPea Launch 640x960.png */; };
+		A189FBC31AFE4F9600520ECC /* SplitPea Launch 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = A189FBC21AFE4F9600520ECC /* SplitPea Launch 640x1136.png */; };
+		A189FBC51AFE8AC900520ECC /* JSSAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189FBC41AFE8AC900520ECC /* JSSAlertView.swift */; };
+		A189FBC71AFE8FE200520ECC /* lightbulb.png in Resources */ = {isa = PBXBuildFile; fileRef = A189FBC61AFE8FE200520ECC /* lightbulb.png */; };
+		A189FBC91AFE9C8100520ECC /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = A189FBC81AFE9C8000520ECC /* error.png */; };
+		A189FBCB1AFE9FE200520ECC /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = A189FBCA1AFE9FE200520ECC /* success.png */; };
+		A189FBCF1AFEA53D00520ECC /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189FBCE1AFEA53D00520ECC /* ItemViewCell.swift */; };
+		A189FBD11AFEA56C00520ECC /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189FBD01AFEA56C00520ECC /* AddItemViewController.swift */; };
 		A18F50351A8E757B009B8956 /* VenmoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */; };
 		A18F50391A8EA473009B8956 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18F50381A8EA473009B8956 /* SignUpViewController.swift */; };
 		A18F503D1A8EB285009B8956 /* icon_w.png in Resources */ = {isa = PBXBuildFile; fileRef = A18F503C1A8EB285009B8956 /* icon_w.png */; };
 		A18F503F1A8ED60D009B8956 /* VenmoLoggedOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18F503E1A8ED60D009B8956 /* VenmoLoggedOutViewController.m */; };
 		A19BE01B1AFAA5FC0057E0DE /* landing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A19BE01A1AFAA5FC0057E0DE /* landing.jpg */; };
 		A19BE01F1AFAB2DC0057E0DE /* peas.png in Resources */ = {isa = PBXBuildFile; fileRef = A19BE01E1AFAB2DC0057E0DE /* peas.png */; };
+		A19BE0211AFD95E10057E0DE /* pea_graph.png in Resources */ = {isa = PBXBuildFile; fileRef = A19BE0201AFD95E00057E0DE /* pea_graph.png */; };
 		A1BE640E19A500AE0086A868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE640D19A500AE0086A868 /* AppDelegate.swift */; };
 		A1BE641019A500AE0086A868 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE640F19A500AE0086A868 /* ViewController.swift */; };
 		A1BE641519A500AE0086A868 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BE641419A500AE0086A868 /* Images.xcassets */; };
@@ -57,7 +66,6 @@
 		A1D6A9D91A5EFB33004A1934 /* SettingsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */; };
 		A1D6A9DB1A5F20E4004A1934 /* CurrentChecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A9DA1A5F20E4004A1934 /* CurrentChecksViewController.swift */; };
 		A1DEAEBC1ACDD73F0032ED01 /* AddFriendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DEAEBB1ACDD73F0032ED01 /* AddFriendViewCell.swift */; };
-		A1EC55C71AAE65B200D61845 /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EC55C61AAE65B200D61845 /* AddFriendsViewController.swift */; };
 		A1F914BB1AB61BE60036039A /* FriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F914BA1AB61BE60036039A /* FriendsCollectionViewCell.swift */; };
 		A1F9CE7A1A570D5600176E38 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9CE791A570D5600176E38 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
@@ -79,7 +87,6 @@
 		84F9837BC73CA16338DC1F60 /* Pods-SplitPeaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SplitPeaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SplitPeaTests/Pods-SplitPeaTests.release.xcconfig"; sourceTree = "<group>"; };
 		A12659961A58F9A2009532E3 /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		A126599A1A590C1B009532E3 /* capture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capture.png; sourceTree = "<group>"; };
-		A14211D81A8BD9C200ACA392 /* ItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
 		A14211DE1A8C1BD600ACA392 /* venmo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venmo.png; sourceTree = "<group>"; };
 		A14211E81A8C248E00ACA392 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		A14DC87A1AE566B0003E9262 /* ExistingUserLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingUserLogInViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +119,15 @@
 		A17089161AEEDDA400EF5844 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A170891A1AEEEEA400EF5844 /* TipViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipViewCell.swift; sourceTree = "<group>"; };
 		A1719D7F1AEC172900820BD1 /* PaidViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaidViewCell.swift; sourceTree = "<group>"; };
+		A189FBBE1AFE4F0B00520ECC /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		A189FBC01AFE4F8500520ECC /* SplitPea Launch 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SplitPea Launch 640x960.png"; sourceTree = "<group>"; };
+		A189FBC21AFE4F9600520ECC /* SplitPea Launch 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SplitPea Launch 640x1136.png"; sourceTree = "<group>"; };
+		A189FBC41AFE8AC900520ECC /* JSSAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSSAlertView.swift; sourceTree = "<group>"; };
+		A189FBC61AFE8FE200520ECC /* lightbulb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightbulb.png; sourceTree = "<group>"; };
+		A189FBC81AFE9C8000520ECC /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
+		A189FBCA1AFE9FE200520ECC /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
+		A189FBCE1AFEA53D00520ECC /* ItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
+		A189FBD01AFEA56C00520ECC /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		A18F50321A8E6ED1009B8956 /* SplitPea-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplitPea-Bridging-Header.h"; sourceTree = "<group>"; };
 		A18F50331A8E73A5009B8956 /* VenmoLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoLoginViewController.h; sourceTree = "<group>"; };
 		A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoLoginViewController.m; sourceTree = "<group>"; };
@@ -121,6 +137,7 @@
 		A18F50401A8ED664009B8956 /* VenmoLoggedOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoLoggedOutViewController.h; sourceTree = "<group>"; };
 		A19BE01A1AFAA5FC0057E0DE /* landing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = landing.jpg; sourceTree = "<group>"; };
 		A19BE01E1AFAB2DC0057E0DE /* peas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = peas.png; sourceTree = "<group>"; };
+		A19BE0201AFD95E00057E0DE /* pea_graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pea_graph.png; sourceTree = "<group>"; };
 		A1BE640819A500AE0086A868 /* SplitPea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitPea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BE640C19A500AE0086A868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1BE640D19A500AE0086A868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,7 +156,6 @@
 		A1D6A9D81A5EFB33004A1934 /* SettingsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBar.swift; sourceTree = "<group>"; };
 		A1D6A9DA1A5F20E4004A1934 /* CurrentChecksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentChecksViewController.swift; sourceTree = "<group>"; };
 		A1DEAEBB1ACDD73F0032ED01 /* AddFriendViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFriendViewCell.swift; path = Images.xcassets/AddFriendViewCell.swift; sourceTree = "<group>"; };
-		A1EC55C61AAE65B200D61845 /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
 		A1F914BA1AB61BE60036039A /* FriendsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1F9CE791A570D5600176E38 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		E7F1177FD5C175CC04DF7C79 /* Pods-SplitPea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SplitPea.release.xcconfig"; path = "Pods/Target Support Files/Pods-SplitPea/Pods-SplitPea.release.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				A19BE01E1AFAB2DC0057E0DE /* peas.png */,
+				A19BE0201AFD95E00057E0DE /* pea_graph.png */,
 				A18F503C1A8EB285009B8956 /* icon_w.png */,
 				A16FBB951A9D18F900EE97E8 /* icon_c.png */,
 				A1BE643919AFDBB70086A868 /* Default.png */,
@@ -204,6 +221,11 @@
 				A14211DE1A8C1BD600ACA392 /* venmo.png */,
 				A1D6A9CE1A5E0A19004A1934 /* settings.png */,
 				A126599A1A590C1B009532E3 /* capture.png */,
+				A189FBC61AFE8FE200520ECC /* lightbulb.png */,
+				A189FBC81AFE9C8000520ECC /* error.png */,
+				A189FBCA1AFE9FE200520ECC /* success.png */,
+				A189FBC01AFE4F8500520ECC /* SplitPea Launch 640x960.png */,
+				A189FBC21AFE4F9600520ECC /* SplitPea Launch 640x1136.png */,
 				A1C5C9301A93C36A00274CBC /* Parse.framework */,
 				A1BE640A19A500AE0086A868 /* SplitPea */,
 				A1BE641D19A500AE0086A868 /* SplitPeaTests */,
@@ -242,13 +264,15 @@
 				A158C88A1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift */,
 				A15399E91AD6ED6300987518 /* AddFriendToItemViewCell.swift */,
 				A158C88C1ACDCA3700FD3C36 /* AddFriendsToItemViewController.swift */,
-				A14211D81A8BD9C200ACA392 /* ItemViewCell.swift */,
+				A170891A1AEEEEA400EF5844 /* TipViewCell.swift */,
+				A189FBD01AFEA56C00520ECC /* AddItemViewController.swift */,
+				A189FBCE1AFEA53D00520ECC /* ItemViewCell.swift */,
 				A1F9CE791A570D5600176E38 /* ItemViewController.swift */,
 				A1719D7F1AEC172900820BD1 /* PaidViewCell.swift */,
 				A15DC8E51A5CC4BF0094F03E /* PaidViewController.swift */,
-				A170891A1AEEEEA400EF5844 /* TipViewCell.swift */,
-				A1EC55C61AAE65B200D61845 /* AddFriendsViewController.swift */,
+				A189FBC41AFE8AC900520ECC /* JSSAlertView.swift */,
 				A17089161AEEDDA400EF5844 /* Main.storyboard */,
+				A189FBBE1AFE4F0B00520ECC /* Launch Screen.xib */,
 				A14211E81A8C248E00ACA392 /* Bridge-Header.h */,
 				A18F50331A8E73A5009B8956 /* VenmoLoginViewController.h */,
 				A18F50341A8E757B009B8956 /* VenmoLoginViewController.m */,
@@ -422,6 +446,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A189FBC91AFE9C8100520ECC /* error.png in Resources */,
+				A189FBCB1AFE9FE200520ECC /* success.png in Resources */,
 				A1BE644019AFDD460086A868 /* Default@2x.png in Resources */,
 				A1BE643B19AFDBB70086A868 /* Default.png in Resources */,
 				A16FBB961A9D18F900EE97E8 /* icon_c.png in Resources */,
@@ -430,9 +456,14 @@
 				A14211E01A8C1BD600ACA392 /* venmo.png in Resources */,
 				A19BE01F1AFAB2DC0057E0DE /* peas.png in Resources */,
 				A1D6A9CF1A5E0A19004A1934 /* settings.png in Resources */,
+				A189FBC11AFE4F8500520ECC /* SplitPea Launch 640x960.png in Resources */,
+				A189FBC31AFE4F9600520ECC /* SplitPea Launch 640x1136.png in Resources */,
 				A1BE641519A500AE0086A868 /* Images.xcassets in Resources */,
+				A189FBBF1AFE4F0B00520ECC /* Launch Screen.xib in Resources */,
 				A19BE01B1AFAA5FC0057E0DE /* landing.jpg in Resources */,
+				A189FBC71AFE8FE200520ECC /* lightbulb.png in Resources */,
 				A18F503D1A8EB285009B8956 /* icon_w.png in Resources */,
+				A19BE0211AFD95E10057E0DE /* pea_graph.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,21 +544,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A189FBCF1AFEA53D00520ECC /* ItemViewCell.swift in Sources */,
+				A189FBC51AFE8AC900520ECC /* JSSAlertView.swift in Sources */,
 				A15DC8E61A5CC4BF0094F03E /* PaidViewController.swift in Sources */,
 				A18F503F1A8ED60D009B8956 /* VenmoLoggedOutViewController.m in Sources */,
 				A1DEAEBC1ACDD73F0032ED01 /* AddFriendViewCell.swift in Sources */,
+				A189FBD11AFEA56C00520ECC /* AddItemViewController.swift in Sources */,
 				A1F914BB1AB61BE60036039A /* FriendsCollectionViewCell.swift in Sources */,
 				A1D6A9D51A5EE0D4004A1934 /* SettingsTableViewController.swift in Sources */,
 				A1BE641019A500AE0086A868 /* ViewController.swift in Sources */,
 				A12659971A58F9A2009532E3 /* CaptureViewController.swift in Sources */,
 				A16FBB981A9D1D1900EE97E8 /* CurrentChecksViewCell.swift in Sources */,
 				A1BE640E19A500AE0086A868 /* AppDelegate.swift in Sources */,
-				A14211D91A8BD9C200ACA392 /* ItemViewCell.swift in Sources */,
 				A14DC87B1AE566B0003E9262 /* ExistingUserLogInViewController.swift in Sources */,
 				A18F50351A8E757B009B8956 /* VenmoLoginViewController.m in Sources */,
 				A1D6A9DB1A5F20E4004A1934 /* CurrentChecksViewController.swift in Sources */,
 				A158C88B1ACDCA0A00FD3C36 /* AddFriendsToTabViewController.swift in Sources */,
-				A1EC55C71AAE65B200D61845 /* AddFriendsViewController.swift in Sources */,
 				A16940F41A61A1F400903CFF /* ProfileViewController.swift in Sources */,
 				A16940F81A6214F400903CFF /* FacebookConnectViewController.swift in Sources */,
 				A1D6A9D91A5EFB33004A1934 /* SettingsBar.swift in Sources */,
@@ -657,7 +689,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SplitPea/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -684,7 +716,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SplitPea/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "$(inherited)";

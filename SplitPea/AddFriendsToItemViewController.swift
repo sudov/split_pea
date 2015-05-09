@@ -107,7 +107,6 @@ class AddFriendsToItemViewController: UIViewController, UITableViewDataSource, U
             friendsPerItem = updateObj.valueForKey("friendsPerItem") as! [[String]]
             friendsPerItem[current_row] = friendIDsOnItem
         } else {
-            println("Was Nil")
             friendsPerItem = Array(count: 50, repeatedValue: [String]())
             friendsPerItem[current_row] = friendIDsOnItem
         }
@@ -117,7 +116,7 @@ class AddFriendsToItemViewController: UIViewController, UITableViewDataSource, U
             if (success) {
                 self.performSegueWithIdentifier("returnToItemVCont", sender: self)
             } else {
-                println("Saving user to item failed.")
+               NSLog("Saving user to item failed.", error!)
             }
         })
     }

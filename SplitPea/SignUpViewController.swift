@@ -38,17 +38,26 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             user.signUpInBackgroundWithBlock ({
                 (succeeded: Bool, error: NSError?) -> Void in
                 if error == nil {
-//                    println("User sent to Parse")
                     self.performSegueWithIdentifier("signUpWithFB", sender: self)
-                } else {
-//                    println("You're a shitty coder")
                 }
             })
             user.pin()
             
         } else {
-            var alert = UIAlertController(title: "Oops..", message: "Either your username isn't a valid US number or you haven't entered a password!", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            PFUser.requestPasswordResetForEmail("\(PFUser.currentUser().email)")
+            var alertview = JSSAlertView().show(
+                self, // the parent view controller of the alert
+                title: "Either your username isn't a valid US number or you haven't entered a password!",
+                color: UIColor(red: (244.0/255.0), green: (63.0/255.0), blue: (79.0/255.0), alpha: 0.5),
+                iconImage: UIImage(named: "error.png")
+            )
+            alertview.setTitleFont("ClearSans-Bold")
+            alertview.setTextFont("ClearSans")
+            alertview.setButtonFont("ClearSans-Light")
+            alertview.setTextTheme(.Light)
+            
+//            var alert = UIAlertController(title: "Oops..", message: "Either your username isn't a valid US number or you haven't entered a password!", preferredStyle: UIAlertControllerStyle.Alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         }
     }
     

@@ -50,17 +50,11 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                     self.pictures.append(friendObject["id"] as! String)
                     var temp_name = friendObject["name"] as! String
                     var temp_pic  = friendObject["id"] as! String
-                    println(temp_name)
-                    println(temp_pic)
                     self.picture_correlation[temp_name] = temp_pic
                 }
-            } else {
-//                println("Error requesting friends list form facebook")
-                println("\(error)")
             }
         })
-        println("This is the correlation")
-        println(picture_correlation)
+
         addFriendsTableView.delegate = self
         addFriendsTableView.dataSource = self
         searchBar.delegate = self
@@ -156,7 +150,6 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                 cell?.accessoryType = .Checkmark
                 if contains(friendsAdded, "\(cell?.friendPic.profileID)") == false {
                     var str_pic = cell.friendPic.profileID
-                    println("Current str_pic val with search:\(str_pic)")
                     friendsAdded.append(str_pic)
                     var str_name = cell.friendName.text
                     friendsAddedNames.append(str_name!)
@@ -177,7 +170,6 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
                 cell?.accessoryType = .Checkmark
                 if contains(friendsAdded, "\(cell?.friendPic.profileID)") == false {
                     var str_pic = cell.friendPic.profileID
-                    println("Current str_pic val WITHOUT search:\(str_pic)")
                     friendsAdded.append(str_pic)
                     var str_name = cell.friendName.text
                     friendsAddedNames.append(str_name!)
@@ -199,16 +191,15 @@ class AddFriendsToTabViewController: UIViewController, UITableViewDataSource, UI
         var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
         var query = PFQuery(className:"receiptData")
         var tabParticipants: PFObject! = query.getObjectWithId(id as String) as PFObject
-        println(friendsAdded)
+
         tabParticipants.setObject(friendsAdded, forKey: "friendsOnReceipt")
         tabParticipants.setObject(friendsAddedNames, forKey: "friendsOnReceiptNames")
         tabParticipants.saveInBackgroundWithBlock ({
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 self.performSegueWithIdentifier("goBackToItemView", sender: self)
-//                NSLog("Object created with id: \(tabParticipants.objectId)")
             } else {
-                NSLog("%@", error!)
+                NSLog("FAILURE!! Couldn't add friends to Tab", error!)
             }
         })
     }

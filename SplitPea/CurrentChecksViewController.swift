@@ -22,7 +22,17 @@ class CurrentChecksViewController: UIViewController, SettingsBarDelegate, UITabl
 
         SettingBar = SettingsBar(sourceView: self.view, menuItems: ["Profile", "Log Out"])
         SettingBar.delegate = self
-        let tel: NSNumber = (PFUser.currentUser().valueForKey("username") as! String).toInt()!
+        println(PFUser.currentUser().valueForKey("username"))
+        var num = PFUser.currentUser().valueForKey("username") as! String
+        var tel: NSNumber!
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle;
+        if let number = formatter.numberFromString("\(num)") {
+            println(number)
+            tel = number
+        }
+        
+//        let tel: NSNumber = (PFUser.currentUser().valueForKey("username") as! String).toInt()!
         PFUser.currentUser().setObject(tel, forKey: "phoneNumber")
         PFUser.currentUser().save()
         var id = PFUser.currentUser().objectId
@@ -32,10 +42,8 @@ class CurrentChecksViewController: UIViewController, SettingsBarDelegate, UITabl
         var allReceipts = [PFObject]()
         allReceipts = query.findObjects() as! [PFObject]
         if allReceipts.count > 0 {
-            println(allReceipts.count)
             for check in allReceipts {
                 var img = ((check as PFObject).valueForKey("receiptImg") as! PFFile).getData()
-//                println("This is the image: \(img)")
                 var title: AnyObject? = (check as PFObject).valueForKey("objectId")
                 if let image = UIImage(data: img){
                     checksPreviewArray.append(image)
@@ -104,13 +112,10 @@ class CurrentChecksViewController: UIViewController, SettingsBarDelegate, UITabl
     
     func SettingsBarDidSelectButton(index: Int) {
         if index == 0 {
-            println("first row")
-//            let secondViewCotroller = storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
-//            navigationController?.pushViewController(secondViewCotroller, animated: true)
             self.performSegueWithIdentifier("goToProfile", sender: self)
         } else if index == 1 {
-            self.performSegueWithIdentifier("goToLanding", sender: self)
             PFUser.logOut()
+            self.performSegueWithIdentifier("goToLanding", sender: self)
         }
     }
     

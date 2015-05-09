@@ -26,8 +26,12 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     var tip_values = ["15%","18%","21%  ","25%  "]
     var finalTip: Float!
     
-    @IBOutlet weak var subTotal: UILabel!
-    @IBOutlet weak var tax: UILabel!
+//    @IBOutlet weak var subTotal: UILabel!
+//    @IBOutlet weak var tax: UILabel!
+    
+    @IBOutlet weak var subTotal: UITextField!
+    @IBOutlet weak var tax: UITextField!
+    
     @IBOutlet weak var finalTotal: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
@@ -46,7 +50,6 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if picArray.count > 0 {
             for pic in picArray {
-                println(pic as! String)
                 friendProfilePics.append(pic as! String)
             }
         }
@@ -67,8 +70,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         var shouldUpload: Bool = data_object.valueForKey("first") as! Bool
         if (shouldUpload) {
-            println("In should Upload")
-            //        Grab receipt JSON from Parse
+//            Grab receipt JSON from Parse
             query = PFQuery(className:"receiptData")
             jsonResult = query.getObjectWithId(id as String)["data"]
             itemArray       =   jsonResult.valueForKey("item") as! NSMutableArray
@@ -78,7 +80,6 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             taxCoreData     =   jsonResult["tax"] as! String
             finalTotalCoreData  = jsonResult["final_total"] as! String
             
-            println(itemArray)
             data_object.setObject(costArray, forKey: "costArray")
             data_object.setObject(itemArray, forKey: "itemArray")
             data_object.setObject(numItems, forKey: "numItemsArray")
@@ -89,9 +90,9 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             data_object.saveInBackgroundWithBlock ({
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
-                    println("Cost, Item and Number Arrays Uploaded!")
+                    NSLog("Cost, Item and Number Arrays Uploaded!")
                 } else {
-                    println("FAILURE!!: Cost, Item and Number Arrays Not Uploaded!")
+                    NSLog("FAILURE!!: Cost, Item and Number Arrays Not Uploaded!", error!)
                 }
             })
         } else {
@@ -110,6 +111,39 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tipList.delaysContentTouches = true
         finalTip = 0
+        
+        
+        
+        self.subTotal.delegate = self
+        self.tax.delegate = self
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if (textField == subTotal) {
+            self.subTotal.endEditing(true)
+            return false
+        } else  {
+            self.tax.endEditing(true)
+            return false
+        }
+    }
+    
+    @IBAction func subTotalChanged(sender: AnyObject) {
+        subTotalCoreData = subTotal.text as String
+        var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
+        var query = PFQuery(className:"receiptData")
+        var data_object: PFObject = query.getObjectWithId(id as String) as PFObject
+        data_object.setObject(subTotalCoreData, forKey: "subTotal")
+        data_object.save()
+    }
+    
+    @IBAction func taxChanged(sender: AnyObject) {
+        taxCoreData = tax.text as String
+        var id = PFUser.currentUser().valueForKey("recentReceiptId") as! NSString
+        var query = PFQuery(className:"receiptData")
+        var data_object: PFObject = query.getObjectWithId(id as String) as PFObject
+        data_object.setObject(taxCoreData, forKey: "tax")
+        data_object.save()
     }
     
     //    TableView to show Itemized Receipt
@@ -128,7 +162,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         {
             cell = NSBundle.mainBundle().loadNibNamed("Cell", owner: self, options: nil)[0] as! ItemViewCell;
         }
-        
+
         cell.item.text          =   itemArray?[indexPath.row]  as? String
         cell.item_amount.text   =   costArray?[indexPath.row] as! String
         cell.quantity.text      =   numItems?[indexPath.row] as! String
@@ -183,9 +217,9 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             uplCostArray.saveInBackgroundWithBlock ({
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
-                    println("Cost, Item and Number Arrays Updated!")
+                    NSLog("Cost, Item and Number Arrays Updated!")
                 } else {
-                    println("FAILURE!!: Cost, Item and Number Arrays Not Updated!")
+                    NSLog("FAILURE!!: Cost, Item and Number Arrays Not Updated!", error!)
                 }
             })
             
@@ -212,7 +246,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         
             if friendProfilePics.count > 0 {
                 var itemViewFriendPic:UIImageView = UIImageView()
-                itemViewFriendPic.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+                itemViewFriendPic.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
                 itemViewFriendPic.center = cell.center
             
                 var accessToken = FBSession.activeSession().accessTokenData.accessToken as String
@@ -230,7 +264,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             
                 cell.addSubview(itemViewFriendPic)
             }
-        
+            self.tableView.reloadData()
             return cell
         } else {
             let cell = tipList.dequeueReusableCellWithReuseIdentifier("tip_cell", forIndexPath: indexPath) as! TipViewCell
@@ -248,13 +282,13 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             cell.addSubview(newLabel)
+            self.tableView.reloadData()
             return cell
         }
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if (collectionView == tipList) {
-            println("selected \(indexPath.row)")
             let cell = self.tipList.cellForItemAtIndexPath(indexPath)
             cell?.backgroundColor = UIColor.whiteColor()
             var newLabel = UILabel(frame: CGRectMake(0, 0, 85.0, 45.0))
@@ -285,28 +319,49 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         var currentReceipt: PFObject = query.getObjectWithId(id as String) as PFObject
         
         var itemCount = 0
-        var friendsPerItem: [[String]] = currentReceipt.valueForKey("friendsPerItem") as! [[String]]
-        for index in 0...friendsPerItem.count {
-            if friendsPerItem[index].isEmpty && index > costArray.count {
-                break
-            }
-            itemCount = itemCount + 1
-        }
-        currentReceipt.setObject(itemCount, forKey: "itemCount")
-        var statusArr = [Bool](count: itemCount, repeatedValue: false)
-        currentReceipt.setObject(statusArr, forKey: "statusArray")
-        currentReceipt.save()
-        println("Tip before equal divide: \(finalTip)")
-        finalTip = finalTip/Float(itemCount)
-        println("Tip after equal divide: \(finalTip)")
-
-//        Charge Friends
-        chargeFriends()
         
-//        Notify User Charging is Complete
-        let alert = UIAlertController(title: "", message: "You're friends have been charged!", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        if let friends_per_item = currentReceipt.valueForKey("friendsPerItem") as? [[String]] {
+            for index in 0...friends_per_item.count {
+                if friends_per_item[index].isEmpty && index > costArray.count {
+                    break
+                }
+                itemCount = itemCount + 1
+            }
+            currentReceipt.setObject(itemCount, forKey: "itemCount")
+            var statusArr = [Bool](count: itemCount, repeatedValue: false)
+            currentReceipt.setObject(statusArr, forKey: "statusArray")
+            currentReceipt.save()
+            println("This is the final Tip")
+            finalTip = finalTip/100
+            println("\(finalTip)")
+            finalTip = finalTip/Float(itemCount)
+            
+//            Charge Friends
+            chargeFriends()
+            
+//            Notify User Charging is Complete
+            let alert = UIAlertController()
+            alert.title = "Success!"
+            alert.message = "Your friends have been charged!"
+            var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                UIAlertAction in
+                NSLog("Done Splitting")
+                self.performSegueWithIdentifier("doneSplitting", sender: self)
+            }
+            alert.addAction(okAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            var alertview = JSSAlertView().show(
+                self, // the parent view controller of the alert
+                title: "Assign items to friends!",
+                color: UIColor(red: (244.0/255.0), green: (63.0/255.0), blue: (79.0/255.0), alpha: 0.5),
+                iconImage: UIImage(named: "error.png")
+            )
+            alertview.setTitleFont("ClearSans-Bold")
+            alertview.setTextFont("ClearSans")
+            alertview.setButtonFont("ClearSans-Light")
+            alertview.setTextTheme(.Light)
+        }
     }
     
     func chargeFriends() {
@@ -324,21 +379,16 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 var index = 0
                 var person_list: [[String]] = currentReceipt.valueForKey("friendsPerItem") as! [[String]]
-                println(person_list)
                 for item in person_list {
                     if index >= self.costArray.count {
                         break
                     }
                     
-                    println("Item Cost at each step:")
                     var item_cost = ((self.costArray[index] as! NSString).floatValue/Float(item.count))
-                    println("Step 1: \(item_cost)")
                     item_cost = item_cost + self.taxCoreData.floatValue/Float(item.count)
-                    println("Step 2: \(item_cost)")
-                    item_cost = item_cost + self.finalTip
-                    println("Step 3: \(item_cost)")
+                    item_cost = item_cost + self.finalTip * item_cost
+                    item_cost = item_cost + self.taxCoreData.floatValue/Float(self.itemArray.count)
                     amount = "-\(item_cost)"
-                    println("Step 4: \(item_cost)")
 
                     for phone_number in item {
                         var phone: String = phone_number as String
@@ -346,14 +396,11 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                         var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
                         var error: AutoreleasingUnsafeMutablePointer<NSError?> = nil
                         var url_str = "https://api.venmo.com/v1/payments?access_token=\(atoken)&phone=\(phone)&amount=\(amount)&note=\(message)&audience=\(audience)"
-                        println(url_str)
                         var url = NSURL(string: url_str)
                         var request = NSMutableURLRequest(URL: url!)
                         request.HTTPMethod = "POST"
                         request.timeoutInterval = 4.0
-                
-                        println(request.allHTTPHeaderFields)
-                
+                        
                         var msg =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)
                 
                         if (msg != nil) {
