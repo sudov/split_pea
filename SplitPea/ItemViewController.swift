@@ -23,7 +23,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     var subTotalCoreData: NSString!
     var taxCoreData: NSString!
     var finalTotalCoreData: NSString!
-    var tip_values = ["15%","18%","21%  ","25%  "]
+    var tip_values = ["15%","18%","21%","25%"]
     var finalTip: Float!
     
 //    @IBOutlet weak var subTotal: UILabel!
@@ -339,14 +339,16 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             
 //            Charge Friends
             chargeFriends()
-            
+            println("Step 1")
 //            Notify User Charging is Complete
             let alert = UIAlertController()
             alert.title = "Success!"
             alert.message = "Your friends have been charged!"
+            println("Step 2")
             var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                 UIAlertAction in
                 NSLog("Done Splitting")
+                println("Step 3")
                 self.performSegueWithIdentifier("doneSplitting", sender: self)
             }
             alert.addAction(okAction)
